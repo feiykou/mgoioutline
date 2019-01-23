@@ -22,7 +22,7 @@
                         {volist name="columnData" id="column"}
                         <li><a class="active-{$key} {if condition="$column.id eq $cur_cate_id || $parent_id eq $column.id || ($cur_cate_id eq '0' && $column.id eq 5)"} active{/if}"
                             href="{if condition='$column.template_id gt 1'}/{:getTemplateView($column.template_id)}/{$column.id}
-                            {elseif condition="$column.template_id eq 1"/}/{else/}{$column.link_url}{/if}"><span>{$column.name}</span></a></li>
+                            {elseif condition="$column.template_id eq 1"/}/home{else/}{$column.link_url}{/if}"><span>{$column.name}</span></a></li>
                         {/volist}
                     </ul>
                 </div>
