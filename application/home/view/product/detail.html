@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {include file="public/head" /}
+</head>
+<body>
+<div class="container product-container">
+    {include file="public/header-nav" /}
+    <div class="index-content">
+        <div class="product-wrap">
+            <div class="product-detail-box">
+                <div class="item product-img-wrap">
+                    <div class="imgs-wrap owl-carousel">
+                        {volist name="productData['imgs_url']" id="img_url"}
+                        <div class="item" data-dot="<div style='background-image:url({$img_url})' >" style="background-image:url('{$img_url}');"></div>
+                        {/volist}
+
+                    </div>
+                    <div class="detail-nav-container">
+                        <div class="detail-nav-wrap">
+                            <div class="switch-nav">
+                            </div>
+                        </div>
+                        <span class="dbtn prev" data-index="0"></span>
+                        <span class="dbtn next active" data-index="1"></span>
+                    </div>
+
+                </div>
+                <div class="item product-info-wrap">
+                    <h1 class="h1-tit">{$productData.name}</h1>
+                    <div class="line"></div>
+                    <div class="detail">
+                        <div class="con">
+                            {$productData.slogan|html_entity_decode=###}
+                        </div>
+                    </div>
+                    <div class="product-property-box">
+                        <ul class="clearfix">
+                            {volist name="$productData.prop" id="propData"}
+                            <li>
+                                <div>
+                                    <p class="tit">{$propData.prop_name}：</p>
+                                    <p class="desc">{$propData.prop_value}</p>
+                                </div>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div class="buy-type-wrap">
+                        <div class="buy-btn-wrap"><a href="{$productData.link_url}" target="_blank" class="buy-btn">点击购买</a></div>
+                        <div class="wx-code-wrap">
+                            <div class="img-box"><img src="{$productData.code_img[0]}" alt=""></div>
+                            <div class="text">
+                                <p>微信扫一扫</p>
+                                <p>小程序购买</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="product-resc-wrap">
+            <h2 class="resc-tit">其他用户也看</h2>
+            <div class="banner-wrap product-resc-banner owl-carousel">
+                {volist name="rescData" id="data"}
+                <div class="item" data-nav="asdasddas">
+                    <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                    <p class="tit"><a href="">{$data.name}</a></p>
+                    <p class="desc">{$data.introduce}</p>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+    {include file="public/footer" /}
+<script>
+    var dpr992 = dpr*992;
+    var dpr1200 = dpr*1200;
+    var owl = $('.imgs-wrap').owlCarousel({
+        items: 1,
+        loop:true,
+        margin:20,
+        dots: true,
+        dotsData: true,
+        dotsContainer: '.switch-nav'
+    })
+    $('.product-resc-banner').owlCarousel({
+        loop:true,
+        margin:40,
+        nav: true,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:3,
+            },
+            [dpr992]:{
+                items:3,
+            },
+            [dpr1200]:{
+                items:5,
+                loop:true
+            }
+        }
+    });
+
+
+
+    $(function(){
+
+        $(window).on('resize',resize).trigger('resize');
+
+        function resize(){
+            sizeHeight($('.product-wrap'),168);
+            detailNav();
+        }
+
+        // 阻止连续点击事件
+        function timePrevent(time){
+            if(new Date() - time < 500){
+                return false
+            }
+            return new Date();
+        }
+
+        // 缩略图轮播
+        function detailNavSwitch(itemW,len){
+            var switchDom = $(".switch-nav");
+            var index = 0;
+            if(len <= 3) $('.dbtn').removeClass('active');
+            var time = new Date();
+            $('.dbtn').on('click',function(event){
+                var cindex = $(this).data('index');
+                time = timePrevent(time)
+                if(!time) return false;
+                if(len <= 3){
+                    $('.dbtn').removeClass('active');
+                    return
+                }
+                if(cindex){
+                    index++;
+                    $('.dbtn').eq(0).addClass('active');
+                    if(index >= len-4){
+                        index = len - 4
+                        $(this).removeClass('active');
+                    }
+                }else{
+                    index--;
+                    $('.dbtn').eq(1).addClass('active');
+                    if(index <= 0){
+                        index = 0
+                        $(this).removeClass('active');
+                    }
+                }
+                switchDom.animate({left: -index*itemW},200);
+            })
+        }
+        // 按钮切换和缩略图大小设置
+        function detailNav(){
+            var navDom = $(".detail-nav-wrap"),
+                dotDom = navDom.find('.owl-dot'),
+                len = dotDom.length,
+                width = navDom.width(),
+                margin = 20,
+                itemW = parseInt((width-40) / 3) - 2;
+            dotDom.width(itemW);
+            detailNavSwitch(itemW+20,len)
+        }
+
+    })
+
+</script>
+</body>
+</html>

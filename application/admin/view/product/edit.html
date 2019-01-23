@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!--包含头部文件-->
+	{include file="public/header" /}
+	<!--引入webuploaderCss-->
+	{Uploader:webuploadercss /}
+	<style>
+		.uploader-item .queueList{
+			display: block;
+			opacity: 1;
+		}
+	</style>
+</head>
+
+<body>
+<div class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-pro-add">
+		<input type="hidden" name="id" value="{$proAllData.id}">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品标题：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="{$proAllData.name}" placeholder="" name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>产品俗称：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="{$proAllData.name_desc}" placeholder="" name="name_desc">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>产品介绍：</label>
+			<div class="formControls col-xs-8 col-sm-9 col-lg-3">
+				<textarea name="introduce" cols="" rows="" class="textarea" placeholder="说点什么...">{$proAllData.introduce}</textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>slogan：</label>
+			<div class="formControls col-xs-8 col-sm-9 col-lg-6">
+				<script id="sloganCon" type="text/plain" name="slogan" style="width:100%;height:400px;">{$proAllData.slogan|html_entity_decode}</script>
+                </div>
+                </div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择所属栏目：</label>
+			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
+				<select class="select" name="column_id">
+					<option value="">请选择所属栏目</option>
+					{volist name="columnSortData" id="cate"}
+                <option value="{$cate.id}" {if condition="$cate.id == $proAllData.column_id"}selected{/if}>{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+					{/volist}
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">产品类别：</label>
+			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
+				<select class="select" name="cate_id">
+					<option value="">请选择</option>
+					{volist name="cateData" id="cate"}
+                <option value="{$cate.id}" {if condition="$cate.id == $proAllData.cate_id"}selected{/if}>{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+					{/volist}
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>推荐位：</label>
+			<div class="formControls skin-minimal col-xs-5">
+				{volist name="attrData" id="attr" key="k"}
+				<div class="check-box">
+					<label class="checkbox-input"><input type="checkbox" {if condition="in_array($k,$proAllData.attributes)"}checked{/if} name="attributes[]" value="{$k}"><span class="checkbox-name">{$attr}</span></label>
+				</div>
+				{/volist}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标签位：</label>
+			<div class="formControls skin-minimal col-xs-5">
+
+				{volist name="labelsData" id="attr" key="k"}
+				<div class="check-box">
+					<label class="checkbox-input"><input type="checkbox" {if condition="in_array($k,$proAllData.label_attr)"}checked{/if} name="label_attr[]" value="{$k}"><span class="checkbox-name">{$attr}</span></label>
+				</div>
+				{/volist}
+
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>缩略图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="上传缩略图" uploadId="mainImg"}
+				{if condition="$proAllData.main_img_url neq ['']"}
+				<ul class="filelist filelist-exist clearfix">
+					{volist name="$proAllData.main_img_url" id="imgs_arr"}
+					<li class="state-complete" data-src="{$imgs_arr}">
+						<p class="imgWrap"><img src="{$imgs_arr}" width="110" height="110"></p>
+						<div class="file-panel"><span class="cancel">删除</span></div>
+						<span class="success"></span>
+					</li>
+					{/volist}
+				</ul>
+				{/if}
+				{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>移动端产品图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="移动端产品图" uploadId="mobileImgs"}
+				{if condition="$proAllData.main_img_url neq ['']"}
+				<ul class="filelist filelist-exist clearfix">
+					{volist name="$proAllData.mobile_imgs_url" id="imgs_arr"}
+					<li class="state-complete" data-src="{$imgs_arr}">
+						<p class="imgWrap"><img src="{$imgs_arr}" width="110" height="110"></p>
+						<div class="file-panel"><span class="cancel">删除</span></div>
+						<span class="success"></span>
+					</li>
+					{/volist}
+				</ul>
+				{/if}
+				{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="上传产品图" uploadId="pro_uploader"}
+				{if condition="$proAllData.imgs_url neq ['']"}
+				<ul class="filelist filelist-exist clearfix">
+					{volist name="$proAllData.imgs_url" id="imgs_arr"}
+					<li class="state-complete" data-src="{$imgs_arr}">
+						<p class="imgWrap"><img src="{$imgs_arr}" width="110" height="110"></p>
+						<div class="file-panel"><span class="cancel">删除</span></div>
+						<span class="success"></span>
+					</li>
+					{/volist}
+				</ul>
+				{/if}
+				{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>小程序二维码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="小程序二维码" uploadId="codeImg"}
+				{if condition="$proAllData.code_img neq ['']"}
+				<ul class="filelist filelist-exist clearfix">
+					{volist name="$proAllData.code_img" id="imgs_arr"}
+					<li class="state-complete" data-src="{$imgs_arr}">
+						<p class="imgWrap"><img src="{$imgs_arr}" width="110" height="110"></p>
+						<div class="file-panel"><span class="cancel">删除</span></div>
+						<span class="success"></span>
+					</li>
+					{/volist}
+				</ul>
+				{/if}
+				{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">原价：</label>
+			<div class="formControls col-xs-1 col-sm-1">
+				<input type="text" class="input-text" value="{$proAllData.price}" name="price">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">现价：</label>
+			<div class="formControls col-xs-1 col-sm-1">
+				<input type="text" class="input-text" value="{$proAllData.market_price}" name="market_price">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">库存量：</label>
+			<div class="formControls col-xs-1 col-sm-1">
+				<input type="text" class="input-text" value="{$proAllData.stock}" name="stock">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">跳转淘宝链接：</label>
+			<div class="formControls col-xs-9 col-sm-5 col-lg-4">
+				<input type="text" class="input-text" value="{$proAllData.link_url}" name="link_url">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">选择属性：</label>
+			<div class="formControls col-xs-8 col-sm-8 col-lg-8">
+				{if condition="$productPropData"}
+				{volist name="productPropData" id="property" key="index"}
+				<div style="overflow: hidden; margin-bottom: 10px;">
+					<div class="formControls" style="float: left; width: 20px; text-align: center; line-height: 20px; font-size: 12px;">
+						<a href="javascript:;" class="btn-add-reduce" onclick="addrow(this);">{if condition="$index eq 1"}[+]{else/}[-]{/if}</a>
+					</div>
+					<div class="formControls" style="float: left; width: 100px; margin-left: 10px;">
+						<select class="select" name="prop_id[]" onchange="propChange(this,event)">
+							<option value="">选择属性</option>
+							{volist name="propData" id="prop"}
+							<option {if condition="$property.prop_id eq $prop.id"}selected{/if} value="{$prop.id}">{$prop.name}</option>
+							{/volist}
+						</select>
+						<input type="hidden" value="{$property.prop_name}" name="prop_name[]">
+					</div>
+					<div class="formControls" style="float: left; width: 200px; margin-left: 10px;">
+						<input type="text" class="input-text" style="height: 24px;" value="{$property.prop_value}" name="prop_value[]">
+					</div>
+				</div>
+				{/volist}
+				{else/}
+				<div style="overflow: hidden; margin-bottom: 10px;">
+					<div class="formControls" style="float: left; width: 20px; text-align: center; line-height: 20px; font-size: 12px;">
+						<a href="javascript:;" class="btn-add-reduce" onclick="addrow(this);">[+]</a>
+					</div>
+					<div class="formControls" style="float: left; width: 100px; margin-left: 10px;">
+						<select class="select" name="prop_id[]" onchange="propChange(this,event)">
+							<option value="">选择属性</option>
+							{volist name="propData" id="prop"}
+							<option value="{$prop.id}">{$prop.name}</option>
+							{/volist}
+						</select>
+						<input type="hidden" value="" name="prop_name[]">
+					</div>
+					<div class="formControls" style="float: left; width: 200px; margin-left: 10px;">
+						<input type="text" class="input-text" style="height: 24px;" value="" name="prop_value[]">
+					</div>
+				</div>
+				{/if}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品详情：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<script id="detailCon" type="text/plain" name="content" style="width:100%;height:400px;">{$proAllData.content|html_entity_decode}</script>
+            </div>
+        </div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">点击数：</label>
+			<div class="formControls col-xs-1 col-sm-1">
+				<input type="text" class="input-text" value="{$proAllData.click_num}" name="click_num">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网页关键词：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$proAllData.keywords}" name="keywords">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网页描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="description" cols="" rows="" class="textarea">{$proAllData.description}</textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+			<button class="btn btn-primary radius save-sub-btn" type="button" data-id="1"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+		<button class="btn btn-secondary radius save-btn" type="button" data-id="0"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+		<button class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	<!--包含尾部文件-->
+	{include file="public/footer" /}
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.all.js"></script>
+	<script>
+		var config = {
+			"upload_server": "{:url('getImg')}"
+		};
+	</script>
+	<!--引入webuploaderJS-->
+	{Uploader:webuploaderjs/}
+	<script>
+		feiy_upload.init({
+			wrap:$("#mainImg"),
+			filePicker: $("#mainImg").find(".filePicker"),
+			uploadId: "#mainImg",
+			server: config.upload_server,
+			fileNumLimit: 2
+		});
+		feiy_upload.init({
+			wrap:$("#mobileImgs"),
+			filePicker: $("#mobileImgs").find(".filePicker"),
+			uploadId: "#mobileImgs",
+			server: config.upload_server,
+			fileNumLimit: 5
+		});
+		feiy_upload.init({
+			wrap:$("#pro_uploader"),
+			filePicker: $("#pro_uploader").find(".filePicker"),
+			uploadId: "#pro_uploader",
+			server: config.upload_server,
+			fileNumLimit: 5
+		});
+		feiy_upload.init({
+			wrap:$("#codeImg"),
+			filePicker: $("#codeImg").find(".filePicker"),
+			uploadId: "#codeImg",
+			server: config.upload_server,
+			fileNumLimit: 1
+		});
+	</script>
+
+
+
+	<script type="text/javascript">
+
+        cancelImg();
+
+        function addrow(obj){
+            var $div=$(obj).parent().parent();
+            if($(obj).html() == '[+]'){
+                var newdiv = $div.clone();
+                newdiv.find('a').html('[-]');
+                newdiv.find('input[type="text"]').val('');
+                $div.parent().append(newdiv);
+            }else{
+                $div.remove();
+            }
+        }
+        function propChange(o,event){
+            console.log(event);
+            var txt = event.target.selectedOptions[0].innerText;
+            $(o).next().val(txt);
+        }
+
+		//checkbox 美化
+		$('.skin-minimal input').iCheck({
+			checkboxClass: 'icheckbox-blue',
+			radioClass: 'iradio-blue',
+			increaseArea: '20%'
+		});
+		// 编辑器
+		$(function(){
+			var ue1 = UE.getEditor('detailCon',{
+				enterTag: 'br'
+			});
+            var ue2 = UE.getEditor('sloganCon',{
+                enterTag: 'br'
+            });
+			$(".edit_wrapper").val('');
+		});
+
+		// 保存并审核提交
+		$(".save-sub-btn").on("click",function(){
+			config.save_id = $(this).data("id");
+			$("#form-pro-add").submit();
+		});
+		// 保存为草稿
+		$(".save-btn").on("click",function(){
+			config.save_id = $(this).data("id");
+			$("#form-pro-add").submit();
+		});
+
+
+
+		// 表单验证
+		$("#form-pro-add").validate({
+			rules:{
+				name:{
+					required:true
+				},
+				column_id:{
+					required:true
+				}
+			},
+			messages:{
+				name: "标题不能位空",
+				column_id: "请选择所属栏目"
+			},
+			onkeyup:false,
+			focusCleanup:true,
+			success:"valid",
+			submitHandler:function(form){
+				//数据提交
+				// 获取产品详情页
+				var $img_list_childs = $("#pro_uploader .filelist > li");
+				var $mobileImgs_childs = $("#mobileImgs .filelist > li");
+				var $main_list_childs = $("#mainImg .filelist > li");
+				var $code_img_childs = $("#codeImg .filelist > li");
+
+				var imgs_url = setUpdateUrl($img_list_childs);
+				var main_img_url = setUpdateUrl($main_list_childs);
+				var mobileImgs = setUpdateUrl($mobileImgs_childs);
+				var code_img = setUpdateUrl($code_img_childs);
+
+				var params = "&imgs_url="+imgs_url+"&main_img_url="+main_img_url+"&mobile_imgs_url="+mobileImgs+"&code_img="+code_img;
+				$.ajax({
+					url: "{:url('save')}",
+					type: "post",
+					data: $("#form-pro-add").serialize()+params,
+					success: function(res){
+						layer.msg(res.msg, {icon: 6,time:1000});
+						setTimeout(function(){
+							if(res.data){
+								window.location = res.data;
+							}
+						},1000);
+					}
+				})
+
+			}
+		});
+
+	</script>
+</body>
+</html>

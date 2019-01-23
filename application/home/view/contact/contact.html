@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {include file="public/head" /}
+</head>
+<body>
+<div class="container contact-container clearfix">
+    {include file="public/header-nav" /}
+    <div class="index-content">
+        <div class="content-wrap">
+            <div class="video-wrap"></div>
+            <div class="line"></div>
+            <div class="about-wrap w1200">
+                <ul>
+                    <li>
+                        <h2 class="h2-tit">唔该</h2>
+                        <div class="con">
+                            <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="h2-tit">唔该</h2>
+                        <div class="con">
+                            <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="h2-tit">唔该</h2>
+                        <div class="con">
+                            <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="line"></div>
+            <div class="color-block">
+                <ul>
+                    <li class="item1"></li>
+                    <li class="item2"></li>
+                    <li class="item3"></li>
+                    <li class="item4"></li>
+                    <li class="item5"></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="contact-address">
+                <ul class="info">
+                    <li>地址：广州市南沙区丰泽东路106号</li>
+                    <li>电话：020-38608033</li>
+                    <li>邮箱：m3goi1@163.com</li>
+                </ul>
+                <div class="map-wrap">
+                    <div id="allmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {include file="public/footer" /}
+<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZqzOzo6C7peDO1Lq6MWH8PGYYHExOkf9"></script> -->
+<script>
+    // var fdata = {
+    //     baiduGpsLat: '113.2719437397',
+    //     baiduGpsLog: '23.1059797775',
+    //     name: '大误',
+    //     address: '广东省广州市海珠区海幢街道仁厚直社区'
+    // };
+    // // 百度地图API功能
+    // var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(fdata.baiduGpsLat, fdata.baiduGpsLog);
+    // map.centerAndZoom(point, 15);
+    // var marker = new BMap.Marker(point);  // 创建标注
+    // map.addOverlay(marker);               // 将标注添加到地图中
+    // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    // map.addEventListener("click", function(){
+    //     openClient();
+    // });
+    // map.enableScrollWheelZoom(true);
+
+
+    // var baiduConfig = {
+    //     scheme_Android: 'bdapp://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
+    //     scheme_IOS: 'baidumap://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
+    //     scheme_web: 'http://api.map.baidu.com/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address+'&output=html'
+    // };
+    // var timeout = 600;
+    // // 判断操作系统，返回百度的不同操作系统下的接口
+    // function adjustOS(){
+    //     var ua = window.navigator.userAgent.toLowerCase();
+    //     return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
+    // }
+    // function openClient() {
+    //     var startTime = Date.now();
+    //     var ifr = document.createElement('iframe');
+    //     ifr.src = adjustOS();
+    //     ifr.style.display = 'none';
+    //     document.body.appendChild(ifr);
+    //     var t = setTimeout(function() {
+    //         var endTime = Date.now();
+    //         if (!startTime || endTime - startTime < timeout + 200) {
+    //             window.location.href = baiduConfig.scheme_web;
+    //         }
+    //     }, timeout);
+    //     window.onblur = function() {
+    //         clearTimeout(t);
+    //     }
+    // }
+
+
+    $(function(){
+
+        $(window).on('resize',resize).trigger('resize');
+
+        function resize(){
+            sizeHeight();
+        }
+        // 首屏进行全屏显示
+        function sizeHeight(){
+            var windowHeight = $(window).height(),
+                logo_h = $('.logo-wrap').height(),
+                setH = windowHeight - logo_h;
+            console.log(logo_h)
+            console.log(windowHeight)
+            setHeight.call($('.video-wrap'),setH,20);
+            setHeight.call($('.index-nav-item'),setH,12);
+        }
+
+        function setHeight(height, margin){
+            this.height(height - margin);
+        }
+
+    })
+
+
+
+</script>
+</html>

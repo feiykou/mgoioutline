@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {include file="public/head" /}
+</head>
+<body>
+<div class="container index-container">
+    {include file="public/header-nav" /}
+    <div class="index-content">
+        <div class="content-wrap">
+            <div class="banner-sec">
+                <div class="head-banner owl-carousel">
+                    {volist name="bannerData" id="data"}
+                    <div class="item" data-image-xs="{$data.img_url[0]}" data-image-lg="{$data.img_url[0]}"></div>
+                    {/volist}
+                </div>
+            </div>
+            <div class="section product-sec">
+                {volist name="cateData" id="resData"}
+                <div class="product-item w1200">
+                    <div class="nav"><span>产品 | {$resData.name}</span></div>
+                    <div class="index-product-wrap">
+                        <div class="banner-wrap product-banner-one owl-carousel">
+                            {volist name="resData['data']" id="data"}
+                            <div class="item"><a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a></div>
+                            {/volist}
+                        </div>
+                        <div class="more-con">所有产品 ></div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <div class="line"></div>
+            <div class="section resc-banner-sec w1200">
+                <!-- Swiper -->
+                <div class="banner-wrap resc-banner owl-carousel">
+                    {volist name="resProData" id="data"}
+                    <div class="item"><a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a></div>
+                    {/volist}
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="company-info-sec">
+                <h2 class="about-tit">关于唔该</h2>
+                <ul class="about-box first">
+                    <li>
+                        <div class="wrap">
+                            <span class="info">唔该</span>
+                            <div class="con">
+                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <span class="info">唔该</span>
+                            <div class="con">
+                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="about-box second">
+                    <li>
+                        <div class="wrap">
+                            <span class="info">唔该</span>
+                            <div class="con">
+                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <span class="info">唔该</span>
+                            <div class="con">
+                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="other-info-sec">
+                <div class="news-wrap">
+                    <p class="img"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>
+                    <div class="con">
+                        <p>我们正在寻找一名工业设计师</p>
+                        <p>期待您的加入</p>
+                    </div>
+                </div>
+                <ul class="gift-wrap">
+                    <li>
+                        <div class="img"><img src="__STATIC__/home/images/cat-icon.png" alt=""></div>
+                        <div class="con">给他最好的礼物</div>
+                        <div class="arrow"><img src="__STATIC__/home/images/index@arrow.png" alt=""></div>
+                    </li>
+                    <li>
+                        <div class="img"><img src="__STATIC__/home/images/index@pro2.png" alt=""></div>
+                        <div class="con">给他最好的礼物</div>
+                        <div class="arrow"><img src="__STATIC__/home/images/index@hight-arrow.png" alt=""></div>
+                    </li>
+                    <li>
+                        <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
+                        <div class="con">给他最好的礼物</div>
+                        <div class="arrow"><img src="__STATIC__/home/images/index@arrow.png" alt=""></div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        {include file="public/footer" /}
+    <script>
+        var dpr992 = dpr*992;
+        var dpr1200 = dpr*1200;
+
+        $head = $('.head-banner').owlCarousel({
+            loop:true,
+            margin:10,
+            dot: true,
+            items: 1
+        });
+
+        $('.product-banner-one').owlCarousel({
+            loop:true,
+            margin:40,
+            responsiveClass:true,
+            nav:true,
+            responsive:{
+                0:{
+                    items:3,
+                },
+                [dpr992]:{
+                    items:3,
+                },
+                [dpr1200]:{
+                    items:5,
+                    loop:true
+                }
+            }
+        });
+        $('.product-banner-two').owlCarousel({
+            loop:true,
+            margin:40,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:3,
+                },
+                [dpr992]:{
+                    items:3,
+                },
+                [dpr1200]:{
+                    items:5,
+                    loop:true
+                }
+            }
+        });
+        $('.resc-banner').owlCarousel({
+            loop:true,
+            margin:40,
+            responsiveClass:true,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true,
+            autoplaySpeed: 600,
+            dots: false,
+            responsive:{
+                0:{
+                    items:3,
+                    slideSpeed: 100
+                },
+                [dpr992]:{
+                    items:3,
+                    slideSpeed: 100,
+                },
+                [dpr1200]:{
+                    items:5,
+                    loop:true
+                }
+            }
+        });
+
+
+
+        $(function(){
+            $(window).on('resize',resize).trigger('resize');
+            function resize(){
+                // 获取屏幕宽度
+                var windowWidth = $(window).width();
+                // 小屏
+                var isSmallScreen = windowWidth < dpr*992;
+                $('.banner-sec .item').each(function(index,item){
+                    var $this = $(item);
+                    var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
+                    imgSrc = imgSrc.replace(/\\/g,'/');
+                    // 设置背景图片
+                    $this.css('backgroundImage','url('+imgSrc+')');
+                });
+                sizeHeight($('.owl-stage'),8);
+            }
+
+        })
+    </script>
+</body>
+</html>
