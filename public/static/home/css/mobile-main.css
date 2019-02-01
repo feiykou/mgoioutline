@@ -290,6 +290,7 @@ body {
   position: relative;
   height: 1.22666667rem;
   cursor: pointer;
+  overflow: hidden;
 }
 .resc-banner-sec .resc-banner-wrap {
   position: absolute;
