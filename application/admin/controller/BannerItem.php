@@ -84,7 +84,6 @@ class BannerItem extends Base
         if(!$is_exist_id){
             return $update = $this->update($data);
         }
-
         $result = $this->model->save($data);
 
         if($result){
