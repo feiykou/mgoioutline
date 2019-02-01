@@ -1,5 +1,6 @@
 body {
   font-size: 0.37333333rem !important;
+  overflow: hidden;
 }
 .container {
   width: 10rem;
