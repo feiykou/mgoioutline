@@ -61,7 +61,7 @@
                             {/present}"
 
                             href="{if condition='$column.template_id gt 1'}/{:getTemplateView($column.template_id)}/{$column.id}
-                            {elseif condition="$column.template_id eq 1"/}/
+                            {elseif condition="$column.template_id eq 1"/}/home
                             {else/}{$column.link_url}
                             {/if}"><span>{$column.name}</span></a>
                             {if condition="$column['children'] neq 0"}
