@@ -13,7 +13,6 @@ use think\Model;
 
 class BannerItem extends Model
 {
-    protected $autoWriteTimestamp = true;
 
     protected function getImgUrlAttr($val,$data){
         return explode(';',$val);
