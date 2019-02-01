@@ -243,7 +243,7 @@ class Product extends Model
         ];
         $result = db('procate')->alias('c')
             ->where($data)
-            ->field('c.name as cateName,p.id,p.name,p.name_desc,p.introduce,p.main_img_url')
+            ->field('c.name as cateName,p.id,p.name,p.name_desc,p.introduce,p.main_img_url,p.price')
             ->join('product p',['c.id = p.cate_id','p.status = 1'])
             ->order($order)
             ->order('p.listorder desc')

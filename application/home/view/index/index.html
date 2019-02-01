@@ -5,58 +5,116 @@
     {include file="public/head" /}
 </head>
 <body>
+{include file="public/header-nav" /}
+<div class="banner-sec preloader">
+    <div class="head-banner owl-carousel">
+        {volist name="bannerData" id="data"}
+        <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{$data.img_url[0]}" data-image-xs="{$data.img_url[0]}" data-image-lg="{$data.img_url[0]}"></div>
+        {/volist}
+    </div>
+</div>
 <div class="container index-container">
-    {include file="public/header-nav" /}
     <div class="index-content">
         <div class="content-wrap">
-            <div class="banner-sec">
-                <div class="head-banner owl-carousel">
-                    {volist name="bannerData" id="data"}
-                    <div class="item" data-image-xs="{$data.img_url[0]}" data-image-lg="{$data.img_url[0]}"></div>
-                    {/volist}
-                </div>
+            <div class="resc-main-prop">
+                <ul class="gift-wrap">
+                    <li>
+                        <div class="item w1100">
+                            <div class="img"><img src="__STATIC__/home/images/cat-icon.png" alt=""></div>
+                            <div class="con">
+                                <p class="tit">竹盐猫砂</p>
+                                <p class="desc">除臭竹盐 原味猫砂</p>
+                            </div>
+                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item w1100">
+                            <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
+                            <div class="con">
+                                <p class="tit">竹盐猫砂</p>
+                                <p class="desc">除臭竹盐 原味猫砂</p>
+                            </div>
+                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item w1100">
+                            <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
+                            <div class="con">
+                                <p class="tit">竹盐猫砂</p>
+                                <p class="desc">除臭竹盐 原味猫砂</p>
+                            </div>
+                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
             <div class="section product-sec">
                 {volist name="cateData" id="resData"}
-                <div class="product-item w1200">
+                <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
                     <div class="nav"><span>产品 | {$resData.name}</span></div>
                     <div class="index-product-wrap">
                         <div class="banner-wrap product-banner-one owl-carousel">
                             {volist name="resData['data']" id="data"}
-                            <div class="item"><a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a></div>
+                            <div class="item">
+                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                <div class="info">
+                                    <h3 class="tit clearfix"><a class="fl" href="#">{$data.name}</a></h3>
+                                    <p class="desc-price"><span class="desc">{$data.introduce}</span><span class="price fr">¥{$data.price}</span></p>
+                                </div>
+                            </div>
                             {/volist}
                         </div>
-                        <div class="more-con">所有产品 ></div>
+                        <div class="more-con"><span>ALL &gt;</span></div>
                     </div>
                 </div>
+                {if condition="$key eq 0"}
+                    <div class="line"></div>
+                {/if}
                 {/volist}
             </div>
-            <div class="line"></div>
-            <div class="section resc-banner-sec w1200">
-                <!-- Swiper -->
-                <div class="banner-wrap resc-banner owl-carousel">
-                    {volist name="resProData" id="data"}
-                    <div class="item"><a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a></div>
-                    {/volist}
+            <div class="section resc-banner-sec clearfix">
+                <div class="resc-banner-wrap">
+                    <ul class="resc-banner fl">
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    </ul>
+                    <ul class="resc-banner-copy fl"></ul>
                 </div>
             </div>
-            <div class="line"></div>
-            <div class="company-info-sec">
-                <h2 class="about-tit">关于唔该</h2>
+            <div class="section company-info-sec">
+                <!-- <h2 class="about-tit">关于唔该</h2> -->
                 <ul class="about-box first">
                     <li>
                         <div class="wrap">
-                            <span class="info">唔该</span>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            <div class="wrap-box">
+                                <div class="info"><img src="__STATIC__/home/images/logo.png"><span>唔该</span></div>
+                                <div class="con">
+                                    <p>唔该，读唔（m，阳平声）该（goi，阴平声）
+                                        这一句口头禅叫做“唔该”，它频繁出现在人际交往中理应表示谢意的场合——这场合本来应该说“谢谢”的。</p>
+                                    <p>“唔该”就等于“不应该”吗？钻进故纸堆中，我发现，古人所说的“该”原来并没有“应该”的意义。譬如左思《吴都赋》中的一句，“耳目之所不该”，应译成“耳目所不能包括的”。古语“该”通“赅”，意为具备、完备、包括。《说文解字》释“该”道：“军中约也。”这又把它的使用情况界定在军队内。作为语言发展的一种结果，“该”的派生义“应该”已成为今日使用中的主要义，而渐被人忘却的基本义则转由“赅”去承担（成语有“言简意赅”）。</p>
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="wrap">
-                            <span class="info">唔该</span>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            <div class="wrap-box">
+                                <div class="con tc">
+                                    <img src="__STATIC__/home/images/logo.png">
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -64,142 +122,162 @@
                 <ul class="about-box second">
                     <li>
                         <div class="wrap">
-                            <span class="info">唔该</span>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            <div class="wrap-box">
+                                <div class="con tc">
+                                    <img src="__STATIC__/home/images/logo.png">
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="wrap">
-                            <span class="info">唔该</span>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
+                            <div class="wrap-box">
+                                <span class="info">唔该</span>
+                                <div class="con">
+                                    <p>倘设想“唔该”果真留有古文化的一条尾巴，这一口头禅则可理解成“不完备”。什么“不完备”？说话者自己呀！服务行业里的靓女冲你说“唔该”，说的是自己服务质量的“不完备”——潜台词是“怎么服务都无法表达我对你的一片感激”。至于热心助人的你让人们所感受到的古道热肠，对方那一叠连声的“唔该”，亦在表明其谢意的“不完备”哩。</p>
+                                    <p>这个社会在呼唤文明呼唤礼貌，那么，请从“唔该”说起吧。惟其不完备，才需要呼唤。当大家都沉浸在“唔该”声中仍觉不完备时，我们的精神文明建设就大大地前进了一步。</p>
+                                </div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="other-info-sec">
-                <div class="news-wrap">
-                    <p class="img"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>
+            <div class="index-recruit-wrap">
+                <div class="item w1100">
+                    <p class="img fl"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>
                     <div class="con">
-                        <p>我们正在寻找一名工业设计师</p>
-                        <p>期待您的加入</p>
+                        <p>我们正在寻找一名工业设计师，期待您的加入</p>
+                        <p></p>
                     </div>
+                    <p class="img fr"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>
                 </div>
-                <ul class="gift-wrap">
-                    <li>
-                        <div class="img"><img src="__STATIC__/home/images/cat-icon.png" alt=""></div>
-                        <div class="con">给他最好的礼物</div>
-                        <div class="arrow"><img src="__STATIC__/home/images/index@arrow.png" alt=""></div>
-                    </li>
-                    <li>
-                        <div class="img"><img src="__STATIC__/home/images/index@pro2.png" alt=""></div>
-                        <div class="con">给他最好的礼物</div>
-                        <div class="arrow"><img src="__STATIC__/home/images/index@hight-arrow.png" alt=""></div>
-                    </li>
-                    <li>
-                        <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
-                        <div class="con">给他最好的礼物</div>
-                        <div class="arrow"><img src="__STATIC__/home/images/index@arrow.png" alt=""></div>
-                    </li>
-
-                </ul>
             </div>
         </div>
         {include file="public/footer" /}
-    <script>
-        var dpr992 = dpr*992;
-        var dpr1200 = dpr*1200;
+        <script>
+            var smallImg = $(".main-sec-big-img").data('small-img');
+            var bigImg = $(".main-sec-big-img").data('image-lg');
+            var queue = new createjs.LoadQueue(false);
+            queue.on("complete", handleComplete, this);
+            queue.loadManifest([
+                {id: "image", src:bigImg}
+            ]);
 
-        $head = $('.head-banner').owlCarousel({
-            loop:true,
-            margin:10,
-            dot: true,
-            items: 1
-        });
-
-        $('.product-banner-one').owlCarousel({
-            loop:true,
-            margin:40,
-            responsiveClass:true,
-            nav:true,
-            responsive:{
-                0:{
-                    items:3,
-                },
-                [dpr992]:{
-                    items:3,
-                },
-                [dpr1200]:{
-                    items:5,
-                    loop:true
-                }
-            }
-        });
-        $('.product-banner-two').owlCarousel({
-            loop:true,
-            margin:40,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:3,
-                },
-                [dpr992]:{
-                    items:3,
-                },
-                [dpr1200]:{
-                    items:5,
-                    loop:true
-                }
-            }
-        });
-        $('.resc-banner').owlCarousel({
-            loop:true,
-            margin:40,
-            responsiveClass:true,
-            autoplay: true,
-            autoplayTimeout: 1000,
-            autoplayHoverPause: true,
-            autoplaySpeed: 600,
-            dots: false,
-            responsive:{
-                0:{
-                    items:3,
-                    slideSpeed: 100
-                },
-                [dpr992]:{
-                    items:3,
-                    slideSpeed: 100,
-                },
-                [dpr1200]:{
-                    items:5,
-                    loop:true
-                }
-            }
-        });
-
-
-
-        $(function(){
-            $(window).on('resize',resize).trigger('resize');
-            function resize(){
-                // 获取屏幕宽度
-                var windowWidth = $(window).width();
-                // 小屏
-                var isSmallScreen = windowWidth < dpr*992;
-                $('.banner-sec .item').each(function(index,item){
-                    var $this = $(item);
-                    var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
-                    imgSrc = imgSrc.replace(/\\/g,'/');
-                    // 设置背景图片
-                    $this.css('backgroundImage','url('+imgSrc+')');
+            $(".main-sec-big-img").css({
+                'backgroundImage':'url('+smallImg+')',
+                'backgroundSize': '100% 100%',
+                'filter': 'blur(20px)'
+            });
+            function handleComplete() {
+                $(".main-sec-big-img").css({
+                    'backgroundImage':'url('+bigImg+')',
+                    'backgroundSize': 'cover',
+                    'filter': 'blur(0)'
                 });
-                sizeHeight($('.owl-stage'),8);
             }
 
-        })
-    </script>
+
+
+            $(function(){
+                var rescDom = $('.resc-banner');
+                var copyDom = $('.resc-banner-copy');
+                var wrapDom = $('.resc-banner-wrap');
+                var maxW = rescDom.width();
+                var speed = 28,
+                    num = 0;
+                copyDom.html(rescDom.html());
+                setInterval(function(){
+                    num -= 1;
+                    if(Math.abs(num) >= maxW){
+                        num = 0;
+                    }
+                    wrapDom.css({
+                        left: num
+                    })
+                },speed)
+            })
+
+            $(function(){
+                var dpr992 = dpr*992;
+                var dpr1200 = dpr*1200;
+                var obj = {};
+
+                $head = $('.head-banner').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    dot: true,
+                    items: 1
+                })
+
+                if(dpr == 1){
+                    obj = {
+                        0:{
+                            items:2,
+                        },
+                        992:{
+                            items:4,
+                            dot: true,
+                        },
+                        1200:{
+                            items:5,
+                            loop:true
+                        }
+                    };
+                }else{
+                    obj = {
+                        0:{
+                            items:2,
+                        }
+                    };
+                }
+
+
+                $('.product-banner-one').owlCarousel({
+                    loop:true,
+                    margin:40,
+                    responsiveClass:true,
+                    nav:false,
+                    responsive:obj
+                });
+                $('.product-banner-two').owlCarousel({
+                    loop:true,
+                    margin:40,
+                    responsiveClass:true,
+                    responsive:obj
+                });
+            })
+
+            $(function(){
+                $(window).on('resize',resize).trigger('resize');
+                function resize(){
+                    // 获取屏幕宽度
+                    var windowWidth = $(window).width();
+                    // 小屏
+                    var isSmallScreen = windowWidth < dpr*992;
+                    $('.banner-sec .item').each(function(index,item){
+                        var $this = $(item);
+                        var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
+                        // 设置背景图片
+                        $this.css('backgroundImage','url('+imgSrc+')');
+                    });
+                    sizeHeight();
+                }
+
+                sizeHeight();
+                function sizeHeight(){
+                    var windowHeight = $(window).height(),
+                        logo_h = $('.logo-wrap').height(),
+                        setH = windowHeight - logo_h;
+                    // setHeight.call($('.owl-stage'),setH,8);
+                    setHeight.call($('.index-nav-item'),setH,12);
+                }
+                function setHeight(height, margin){
+                    this.height(height - margin);
+                }
+
+            })
+
+
+        </script>
 </body>
 </html>

@@ -15,6 +15,10 @@ class BannerItem extends Model
 {
 
     protected function getImgUrlAttr($val,$data){
+        return $this->handleImgUrl($val);
+    }
+    private function handleImgUrl($val){
+        $val = str_replace('\\','/',$val);
         return explode(';',$val);
     }
 

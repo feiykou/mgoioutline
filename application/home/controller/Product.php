@@ -23,10 +23,9 @@ class Product extends Common
 
     public function product(){
         $products = $this->model->getCateProducts();
-        $rescPros = $this->model->getRescPro(3);
+//        $rescPros = $this->model->getRescPro(3);
         $this->assign([
-            'productsData'=> $products,
-            'rescProData' => $rescPros
+            'productsData'=> $products
         ]);
         return $this->fetch();
     }

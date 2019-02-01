@@ -1,4 +1,3 @@
-<!-- 底部 -->
 <div class="footer-sec">
     <div class="contact-wrap">
         <div class="form-box">
@@ -11,11 +10,11 @@
     </div>
     <div class="link-wrap">
         <ul>
+            <li><a href="#" target="_blank">首页</a></li>
             <li><a href="#" target="_blank">产品</a></li>
             <li><a href="#" target="_blank">关于</a></li>
             <li><a href="#" target="_blank">商城</a></li>
             <li><a href="#" target="_blank">新闻</a></li>
-            <li><a href="#" target="_blank">常见问题</a></li>
             <li><a href="#" target="_blank">联系我们</a></li>
         </ul>
         <p class="copyright">©MGOI</p>
@@ -23,8 +22,27 @@
 </div>
 </div>
 </div>
+<div class="bottom-line"></div>
 <script src="__STATIC__/home/js/jquery-1.10.1.min.js"></script>
 <script src="__STATIC__/home/js/lib.js"></script>
 <script src="__STATIC__/home/js/common.js"></script>
 <script src="__STATIC__/home/js/owl.carousel.js"></script>
 <script src="__STATIC__/home/js/main.js"></script>
+<script>
+    $(function(){
+        var sildeDom = document.querySelector('.sildeUp');
+        var mark = true;
+        sildeDom.addEventListener('touchstart',function(){
+            var maskDom = this.children[1];
+            if(mark){
+                maskDom.className += ' active';
+                mark = false;
+            }else{
+                maskDom.className = maskDom.getAttribute('class').replace(' active','');
+                mark = true;
+            }
+
+        })
+    })
+
+</script>
