@@ -59,7 +59,6 @@ class BannerItem extends Base
         $types = config('Banner.banner_type');
         $redic_types = config('Banner.redictor_type');
         $bannerIdData = $this->model->getCurrentBanner($id);
-        $bannerIdData['img_url'] = explode(';',trim($bannerIdData['img_url'],';'));
         $this->assign([
             'bannerArr' => $types,
             'redic_typeArr' => $redic_types,
