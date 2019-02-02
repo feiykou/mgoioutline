@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    {include file="public/head" /}
+</head>
+<body>
+    {include file="public/header-nav" /}
+    <div class="container news-container clearfix">
+        <div class="index-content">
+            <div class="news-list-wrap w1100">
+                <h2 class="h2-tit">新闻</h2>
+                <div class="desc-wrap">
+                    <p>“唔该”就等于“不应该”吗？</p><p>钻进故纸堆中，我发现，古人所说的“该”原来并没有“应该”的意义。</p><p>譬如左思《吴都赋》中的一句，“耳目所不能包括的”。</p><p>古语“该”通“赅”，意为具备、完备、包括。</p><p>《说文解字》释“该”道：“军中约也。”这又把它的使用情况界定在军队内。</p><p>作为语言发展的一种结果，“该”的派生义“应该”已成为今日使用中的主要义，而渐被人忘却的基本义则转由“赅”去承担（成语有“言简意赅”）。</p></div>
+                <ul>
+                    {volist name="newsData" id="data"}
+                    <li>
+                        <a href="#" class="fl"><img src="{$data.main_img_url[0]}" alt=""></a>
+                        <div class="con hidden">
+                            <div class="wrap">
+                                <h3 class="h3-tit">{$data.name}</h3>
+                                <p class="desc">{$data.introduce}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="recruit-wrap">
+                <div class="box">
+                    <h2 class="h2-tit">招聘</h2>
+                    <div class="desc-wrap">
+                        <p>唔该希望能够为毛孩子持续不断地提供更多合适、意趣的产品。</p><p>我们抱有非常开放的态度，欢迎有志人士加入唔该的大家庭。</p><p>这里有优厚薪酬与完善福利，为您提供多元化的培养模式与能力发挥平台，让您未来获得更多可能。</p><p>简历及自荐信请发送至： m3goi1@163.com</p>
+                    </div>
+                    <div class="con w1100">
+                        <div class="tit-bar">工业设计师<span class="mark">+</span></div>
+                        <ul class="item">
+                            <li>工作内容：
+                                <div>
+                                    <p>1.负责公司产品设计研发、落实执行等。</p>
+                                    <p>2.进行产品研究，确定产品的设计方向、产品性能，研究产品材料工艺和市场需求。</p>
+                                    <p>3.配合结构工程师共同优化产品功能以及造型。</p>
+                                    <p>4.对接不同部门，协助完成产品落地。</p>
+                                </div>
+                            </li>
+                            <li>职责要求：
+                                <div>
+                                    <p>1.工业设计等相关专业，本科以上学历。</p>
+                                    <p>2.认可唔该的品牌理念，有坚实的产品造型设计能力，有敏锐的洞察力和创新意识。</p>
+                                    <p>3.有养宠经验者或喜爱宠物者优先。</p>
+                                    <p>4.熟知产品设计流程，能熟练使用AutoCAD/Rhino等设计软件。</p>
+                                    <p>5.熟悉工业设计，有相关工作经验者优先，有成功案例者优先。</p>
+                                    <p>6.特长明显，某一类型产品设计经验丰富。</p>
+                                    <p>7.有跨界经历，脑洞大，知识范围广认知边界宽者优先。</p>
+                                </div>
+                            </li>
+                            <li>工作地址：
+                                <div>
+                                    <p>广州</p>
+                                </div>
+                            </li>
+                            <li>发布时间：
+                                <div>
+                                    <p>2019.2.22</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/footer" /}
+        <script>
+            $(function(){
+                $(window).on('resize',resize).trigger('resize');
+                function resize(){
+                    sizeHeight();
+                }
+                // 首屏进行全屏显示
+                function sizeHeight(){
+                    var windowHeight = $(window).height(),
+                        logo_h = $('.logo-wrap').height(),
+                        setH = windowHeight - logo_h;
+                    setHeight.call($('.index-nav-item'),setH,12);
+                }
+
+                function setHeight(height, margin){
+                    this.height(height - margin);
+                }
+
+            })
+        </script>
+</body>
+</html>

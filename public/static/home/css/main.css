@@ -763,6 +763,7 @@ body {
   line-height: 32px;
   font-size: 22px;
   margin: 100px auto 20px;
+  background-color: #008755;
 }
 .news-container .desc-wrap {
   width: 728px;
@@ -788,7 +789,7 @@ body {
 .news-container .news-list-wrap li .con {
   height: 254px;
   overflow: hidden;
-  background-color: #dd4a31;
+  background-color: #008755;
   color: #fff;
 }
 .news-container .news-list-wrap li .wrap {
@@ -796,7 +797,7 @@ body {
 }
 .news-container .news-list-wrap li .date-item {
   font-size: 26px;
-  color: #ff4f50;
+  color: #008755;
   padding: 10px 0;
 }
 .news-container .news-list-wrap li .h3-tit {
@@ -820,7 +821,7 @@ body {
   height: 32px;
   line-height: 32px;
   padding-left: 10px;
-  background-color: #dd4a31;
+  background-color: #008755;
   color: #fff;
   text-align: center;
   font-size: 18px;
