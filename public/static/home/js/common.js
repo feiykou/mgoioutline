@@ -324,7 +324,7 @@
                             if (t.shift(), t.length) return preloadImages(t)
                         })
                     },
-                    "sp" === window.deviceMode ? n() : (e = Snap("#origin"), (t = Snap("#base")).appendTo($(".logo-wrap")[0]), e.remove(), $(window).on("resize",
+                    "sp" === window.deviceMode ? n() : (e = Snap("#origin"), (t = Snap("#base")).appendTo(), e.remove(), $(window).on("resize",
                         function() {
                             var e, n, o, a, i, r;
                             return a = $(".logo-wrap").width()
