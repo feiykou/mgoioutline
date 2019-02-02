@@ -308,12 +308,7 @@
                                                             // cx: window.innerWidth / 2 * (1 - i) + (window.innerWidth - 46) * i,
                                                             // cy: window.innerHeight / 2 * (1 - i) + 45 * i
                                                         }),
-                                                        i < 1 ? requestAnimationFrame(arguments.callee) : ($("html").removeClass("modal"), $(".logo-wrap").fadeIn(0), $(document).off("touchmove"), a.append(t.attr({
-                                                            width: 42,
-                                                            height: 56,
-                                                            x: 18,
-                                                            y: 11
-                                                        })), o.remove(), new Titlesp)
+                                                        i < 1 ? requestAnimationFrame(arguments.callee) : ($("html").removeClass("modal"), $(".logo-wrap").fadeIn(0), $(document).off("touchmove")), o.remove(), new Titlesp
                                                 })
                                         }
                                 },
@@ -324,7 +319,7 @@
                             if (t.shift(), t.length) return preloadImages(t)
                         })
                     },
-                    "sp" === window.deviceMode ? n() : (e = Snap("#origin"), (t = Snap("#base")).appendTo(), e.remove(), $(window).on("resize",
+                    "sp" === window.deviceMode ? n() : (e = Snap("#origin"), (t = Snap("#base")).appendTo($(".logo-wrap")[0]), e.remove(), $(window).on("resize",
                         function() {
                             var e, n, o, a, i, r;
                             return a = $(".logo-wrap").width()
