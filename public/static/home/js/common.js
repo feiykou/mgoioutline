@@ -308,7 +308,12 @@
                                                             // cx: window.innerWidth / 2 * (1 - i) + (window.innerWidth - 46) * i,
                                                             // cy: window.innerHeight / 2 * (1 - i) + 45 * i
                                                         }),
-                                                        i < 1 ? requestAnimationFrame(arguments.callee) : ($("html").removeClass("modal"), $(".logo-wrap").fadeIn(0), $(document).off("touchmove")), o.remove(), new Titlesp
+                                                        i < 1 ? requestAnimationFrame(arguments.callee) : ($("html").removeClass("modal"), $(".logo-wrap").fadeIn(0), $(document).off("touchmove"), a.append(t.attr({
+                                                            width: 42,
+                                                            height: 56,
+                                                            x: 18,
+                                                            y: 11
+                                                        })), o.remove(), new Titlesp)
                                                 })
                                         }
                                 },
