@@ -250,74 +250,12 @@
                         var t, e, n, o, a;
                         return a = Snap("#origin"),
                             t = Snap("#base"),
-                            getLocalSession("intro") || $(window).width() > $(window).height() ? (setLocalSession("intro", 1), t.attr({
+                            (setLocalSession("intro", 1), t.attr({
                                 width: 42,
                                 height: 56,
                                 x: 18,
                                 y: 11
-                            }), void new Titlesp) : ($(document).on("touchmove",
-                                function(t) {
-                                    return t.preventDefault()
-                                }), $("html").addClass("modal"), $(".logo-wrap").fadeOut(0), setLocalSession("intro", 1), (o = Snap().attr({
-                                id: "intro"
-                            })).appendTo($("body")[0]), n = Math.sqrt(window.innerWidth * window.innerWidth + window.innerHeight * window.innerHeight) / 2 + 6, e = o.circle(window.innerWidth / 2, window.innerHeight / 2, n).attr({
-                                fill: "#fff",
-                                stroke: "#000",
-                                strokeWidth: 4
-                            }), setTimeout(function() {
-                                    var i, r, s, h, u, c, l, f, d, m, p, w, g, v, y, b, x, M, A, S;
-                                    for (o.append(t), S = t.select(".titleWrapper"), M = t.selectAll(".staff"), s = [], i = [], d = [], u = c = 0, g = M.length; 0 <= g ? c < g: c > g; u = 0 <= g ? ++c: --c) r = M[u].getBBox(),
-                                        s.push(r),
-                                        i.push(Math.atan2(r.cy - 28 + 10, r.cx - 21)),
-                                        d.push([Snap.matrix()]);
-                                    for (l = p = 0; p < 30; l = ++p) for (h = 1 * (2.5 - 2 * Math.random()) * l / 50, u = w = 0, v = M.length; 0 <= v ? w < v: w > v; u = 0 <= v ? ++w: --w) m = d[u],
-                                        r = s[u],
-                                        f = m[m.length - 1].clone().rotate(10 * (1 - 2 * Math.random()), r.cx, r.cy).translate(h * Math.cos(i[u]), h * Math.sin(i[u])),
-                                        m.push(f);
-                                    for (u = A = 0, y = M.length; 0 <= y ? A < y: A > y; u = 0 <= y ? ++A: --A) M[u].transform(d[u].pop());
-                                    return b = 3,
-                                        S.transform(Snap.matrix().scale(b, b, 21, 15)),
-                                        requestAnimationFrame(function() {
-                                            var t, e, n;
-                                            for ((b += .07 * (1 - b)) < 1.001 && (b = 1), t = 0, u = n = 0, e = M.length; 0 <= e ? n < e: n > e; u = 0 <= e ? ++n: --n) 1 !== (m = d[u]).length ? Math.random() < .4 || (f = m.pop(), 1 === m.length ? (f = m[0], t++) : Math.random() < .5 && (f = m.pop(), 1 === m.length ? (f = m[0], t++) : Math.random() < .5 && (f = m.pop(), 1 === m.length && (f = m[0], t++))), M[u].transform(f)) : t++;
-                                            if (S.transform(Snap.matrix().scale(b, b, 21, 15)), t !== M.length) return requestAnimationFrame(arguments.callee);
-                                            requestAnimationFrame(function() {
-                                                return (b += .06 * (1 - b)) < 1.001 && (b = 1),
-                                                    S.transform(Snap.matrix().scale(b, b, 21, 15)),
-                                                    1 !== b ? requestAnimationFrame(arguments.callee) : x()
-                                            })
-                                        }),
-                                        x = function() {
-                                            var i, r, s, h;
-                                            return h = window.innerWidth,
-                                                42,
-                                                r = 0,
-                                                2e-5,
-                                                s = 0,
-                                                i = 0,
-                                                requestAnimationFrame(function() {
-                                                    return i < .8 ? r += s += 2e-5: (r = .2 * (1 - i)) < 1e-4 && (r = 0, i = 1),
-                                                        i += r,
-                                                        t.attr({
-                                                            width: h * (1 - i) + 42 * i,
-                                                            // x: (window.innerWidth - 67 - 1) * i,
-                                                            // y: ( - window.innerHeight / 2 + 17 + 28) * i
-                                                        }),
-                                                        e.attr({
-                                                            r: n * (1 - i) + 37 * i,
-                                                            // cx: window.innerWidth / 2 * (1 - i) + (window.innerWidth - 46) * i,
-                                                            // cy: window.innerHeight / 2 * (1 - i) + 45 * i
-                                                        }),
-                                                        i < 1 ? requestAnimationFrame(arguments.callee) : ($("html").removeClass("modal"), $(".logo-wrap").fadeIn(0), $(document).off("touchmove"), a.append(t.attr({
-                                                            width: 42,
-                                                            height: 56,
-                                                            x: 18,
-                                                            y: 11
-                                                        })), o.remove(), new Titlesp)
-                                                })
-                                        }
-                                },
-                                400))
+                            }), void new Titlesp)
                     },
                     window.preloadImages = function(t) {
                         return $.when((new ImageLoader).load(t[0])).done(function() {
