@@ -516,9 +516,9 @@ body {
 }
 .news-container .news-list-wrap li .desc {
   height: 0.96rem;
+  line-height: 0.48rem;
   font-size: 0.32rem;
   letter-spacing: 0.03em;
-  line-height: 1.4;
   overflow: hidden;
 }
 .news-container .recruit-wrap {
