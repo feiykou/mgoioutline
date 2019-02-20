@@ -506,13 +506,19 @@ body {
   color: #fff;
 }
 .news-container .news-list-wrap li .h3-tit {
+  display: flex;
+  align-items: center;
   width: 100%;
+  height: 0.53333333rem;
   margin: 0.13333333rem 0;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .news-container .news-list-wrap li .desc {
-  height: 1.28rem;
+  height: 0.96rem;
   font-size: 0.32rem;
+  letter-spacing: 0.03em;
   line-height: 1.4;
   overflow: hidden;
 }
