@@ -33,27 +33,27 @@
                 </ul>
             </div>
             <div class="section product-sec">
-                {volist name="cateData" id="resData"}
+                {volist name="cateData" id="resData" key="k"}
                 <div class="item">
                     <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
-                    <div class="nav"><span>产品 | {$resData.name}</span></div>
-                    <div class="index-product-wrap">
-                        <div class="banner-wrap product-banner-one owl-carousel">
-                            {volist name="resData['data']" id="data"}
-                            <div class="item">
-                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
-                                <div class="info">
-                                    <h3 class="tit clearfix"><a class="fl" href="#">{$data.name}</a></h3>
-                                    <p class="desc-price"><span class="desc">{$data.introduce}</span><span class="price fr">¥{$data.price}</span></p>
+                        <div class="nav"><span>产品 | {$resData.name}</span></div>
+                        <div class="index-product-wrap">
+                            <div class="banner-wrap product-banner-one owl-carousel">
+                                {volist name="resData['data']" id="data"}
+                                <div class="item">
+                                    <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                    <div class="info">
+                                        <h3 class="tit clearfix"><a class="fl" href="#">{$data.name}</a></h3>
+                                        <p class="desc-price"><span class="desc">{$data.introduce}</span><span class="price fr">¥{$data.price}</span></p>
+                                    </div>
                                 </div>
+                                {/volist}
                             </div>
-                            {/volist}
+                            <div class="more-con"><span>ALL &gt;</span></div>
                         </div>
-                        <div class="more-con"><span>ALL &gt;</span></div>
                     </div>
                 </div>
-                </div>
-                {if condition="$key eq 0"}
+                {if condition="$k eq 1"}
                     <div class="line"></div>
                 {/if}
                 {/volist}
