@@ -614,6 +614,7 @@ body {
 .product-list-container .product-list-wrap .banner-wrap {
   overflow: hidden;
   margin-right: -80px;
+  padding-bottom: 80px;
 }
 .product-list-container .product-list-wrap .banner-wrap .item {
   float: left;
