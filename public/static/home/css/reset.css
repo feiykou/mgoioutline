@@ -17,6 +17,9 @@
     height: 0;
 }
 
+.none{
+    display: none;
+}
 .hidden{
     overflow: hidden;
 }

@@ -21,8 +21,8 @@ class Product extends Common
         $this->model = model('product');
     }
 
-    public function product(){
-        $products = $this->model->getCateProducts();
+    public function product($cate_id){
+        $products = $this->model->getProductByClumn($cate_id);
 //        $rescPros = $this->model->getRescPro(3);
         $this->assign([
             'productsData'=> $products

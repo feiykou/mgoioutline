@@ -18,42 +18,24 @@
         <div class="content-wrap">
             <div class="resc-main-prop">
                 <ul class="gift-wrap">
+                    {volist name="hotProData" id="hotData"}
                     <li>
                         <div class="item w1100">
-                            <div class="img"><img src="__STATIC__/home/images/cat-icon.png" alt=""></div>
+                            <div class="img"><img src="{$hotData.main_img_url[1]}" alt=""><img src="{$hotData.main_img_url[1]}" alt=""></div>
                             <div class="con">
-                                <p class="tit">竹盐猫砂</p>
-                                <p class="desc">除臭竹盐 原味猫砂</p>
+                                <p class="tit">{$hotData.name}</p>
+                                <p class="desc">{$hotData.introduce}</p>
                             </div>
-                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
+                            <div class="arrow"><span></span></div>
                         </div>
                     </li>
-                    <li>
-                        <div class="item w1100">
-                            <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
-                            <div class="con">
-                                <p class="tit">竹盐猫砂</p>
-                                <p class="desc">除臭竹盐 原味猫砂</p>
-                            </div>
-                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item w1100">
-                            <div class="img"><img src="__STATIC__/home/images/index@pro.png" alt=""></div>
-                            <div class="con">
-                                <p class="tit">竹盐猫砂</p>
-                                <p class="desc">除臭竹盐 原味猫砂</p>
-                            </div>
-                            <div class="arrow"><img src="__STATIC__/home/images/arrow@icon.png" alt=""></div>
-                        </div>
-                    </li>
-
+                    {/volist}
                 </ul>
             </div>
             <div class="section product-sec">
                 {volist name="cateData" id="resData"}
-                <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
+                <div class="item">
+                    <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
                     <div class="nav"><span>产品 | {$resData.name}</span></div>
                     <div class="index-product-wrap">
                         <div class="banner-wrap product-banner-one owl-carousel">
@@ -69,6 +51,7 @@
                         </div>
                         <div class="more-con"><span>ALL &gt;</span></div>
                     </div>
+                </div>
                 </div>
                 {if condition="$key eq 0"}
                     <div class="line"></div>

@@ -34,7 +34,8 @@
                     </div>
                     <div class="con w1100">
                         <div class="tit-bar">工业设计师<span class="mark">+</span></div>
-                        <ul class="item">
+                        <div class="item-wrap">
+                            <ul class="item">
                             <li>工作内容：
                                 <div>
                                     <p>1.负责公司产品设计研发、落实执行等。</p>
@@ -65,6 +66,7 @@
                                 </div>
                             </li>
                         </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,8 +89,41 @@
                 function setHeight(height, margin){
                     this.height(height - margin);
                 }
+            });
 
-            })
+            window.onload = function(){
+                // IE10+加载zepto.js
+                             // IE7-IE9加载jQuery
+                var URLLIB = '__STATIC__/home/js/zepto.js';
+
+                if (!history.pushState) {
+                    URLLIB = '__STATIC__/home/js/jquery-1.10.1.min.js';
+                }
+
+                fnJsLoad(URLLIB, function() {
+                    // 业务脚本初始化
+                    var itemH = $('.recruit-wrap .item').height(),
+                        mark = true;
+                    $(".tit-bar .mark").on("click",function(){
+                        var that = this;
+                        if(mark){
+                            $(".item-wrap").animate({
+                                height: itemH
+                            }, 200,function(){
+                                mark = false;
+                                $(that).text('-');
+                            })
+                        }else{
+                            $('.item-wrap').animate({
+                                height: 0
+                            },200,function(){
+                                mark = true;
+                                $(that).text('+');
+                            })
+                        }
+                    })
+                });
+            }
         </script>
 </body>
 </html>

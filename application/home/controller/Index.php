@@ -19,10 +19,12 @@ class Index extends Common
         $cateData = Procate::getIndexCateProduct();
         $bannerData = BannerItem::getIndexBanner();
         $resProData = Product::getRescPro();
+        $hotProData = Product::getHotProData();
         return $this->fetch('',[
             'cateData' => $cateData,
             'bannerData' => $bannerData,
-            'resProData' => $resProData
+            'resProData' => $resProData,
+            'hotProData' => $hotProData
         ]);
     }
 }

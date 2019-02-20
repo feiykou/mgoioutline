@@ -204,6 +204,15 @@ class Product extends Model
         return $result;
     }
 
+    // 获取热销产品
+    public static function getHotProData(){
+        $data = [
+            'status' => 1,
+        ];
+        $result = self::where($data)->where('','exp',"find_in_set('2',attributes)")->where('','exp',"find_in_set('1',label_attr)")->select();
+        return $result;
+    }
+
 
     // 提供栏目id获取某个产品
     public function getProByColumn($column_id){
@@ -256,6 +265,20 @@ class Product extends Model
             }
         }
         return $productCateArr;
+    }
+
+    // 获取产品子栏目产品
+    public function getProductByClumn($clumnId){
+        $data = [
+            'status' => 1,
+            'column_id' => $clumnId
+        ];
+        $order = [
+            'listorder' => "desc",
+            'id'        => "desc"
+        ];
+        $result = self::where($data)->order($order)->select();
+        return $result;
     }
 
 

@@ -16,6 +16,11 @@
                             <div class="item" data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url('{$img_url}');"></div>
                             {/volist}
                         </div>
+                        <ul class="custom-dots">
+                            {volist name="productData['imgs_url']" id="img_url" key="k"}
+                            <li {if condition="$k eq 1"} class="active"{/if}></li>
+                            {/volist}
+                        </ul>
                         <div class="detail-nav-container">
                             <div class="detail-nav-wrap">
                                 <div class="switch-nav">
@@ -86,6 +91,10 @@
                 dots: true,
                 dotsData: true,
                 dotsContainer: '.switch-nav'
+            })
+            owl.on('changed.owl.carousel', function(event) {
+                var params = event.page;
+                $('.custom-dots li').removeClass('active').eq(params.index).addClass('active');
             })
             $('.product-resc-banner').owlCarousel({
                 loop:true,
