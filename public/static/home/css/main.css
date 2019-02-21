@@ -372,8 +372,8 @@ body {
   vertical-align: middle;
 }
 .content-wrap .company-info-sec .about-box li .wrap {
-  width: 500px;
-  height: 346px;
+  width: 560px;
+  height: 235px;
   padding: 5% 80px;
   margin: 0 auto;
   text-align: left;
@@ -402,9 +402,10 @@ body {
 }
 .content-wrap .company-info-sec .about-box li .wrap .con {
   display: inline-block;
-  line-height: 24px;
-  font-size: 14px;
+  line-height: 22px;
+  font-size: 12px;
   text-align: justify;
+  letter-spacing: .04em;
 }
 .content-wrap .company-info-sec .about-box li .wrap .con img {
   vertical-align: baseline;
@@ -1195,8 +1196,8 @@ body {
 }
 @media screen and (max-width: 1548px) {
   .content-wrap .company-info-sec .about-box li .wrap {
-    width: 420px;
-    margin: 0 auto;
+    width: auto;
+    padding: 5% 60px;
   }
   .content-wrap .gift-wrap .item {
     height: 100px;
