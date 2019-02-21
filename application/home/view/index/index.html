@@ -168,7 +168,7 @@
                 $head = $('.head-banner').owlCarousel({
                     loop:true,
                     autoplay: true,
-                    margin:10,
+                    margin:4,
                     dot: true,
                     items: 1
                 })
@@ -224,20 +224,8 @@
                         // 设置背景图片
                         $this.css('backgroundImage','url('+imgSrc+')');
                     });
-                    sizeHeight();
                 }
 
-                sizeHeight();
-                function sizeHeight(){
-                    var windowHeight = $(window).height(),
-                        logo_h = $('.logo-wrap').height(),
-                        setH = windowHeight - logo_h;
-                    // setHeight.call($('.owl-stage'),setH,8);
-                    setHeight.call($('.index-nav-item'),setH,12);
-                }
-                function setHeight(height, margin){
-                    this.height(height - margin);
-                }
 
             })
 

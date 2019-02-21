@@ -59,24 +59,8 @@ body {
 .active-2.active {
   color: #DE4931;
 }
-.index-nav-wrap {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-  width: 72px;
-  background-color: #fff;
-  border: 4px solid #000000;
-  border-left: 0;
-}
 .header-sec {
   height: 15%;
-}
-.nav-space {
-  height: calc(15% - 2px);
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .logo-wrap,
 #base {
@@ -110,13 +94,20 @@ body {
   font-weight: bold;
   background-color: #fff;
 }
-.nav-space {
-  border-bottom: 4px solid #000000;
+.index-nav-wrap {
+  position: fixed;
+  top: 15%;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #fff;
 }
 .index-nav-item {
   position: relative;
-  height: 730px;
+  width: 72px;
+  height: 100%;
   border-left: 1px solid #000000;
+  border-right: 4px solid #000000;
   background-color: #fff;
 }
 .index-nav-item ul.main-nav-ul {
@@ -141,7 +132,7 @@ body {
 }
 .index-nav-item .main-nav-ul > li:hover .mask {
   opacity: 1;
-  right: 112px;
+  right: 72px;
   -webkit-transition: right 0.2s cubic-bezier(0, 0.63, 0.19, 1.03);
   transition: right 0.2s cubic-bezier(0, 0.63, 0.19, 1.03);
 }

@@ -51,26 +51,6 @@
     });
 
 
-    $(function(){
-
-        $(window).on('resize',resize).trigger('resize');
-
-        function resize(){
-            sizeHeight();
-        }
-        // 首屏进行全屏显示
-        function sizeHeight(){
-            var windowHeight = $(window).height(),
-                logo_h = $('.logo-wrap').height(),
-                setH = windowHeight - logo_h;
-            setHeight.call($('.index-nav-item'),setH,12);
-        }
-
-        function setHeight(height, margin){
-            this.height(height - margin);
-        }
-
-    })
 
 </script>
 </body>
