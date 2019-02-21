@@ -807,7 +807,7 @@ body {
   height: 100%;
 }
 .news-container {
-  margin-top: 148px;
+  padding-top: 148px;
 }
 .news-container .h2-tit {
   width: 128px;
