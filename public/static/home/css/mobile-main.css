@@ -127,6 +127,9 @@ body {
   height: 0.8rem;
   margin: 0 0.4rem;
 }
+.nav-banner-sec {
+  display: none;
+}
 .banner-sec {
   height: 9.33333333rem;
   border-bottom: 0.13333333rem solid #000000;
