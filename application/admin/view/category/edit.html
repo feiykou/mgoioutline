@@ -3,6 +3,8 @@
 <head>
     <!--包含头部文件-->
     {include file="public/header" /}
+    <!--引入webuploaderCss-->
+    {Uploader:webuploadercss /}
 </head>
 <body>
 <div class="page-container">
@@ -45,6 +47,22 @@
                 <input type="text" class="input-text" value="{$category.link_url}" placeholder="" id="link_url" name="link_url">
             </div>
         </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上传图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                {Uploader:webuploader btnVal="上传缩略图" uploadId="mainImg"}
+                {if condition="$category.main_img_url neq ''"}
+                <ul class="filelist filelist-exist clearfix">
+                    <li class="state-complete" data-src="{$category.main_img_url}">
+                        <p class="imgWrap"><img src="{$category.main_img_url}" width="110" height="110"></p>
+                        <div class="file-panel"><span class="cancel">删除</span></div>
+                        <span class="success"></span>
+                    </li>
+                </ul>
+                {/if}
+                {/Uploader:webuploader}
+            </div>
+        </div>
         <div class="row cl template_row none" {if condition="$category.template_id eq 2"} style="display:block;"{/if}>
             <textarea name="single_con"  style="width:100%;height:400px; box-sizing: border-box; padding: 10px;">{$category.single_con}</textarea>
         </div>
@@ -64,11 +82,31 @@
 <script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.all.js"></script>
 <script>
+    var config = {
+        "upload_server": "{:url('getImg')}"
+    };
+</script>
+<!--引入webuploaderJS-->
+{Uploader:webuploaderjs/}
+<script>
+    feiy_upload.init({
+        wrap:$("#mainImg"),
+        filePicker: $("#mainImg").find(".filePicker"),
+        uploadId: "#mainImg",
+        server: config.upload_server,
+        fileNumLimit: 1
+    })
+    cancelImg();
+</script>
+<script>
     $(".save-btn").on("click",function(){
+        var $main_list_childs = $("#mainImg .filelist > li");
+        var main_img_url = setUpdateUrl($main_list_childs);
+        var params = "&main_img_url="+main_img_url;
         $.ajax({
             url: "{:url('category/save')}",
             type: "post",
-            data: $("#form-wrapper").serialize(),
+            data: $("#form-wrapper").serialize()+params,
             success: function(res){
                 layer.msg(res.msg, {icon: 6,time:1000});
                 if(res.data){
