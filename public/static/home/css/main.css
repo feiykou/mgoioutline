@@ -196,8 +196,6 @@ body {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-top: 2px solid #000000;
-  border-bottom: 2px solid #000000;
 }
 .nav-banner-sec .nav-banner-wrap {
   position: absolute;
