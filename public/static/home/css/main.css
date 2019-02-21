@@ -53,7 +53,7 @@ body {
 .active-0.active {
   color: #4D90C4;
 }
-.active-1.active {
+.sildeUpnav + .mask .active {
   color: #FECA12;
 }
 .active-2.active {
@@ -137,6 +137,7 @@ body {
 .index-nav-item .main-nav-ul > li > a span {
   display: inline-block;
   width: 22px;
+  cursor: pointer;
 }
 .index-nav-item .main-nav-ul > li:hover .mask {
   opacity: 1;
@@ -148,6 +149,18 @@ body {
   opacity: 1;
   -webkit-transition-delay: 0.03s;
   transition-delay: 0.03s;
+}
+.index-nav-item .main-nav-ul > li:hover .active-0 {
+  color: #4d90c4;
+}
+.index-nav-item .main-nav-ul > li:hover .sildeUpnav {
+  color: #fecb12;
+}
+.index-nav-item .main-nav-ul > li:hover .active-2 {
+  color: #008755;
+}
+.index-nav-item .main-nav-ul > li:hover .active-3 {
+  color: #dd4a31;
 }
 .index-nav-item .mask {
   position: absolute;

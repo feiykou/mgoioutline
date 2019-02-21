@@ -66,7 +66,7 @@
                             {/if}"><span>{$column.name}</span>
                             </a>
                             {else/}
-                            <a class="sildeUpnav"><span>{$column.name}</span></a>
+                            <a class="sildeUpnav active-{$key} {present name='parent_id'}{if condition='$column.id eq $parent_id'} active{/if}{/present}"><span>{$column.name}</span></a>
                             {/if}
 
                             {if condition="$column['children'] neq 0"}
