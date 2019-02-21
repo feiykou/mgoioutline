@@ -443,6 +443,7 @@ body {
 .content-wrap .index-recruit-wrap {
   background-color: #4d90c4;
   color: #fff;
+  border-top: 6px solid #000000;
 }
 .content-wrap .index-recruit-wrap .item > * {
   display: inline-block;
