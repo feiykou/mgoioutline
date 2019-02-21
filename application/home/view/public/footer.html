@@ -44,5 +44,31 @@
 
         })
 
+        $(function(){
+            var rescDom = $('.resc-banner');
+            var copyDom = $('.resc-banner-copy');
+            var wrapDom = $('.resc-banner-wrap');
+            scrollBanner(rescDom,copyDom,wrapDom);
+            var navDom = $('.nav-banner');
+            var navCopyDom = $('.nav-banner-copy');
+            var navWrapDom = $('.nav-banner-wrap');
+            scrollBanner(navDom,navCopyDom,navWrapDom);
+
+            function scrollBanner(rescDom,copyDom,wrapDom){
+                var maxW = rescDom.width();
+                var speed = 28,
+                    num = 0;
+                copyDom.html(rescDom.html());
+                setInterval(function(){
+                    num -= 1;
+                    if(Math.abs(num) >= maxW){
+                        num = 0;
+                    }
+                    wrapDom.css({
+                        left: num
+                    })
+                },speed)
+            }
+        })
 
 </script>
