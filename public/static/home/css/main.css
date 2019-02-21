@@ -610,7 +610,6 @@ body {
 /* 公共部分 end */
 /*产品列表页*/
 .resc-head-wrap {
-  padding-top: 148px;
   margin-right: 125px;
 }
 .resc-head-wrap .top {
@@ -678,9 +677,6 @@ body {
 .product-list-container .product-list-wrap .product-list li p.desc {
   color: #666;
   font-size: 12px;
-}
-.contact-container {
-  margin-top: 148px;
 }
 .contact-container .video-about {
   height: 680px;
@@ -806,9 +802,6 @@ body {
 .contact-container .contact-address .map-wrap #allmap {
   height: 100%;
 }
-.news-container {
-  padding-top: 148px;
-}
 .news-container .h2-tit {
   width: 128px;
   height: 32px;
@@ -913,7 +906,6 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding-bottom: 160px;
-  padding-top: 148px;
   height: 880px;
 }
 .product-detail-box {
