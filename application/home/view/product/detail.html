@@ -13,7 +13,7 @@
                     <div class="item product-img-wrap">
                         <div class="imgs-wrap owl-carousel">
                             {volist name="productData['imgs_url']" id="img_url" key="k"}
-                            <div class="item" data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url({$productData['mobile_imgs_url'][$k-1]});"></div>
+                            <div class="item" data-image-xs="{$productData.mobile_imgs_url[$k-1]}" data-image-lg="{$img_url}"  data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url('{$img_url}');"></div>
                             {/volist}
                         </div>
                         <ul class="custom-dots">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="item product-info-wrap">
                         <h1 class="h1-tit">{$productData.name}</h1>
-                        <div class="price">¥16.00</div>
+                        <div class="price">¥{$productData.price}</div>
                         <div class="line"></div>
                         <div class="detail">
                             <div class="con">
@@ -116,7 +116,25 @@
             });
 
 
+            $(function () {
+                $(window).on('resize',resize).trigger('resize');
 
+                function resize(){
+                    resImg($(".product-img-wrap .owl-item"));
+                }
+                function resImg(dom){
+                    // 获取屏幕宽度
+                    var windowWidth = $(window).width();
+                    // 小屏
+                    var isSmallScreen = windowWidth < dpr*992;
+                    dom.each(function(index,item){
+                        var $this = $(item).find('.item');
+                        var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
+                        // 设置背景图片
+                        $this.css('backgroundImage','url('+imgSrc+')');
+                    });
+                }
+            })
 
         </script>
 </body>
