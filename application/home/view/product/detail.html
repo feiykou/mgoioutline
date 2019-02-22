@@ -12,8 +12,8 @@
                 <div class="product-detail-box">
                     <div class="item product-img-wrap">
                         <div class="imgs-wrap owl-carousel">
-                            {volist name="productData['imgs_url']" id="img_url"}
-                            <div class="item" data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url('{$img_url}');"></div>
+                            {volist name="productData['imgs_url']" id="img_url" key="k"}
+                            <div class="item" data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url({$productData['mobile_imgs_url'][$k-1]});"></div>
                             {/volist}
                         </div>
                         <ul class="custom-dots">
