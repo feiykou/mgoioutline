@@ -102,7 +102,7 @@
         filePicker: $("#bannerImg").find(".filePicker"),
         uploadId: "#bannerImg",
         server: config.upload_server,
-        fileNumLimit: 1
+        fileNumLimit: 3
     });
 </script>
 <script>
@@ -116,7 +116,7 @@
         var $bannerImg_childs = $("#bannerImg .filelist > li");
 
         setTimeout(function(){
-            setNoDrop($bannerImg_childs,1);
+            setNoDrop($bannerImg_childs,3);
         },500);
     }
 

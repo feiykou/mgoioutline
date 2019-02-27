@@ -160,47 +160,45 @@
 //                });
 //            }
 
-            $(function () {
-                function feiy_preloader(imgUrl, handleComplete){
-                    var queue = new createjs.LoadQueue(false);
-                    var loadFile = [
-                        {id: "image", src:imgUrl}
-                    ];
-                    queue.on("complete", handleComplete, this);
-                    queue.loadManifest(loadFile);
-                }
+            function feiy_preloader(imgUrl, handleComplete){
+                var queue = new createjs.LoadQueue(false);
+                var loadFile = [
+                    {id: "image", src:imgUrl}
+                ];
+                queue.on("complete", handleComplete, this);
+                queue.loadManifest(loadFile);
+            }
 
-                function setBannerPreload(){
-                    var bigImgDom = $(".main-sec-big-img");
-                    var smallImg = bigImgDom.data('small-img');
-                    var bigImg = bigImgDom.data('image-lg');
-                    var MobileImg = bigImgDom.data('image-xs');
-                    var imgUrl = '';
-                    bigImgDom.css({
-                        'backgroundImage':'url('+smallImg+')',
-                        'backgroundSize': '100% 100%',
-                        'filter': 'blur(20px)'
+            function setBannerPreload(){
+                var bigImgDom = $(".main-sec-big-img");
+                var smallImg = bigImgDom.data('small-img');
+                var bigImg = bigImgDom.data('image-lg');
+                var MobileImg = bigImgDom.data('image-xs');
+                var imgUrl = '';
+                bigImgDom.css({
+                    'backgroundImage':'url('+smallImg+')',
+                    'backgroundSize': '100% 100%',
+                    'filter': 'blur(20px)'
+                });
+                imgUrl = IsPC() ? bigImg : MobileImg;
+                feiy_preloader(imgUrl, function(){
+                    resize();
+                })
+            }
+            setBannerPreload();
+            $(window).on('resize',resize);
+            function resize(){
+                $('.banner-sec .item').each(function(index,item){
+                    var $this = $(item);
+                    var imgSrc = !IsPC() ? $this.data('image-xs'): $this.data('image-lg');
+                    // 设置背景图片
+                    $this.css({
+                        'backgroundImage': 'url('+imgSrc+')',
+                        'backgroundSize': 'cover',
+                        'filter': 'blur(0)'
                     });
-                    imgUrl = IsPC() ? bigImg : MobileImg;
-                    feiy_preloader(imgUrl, function(){
-                        resize();
-                    })
-                }
-                setBannerPreload();
-                $(window).on('resize',resize);
-                function resize(){
-                    $('.banner-sec .item').each(function(index,item){
-                        var $this = $(item);
-                        var imgSrc = !IsPC() ? $this.data('image-xs'): $this.data('image-lg');
-                        // 设置背景图片
-                        $this.css({
-                            'backgroundImage': 'url('+imgSrc+')',
-                            'backgroundSize': 'cover',
-                            'filter': 'blur(0)'
-                        });
-                    });
-                }
-            })
+                });
+            }
 
 
 
