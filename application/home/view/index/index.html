@@ -6,13 +6,7 @@
 </head>
 <body>
 {include file="public/header-nav" /}
-<script>
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src= '__STATIC__/home/js/lib/antimoderate/preloadjs.min.js';
-    head.appendChild(script);
-</script>
+
 <div class="banner-sec preloader">
     <div class="head-banner owl-carousel">
         {volist name="bannerData" id="data"}
@@ -146,26 +140,6 @@
         {include file="public/footer" /}
         <script src="__STATIC__/home/js/lib/antimoderate/preloadjs.min.js"></script>
         <script>
-//            var smallImg = $(".main-sec-big-img").data('small-img');
-//            var bigImg = $(".main-sec-big-img").data('image-lg');
-//            var queue = new createjs.LoadQueue(false);
-//            queue.on("complete", handleComplete, this);
-//            queue.loadManifest([
-//                {id: "image", src:bigImg}
-//            ]);
-//
-//            $(".main-sec-big-img").css({
-//                'backgroundImage':'url('+smallImg+')',
-//                'backgroundSize': '100% 100%',
-//                'filter': 'blur(20px)'
-//            });
-//            function handleComplete() {
-//                $(".main-sec-big-img").css({
-//                    'backgroundImage':'url('+bigImg+')',
-//                    'backgroundSize': 'cover',
-//                    'filter': 'blur(0)'
-//                });
-//            }
 
             function feiy_preloader(imgUrl, handleComplete){
                 var queue = new createjs.LoadQueue(false);
