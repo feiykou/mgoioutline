@@ -6,6 +6,13 @@
 </head>
 <body>
 {include file="public/header-nav" /}
+<script>
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src= '__STATIC__/home/js/lib/antimoderate/preloadjs.min.js';
+    head.appendChild(script);
+</script>
 <div class="banner-sec preloader">
     <div class="head-banner owl-carousel">
         {volist name="bannerData" id="data"}
