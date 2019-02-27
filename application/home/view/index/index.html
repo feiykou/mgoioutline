@@ -139,26 +139,69 @@
         {include file="public/footer" /}
         <script src="__STATIC__/home/js/lib/antimoderate/preloadjs.min.js"></script>
         <script>
-            var smallImg = $(".main-sec-big-img").data('small-img');
-            var bigImg = $(".main-sec-big-img").data('image-lg');
-            var queue = new createjs.LoadQueue(false);
-            queue.on("complete", handleComplete, this);
-            queue.loadManifest([
-                {id: "image", src:bigImg}
-            ]);
+//            var smallImg = $(".main-sec-big-img").data('small-img');
+//            var bigImg = $(".main-sec-big-img").data('image-lg');
+//            var queue = new createjs.LoadQueue(false);
+//            queue.on("complete", handleComplete, this);
+//            queue.loadManifest([
+//                {id: "image", src:bigImg}
+//            ]);
+//
+//            $(".main-sec-big-img").css({
+//                'backgroundImage':'url('+smallImg+')',
+//                'backgroundSize': '100% 100%',
+//                'filter': 'blur(20px)'
+//            });
+//            function handleComplete() {
+//                $(".main-sec-big-img").css({
+//                    'backgroundImage':'url('+bigImg+')',
+//                    'backgroundSize': 'cover',
+//                    'filter': 'blur(0)'
+//                });
+//            }
 
-            $(".main-sec-big-img").css({
-                'backgroundImage':'url('+smallImg+')',
-                'backgroundSize': '100% 100%',
-                'filter': 'blur(20px)'
-            });
-            function handleComplete() {
-                $(".main-sec-big-img").css({
-                    'backgroundImage':'url('+bigImg+')',
-                    'backgroundSize': 'cover',
-                    'filter': 'blur(0)'
-                });
-            }
+            $(function () {
+                function feiy_preloader(imgUrl, handleComplete){
+                    var queue = new createjs.LoadQueue(false);
+                    var loadFile = [
+                        {id: "image", src:imgUrl}
+                    ];
+                    queue.on("complete", handleComplete, this);
+                    queue.loadManifest(loadFile);
+                }
+
+                function setBannerPreload(){
+                    var bigImgDom = $(".main-sec-big-img");
+                    var smallImg = bigImgDom.data('small-img');
+                    var bigImg = bigImgDom.data('image-lg');
+                    var MobileImg = bigImgDom.data('image-xs');
+                    var imgUrl = '';
+                    bigImgDom.css({
+                        'backgroundImage':'url('+smallImg+')',
+                        'backgroundSize': '100% 100%',
+                        'filter': 'blur(20px)'
+                    });
+                    imgUrl = IsPC() ? bigImg : MobileImg;
+                    feiy_preloader(imgUrl, function(){
+                        resize();
+                    })
+                }
+                setBannerPreload();
+                $(window).on('resize',resize);
+                function resize(){
+                    $('.banner-sec .item').each(function(index,item){
+                        var $this = $(item);
+                        var imgSrc = !IsPC() ? $this.data('image-xs'): $this.data('image-lg');
+                        // 设置背景图片
+                        $this.css({
+                            'backgroundImage': 'url('+imgSrc+')',
+                            'backgroundSize': 'cover',
+                            'filter': 'blur(0)'
+                        });
+                    });
+                }
+            })
+
 
 
             $(function(){
@@ -211,25 +254,6 @@
                     responsive:obj
                 });
             })
-
-            $(function(){
-                $(window).on('resize',resize).trigger('resize');
-                function resize(){
-                    // 获取屏幕宽度
-                    var windowWidth = $(window).width();
-                    // 小屏
-                    var isSmallScreen = windowWidth < dpr*992;
-                    $('.banner-sec .item').each(function(index,item){
-                        var $this = $(item);
-                        var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
-                        // 设置背景图片
-                        $this.css('backgroundImage','url('+imgSrc+')');
-                    });
-                }
-
-
-            })
-
 
         </script>
 </body>
