@@ -10,8 +10,8 @@ body {
   font-size: 14px;
 }
 .w1100 {
-  width: 1100px;
-  margin: 0 auto;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 .w843 {
   width: 843px;
@@ -36,15 +36,29 @@ body {
 .line.line-bold {
   height: 4px;
 }
-.container {
-  border-left: 4px solid #000000;
-}
 .content-wrap {
   overflow: hidden;
-  min-width: 800px;
 }
-.index-content {
-  padding-right: 76px;
+.index-content,
+.banner-sec {
+  padding: 0 20%;
+}
+.lr-container > div {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.lr-container .l-content {
+  left: 0;
+  border-left: 4px solid #000000;
+  border-right: 4px solid #000000;
+}
+.lr-container .r-content {
+  right: 0;
+  border-left: 4px solid #000000;
+  border-right: 4px solid #000000;
 }
 .index-content,
 .index-nav-wrap {
@@ -95,12 +109,7 @@ body {
   background-color: #fff;
 }
 .index-nav-wrap {
-  position: fixed;
-  top: 15%;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-  background-color: #fff;
+  display: none;
 }
 .index-nav-item {
   position: relative;
@@ -208,12 +217,10 @@ body {
   height: 60px;
 }
 .banner-sec {
-  border-bottom: 4px solid #000000;
-  border-left: 4px solid #000000;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-right: 76px;
   height: 85%;
+}
+.banner-sec .head-banner {
+  border-bottom: 4px solid #000000;
 }
 .banner-sec .head-banner,
 .banner-sec .owl-stage-outer,
@@ -287,7 +294,8 @@ body {
   /*重复*/
 }
 .content-wrap .product-item {
-  padding: 80px 0 100px;
+  padding-top: 80px;
+  padding-bottom: 60px;
 }
 .content-wrap .product-item .nav {
   text-align: center;
@@ -360,104 +368,83 @@ body {
   height: 100px;
 }
 .content-wrap .company-info-sec .about-tit {
-  display: none;
-}
-.content-wrap .company-info-sec .about-box {
-  width: 100%;
-  display: table;
-  overflow: hidden;
+  font-size: 32px;
+  padding-top: 50px;
+  text-align: center;
 }
 .content-wrap .company-info-sec .about-box li {
-  display: table-cell;
-  width: 50%;
-  background-color: #fff;
-  text-align: right;
-  vertical-align: middle;
+  padding: 100px 80px;
+  border-bottom: 4px solid #000000;
+  overflow: hidden;
 }
-.content-wrap .company-info-sec .about-box li .wrap {
-  width: 560px;
-  height: 235px;
-  padding: 5% 80px;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 0;
+.content-wrap .company-info-sec .about-box li .info {
+  float: left;
+  position: relative;
+  height: 180px;
+  font-size: 24px;
+  color: #fff;
+  overflow: hidden;
+  margin: 0 60px;
 }
-.content-wrap .company-info-sec .about-box li .wrap .wrap-box {
-  display: inline-block;
-  vertical-align: middle;
+.content-wrap .company-info-sec .about-box li .info i {
+  font-style: normal;
+  width: 42px;
 }
-.content-wrap .company-info-sec .about-box li .wrap::after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
-.content-wrap .company-info-sec .about-box li .wrap .info {
+.content-wrap .company-info-sec .about-box li .info span {
   display: block;
+  line-height: 32px;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 22px;
-  color: #4d90c4;
-  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-top: 10px;
 }
-.content-wrap .company-info-sec .about-box li .wrap .info img {
-  display: none;
+.content-wrap .company-info-sec .about-box li .info img {
+  width: 120px;
+  height: 120px;
 }
-.content-wrap .company-info-sec .about-box li .wrap .con {
-  display: inline-block;
-  line-height: 22px;
-  font-size: 12px;
+.content-wrap .company-info-sec .about-box li .con {
+  overflow: hidden;
   text-align: justify;
-  letter-spacing: .04em;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
 }
-.content-wrap .company-info-sec .about-box li .wrap .con img {
-  vertical-align: baseline;
-}
-.content-wrap .company-info-sec .about-box li .wrap .con p {
-  margin-bottom: 10px;
+.content-wrap .company-info-sec .about-box li .con p {
   text-indent: 2em;
+  margin-bottom: 40px;
 }
-.content-wrap .company-info-sec .about-box li:nth-child(2n) {
-  text-align: left;
-}
-.content-wrap .company-info-sec .about-box li:nth-child(2n) .wrap {
-  text-align: center;
-}
-.content-wrap .about-box.first li:nth-child(2) {
-  background-color: #4d90c4;
-}
-.content-wrap .about-box.second li:nth-child(1) {
-  background-color: #fecb12;
-}
-.content-wrap .about-box.second li:nth-child(1) .wrap {
-  text-align: center;
-}
-.content-wrap .about-box.second li:nth-child(2) .con {
-  text-align: left;
-}
-.content-wrap .index-recruit-wrap {
+.content-wrap .company-info-sec .about-box li:nth-child(1) {
   background-color: #4d90c4;
   color: #fff;
-  border-top: 4px solid #000000;
 }
-.content-wrap .index-recruit-wrap .item > * {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 166px;
+.content-wrap .company-info-sec .about-box li:nth-child(2) {
+  display: none;
+}
+.content-wrap .company-info-sec .about-box.second {
+  display: none;
+}
+.content-wrap .index-recruit-wrap {
+  background-color: #fff;
+  padding: 40px 0;
 }
 .content-wrap .index-recruit-wrap .con {
-  height: inherit;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: .05em;
-  margin-left: 100px;
+  line-height: 24px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.content-wrap .index-recruit-wrap .con p {
+  display: inline-block;
+  padding-top: 10px;
 }
 .content-wrap .index-recruit-wrap .img {
-  height: inherit;
-  padding: 0 60px;
+  float: left;
+  margin: 0 60px;
 }
 .content-wrap .index-recruit-wrap .img img {
-  width: 120px;
-  height: 60px;
+  width: 100px;
+  height: 43px;
+  vertical-align: middle;
 }
 .content-wrap .resc-main-prop {
   border-bottom: 4px solid #000000;
@@ -489,7 +476,10 @@ body {
 }
 .content-wrap .gift-wrap .item {
   display: table;
+  width: 100%;
   height: 132px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
 }
 .content-wrap .gift-wrap .item > div {
@@ -1200,7 +1190,6 @@ body {
 @media screen and (max-width: 1548px) {
   .content-wrap .company-info-sec .about-box li .wrap {
     width: auto;
-    padding: 5% 60px;
   }
   .content-wrap .gift-wrap .item {
     height: 100px;
@@ -1214,17 +1203,8 @@ body {
     width: 100px;
     height: 43px;
   }
-  .content-wrap .index-recruit-wrap .item > * {
-    line-height: 100px;
-  }
-  .w1100 {
-    width: 980px;
-  }
 }
 @media screen and (max-width: 1300px) {
-  .w1100 {
-    width: 880px;
-  }
   .news-container .news-list-wrap li .wrap {
     padding: 20px 10px;
   }

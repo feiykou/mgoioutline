@@ -19,10 +19,16 @@ $(function() {
             console.log(lazyImgs)
             // 循环处理数组的每个img元素:
             $.each(lazyImgs, function (index, $i) {
+                // console.log($i.offset().top - wtop)
+                console.log(wheight)
+                console.log($i.offset().top)
+                console.log(wtop)
+
                 // 判断是否在可视范围内:
                 if ($i.offset().top > 0 && $i.offset().top - wtop < wheight) {  //$.offset().top获取匹配元素距离文本文档顶的距离。
                     // 设置src属性:
                     $i.attr('src', $i.attr('data-src'));
+                    console.log(index)
                     // 添加到待删除数组:
                     loadedIndex.unshift(index);//从大到小排序，保证下边删除操作能顺利进行
                 }
