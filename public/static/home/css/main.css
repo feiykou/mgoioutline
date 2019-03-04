@@ -260,6 +260,7 @@ body {
 }
 /* 产品公共 start */
 .index-product-wrap {
+  position: relative;
   min-height: 240px;
 }
 .banner-wrap {
