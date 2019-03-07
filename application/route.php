@@ -15,3 +15,4 @@ Route::get('/product/detail/:id','home/product/detail',[],['id'=>'\d+']);
 Route::get('/about/[:cate_id]','home/about/about',[],['cate_id'=>'\d+']);
 Route::get('/contact/[:cate_id]','home/contact/contact',[],['cate_id'=>'\d+']);
 Route::get('/news/[:cate_id]','home/news/index',[],['cate_id'=>'\d+']);
+Route::get('/index','home/home/index');

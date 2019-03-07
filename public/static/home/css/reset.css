@@ -16,9 +16,11 @@
     line-height: 0;
     height: 0;
 }
-
 .none{
     display: none;
+}
+.block{
+    display: block;
 }
 .hidden{
     overflow: hidden;
@@ -31,6 +33,9 @@ a:hover{
 }
 .tc{
     text-align: center;
+}
+i{
+    font-style: normal;
 }
 
 
@@ -147,6 +152,7 @@ a:hover{
 html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    font-family: '宋体';
 }
 
 /* Sections
