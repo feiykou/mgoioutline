@@ -11,7 +11,7 @@ body {
 }
 .w1100 {
   padding-left: 6.8%;
-  padding-right: 3%;
+  padding-right: 6.8%;
 }
 .w843 {
   width: 843px;
@@ -104,6 +104,9 @@ body {
 }
 .nav-item > a {
   padding: 0 10px;
+}
+.nav-item > a span {
+  font-weight: bold;
 }
 .nav-item > a i {
   font-size: 16px;
@@ -198,6 +201,7 @@ body {
 }
 .header-sec {
   height: 10%;
+  min-height: 80px;
 }
 .logo-wrap,
 #base {
@@ -211,6 +215,7 @@ body {
   right: 0;
   z-index: 10;
   height: 10%;
+  min-height: 80px;
   border: 4px solid #000000;
   border-bottom-width: 1px;
   -webkit-box-sizing: border-box;
@@ -274,7 +279,7 @@ body {
   min-height: 200px;
 }
 .banner-sec .dots-wrap {
-  height: 55px;
+  height: 25px;
 }
 .banner-sec .owl-dots {
   text-align: center;
@@ -353,23 +358,21 @@ body {
   border-bottom: 1px solid #000000;
   border-top: 1px solid #000000;
   font-size: 0;
-  height: 145px;
   cursor: pointer;
   overflow: hidden;
 }
 .content-wrap .resc-banner-sec .title-wrap {
-  float: left;
   width: 27%;
   height: inherit;
   font-size: 14px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding-left: 6.8%;
+  margin: 42px 0;
 }
 .content-wrap .resc-banner-sec .title-wrap .con {
   display: inline-block;
   text-align: left;
-  padding-top: 46px;
 }
 .content-wrap .resc-banner-sec .title-wrap .tit {
   font-size: 18px;
@@ -378,7 +381,7 @@ body {
 }
 .content-wrap .resc-banner-sec .resc-banner-box {
   position: relative;
-  height: inherit;
+  height: 105px;
   padding: 0 55px;
   overflow: hidden;
 }
@@ -396,7 +399,7 @@ body {
 }
 .content-wrap .resc-banner-sec li {
   display: inline-block;
-  margin: 20px 20px;
+  margin: 20px;
 }
 .content-wrap .resc-banner-sec li img {
   height: 105px;
@@ -476,6 +479,7 @@ body {
   margin-right: 15px;
   text-align: left;
   font-size: 16px;
+  font-weight: bold;
   -ms-writing-mode: tb-rl;
   -webkit-writing-mode: vertical-rl;
   writing-mode: vertical-rl;
@@ -509,7 +513,7 @@ body {
   line-height: 1.6;
 }
 .content-wrap .company-nav-sec {
-  padding: 55px 3% 0 6.8%;
+  padding: 55px 6.8% 0;
   border-bottom: 1px solid #000000;
 }
 .content-wrap .company-nav-sec ul {
@@ -525,6 +529,7 @@ body {
 .content-wrap .company-nav-sec li .name {
   font-size: 18px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 .content-wrap .company-nav-sec li img {
   width: 100%;
@@ -551,7 +556,7 @@ body {
 .contact-wrap .form-box {
   display: inline-block;
   width: 50%;
-  padding: 30px 3% 0 6.8%;
+  padding: 30px 6.8% 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
