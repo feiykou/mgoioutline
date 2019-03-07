@@ -280,7 +280,6 @@ body {
 }
 .banner-sec {
   min-height: 200px;
-  border-bottom: 1px solid #000000;
 }
 .banner-sec .dots-wrap {
   height: 25px;
@@ -451,6 +450,7 @@ body {
 }
 .content-wrap .product-sec {
   border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
 }
 .content-wrap .company-info-sec {
   height: 300px;
