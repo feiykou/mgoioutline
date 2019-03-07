@@ -40,7 +40,8 @@ body {
   overflow: hidden;
 }
 .index-content,
-.banner-sec {
+.banner-sec,
+.resc-banner-sec {
   padding: 0 5% 0 18%;
 }
 .lr-container > div {
@@ -279,7 +280,6 @@ body {
 }
 .banner-sec {
   min-height: 200px;
-  padding-top: 5px;
 }
 .banner-sec .dots-wrap {
   height: 25px;
@@ -352,18 +352,12 @@ body {
   color: #dd4a31;
   font-weight: bold;
 }
-/* 产品公共 end */
-.content-wrap {
-  /* 插画 */
-  /*产品*/
-}
-.content-wrap .resc-banner-sec {
-  border-bottom: 1px solid #000000;
-  border-top: 1px solid #000000;
+/* 插画 */
+.resc-banner-sec {
   font-size: 0;
   overflow: hidden;
 }
-.content-wrap .resc-banner-sec .title-wrap {
+.resc-banner-sec .title-wrap {
   height: inherit;
   font-size: 14px;
   -webkit-box-sizing: border-box;
@@ -371,41 +365,47 @@ body {
   padding-left: 6.8%;
   margin-bottom: 25px;
 }
-.content-wrap .resc-banner-sec .title-wrap .con {
+.resc-banner-sec .title-wrap .con {
   display: inline-block;
   text-align: left;
 }
-.content-wrap .resc-banner-sec .title-wrap .con p {
+.resc-banner-sec .title-wrap .con p {
   font-family: '宋体';
   line-height: 1.5;
 }
-.content-wrap .resc-banner-sec .title-wrap .tit {
+.resc-banner-sec .title-wrap .tit {
   font-size: 16px;
 }
-.content-wrap .resc-banner-sec .resc-banner-box {
+.resc-banner-sec .resc-banner-box {
   position: relative;
   height: 105px;
   padding: 0 55px;
   overflow: hidden;
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
 }
-.content-wrap .resc-banner-sec .resc-banner-wrap {
+.resc-banner-sec .resc-banner-wrap {
   position: absolute;
   left: 0;
   width: 1000%;
   overflow: hidden;
 }
-.content-wrap .resc-banner-sec .resc-banner-wrap:hover {
+.resc-banner-sec .resc-banner-wrap:hover {
   opacity: 0.5;
 }
-.content-wrap .resc-banner-sec ul {
+.resc-banner-sec ul {
   float: left;
 }
-.content-wrap .resc-banner-sec li {
+.resc-banner-sec li {
   display: inline-block;
   margin: 0 20px;
 }
-.content-wrap .resc-banner-sec li img {
+.resc-banner-sec li img {
   height: 105px;
+}
+/* 产品公共 end */
+.content-wrap {
+  /*产品*/
 }
 .content-wrap .product-item {
   padding-top: 35px;
@@ -607,7 +607,7 @@ body {
   background-color: #eee;
 }
 .contact-wrap .footer-banner {
-  height: 130px;
+  height: 210px;
   border-left: 1px solid #000000;
   overflow: hidden;
   padding: 56px 0 0 6.8%;
