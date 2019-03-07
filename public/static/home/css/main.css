@@ -129,7 +129,6 @@ body {
 /*---------------------*/
 .nav-more {
   float: right;
-  margin-right: 20px;
   font-size: 12px;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
@@ -364,7 +363,6 @@ body {
   overflow: hidden;
 }
 .content-wrap .resc-banner-sec .title-wrap {
-  width: 27%;
   height: inherit;
   font-size: 14px;
   -webkit-box-sizing: border-box;
@@ -375,6 +373,10 @@ body {
 .content-wrap .resc-banner-sec .title-wrap .con {
   display: inline-block;
   text-align: left;
+}
+.content-wrap .resc-banner-sec .title-wrap .con p {
+  font-family: '宋体';
+  line-height: 1.5;
 }
 .content-wrap .resc-banner-sec .title-wrap .tit {
   font-size: 18px;
@@ -529,10 +531,7 @@ body {
   content: '';
   display: inline-block;
   height: inherit;
-  vertical-align: bottom;
-}
-.content-wrap .company-info-sec .con img {
-  margin-bottom: 30px;
+  vertical-align: middle;
 }
 .content-wrap .company-nav-sec {
   padding: 55px 6.8% 0;
@@ -555,10 +554,9 @@ body {
 }
 .content-wrap .company-nav-sec li img {
   width: 100%;
-  height: 160px;
 }
 .content-wrap .company-nav-sec li .tit {
-  margin: 10px 0 5px;
+  margin: 10px 0 6px;
 }
 .content-wrap .company-nav-sec li .desc {
   color: #666;
@@ -566,7 +564,7 @@ body {
   line-height: 1.4;
 }
 .content-wrap .company-nav-sec li .more {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 12px;
 }
 .footer-sec {
@@ -612,30 +610,23 @@ body {
 .contact-wrap .footer-banner {
   height: 130px;
   border-left: 1px solid #000000;
-  font-size: 0;
-  position: relative;
-  cursor: pointer;
   overflow: hidden;
+  padding: 56px 0 0 6.8%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.contact-wrap .footer-banner .nav-banner-wrap {
-  position: absolute;
-  top: 56px;
-  left: 0;
-  width: 2000%;
+.contact-wrap .footer-banner .tel-wrap {
+  padding-top: 8px;
+}
+.contact-wrap .footer-banner .share-wrap {
   overflow: hidden;
-}
-.contact-wrap .footer-banner .nav-banner-wrap:hover {
-  opacity: 0.5;
-}
-.contact-wrap .footer-banner ul {
-  float: left;
 }
 .contact-wrap .footer-banner li {
-  display: inline-block;
-  margin: 0 5px;
-}
-.contact-wrap .footer-banner li img {
-  height: 60px;
+  float: left;
+  width: 50px;
+  height: 50px;
+  background: red;
+  margin: 0 10px;
 }
 .h2-tit {
   font-size: 24px;
