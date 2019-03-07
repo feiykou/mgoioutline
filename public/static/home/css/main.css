@@ -280,6 +280,7 @@ body {
 }
 .banner-sec {
   min-height: 200px;
+  border-bottom: 1px solid #000000;
 }
 .banner-sec .dots-wrap {
   height: 25px;
