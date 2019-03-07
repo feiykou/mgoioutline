@@ -374,6 +374,7 @@ body {
 .content-wrap .resc-banner-sec .title-wrap .tit {
   font-size: 18px;
   margin-bottom: 6px;
+  font-weight: bold;
 }
 .content-wrap .resc-banner-sec .resc-banner-box {
   position: relative;
@@ -401,8 +402,8 @@ body {
   height: 105px;
 }
 .content-wrap .product-item {
-  padding-top: 80px;
-  padding-bottom: 60px;
+  padding-top: 55px;
+  padding-bottom: 55px;
 }
 .content-wrap .product-item .nav {
   text-align: center;
