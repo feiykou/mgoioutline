@@ -186,16 +186,12 @@
         </div>
         <div class="dots-wrap">
             <div class="dot">
-                <i><span></span></i>
             </div>
             <div class="dot">
-                <i><span></span></i>
             </div>
             <div class="dot">
-                <i><span></span></i>
             </div>
             <div class="dot">
-                <i><span></span></i>
             </div>
         </div>
         <ul class="rela-imgs hidden">
@@ -549,118 +545,72 @@
         }
 
         var time = 2;    //进度条时间，以秒为单位，越小越快
-        var $barDom = $(".dots-wrap .dot"),
+        var $barDom = $(".dots-wrap .dot").eq(0),
             $head, tick,
             curIndex = 0,
-            prevIndex = -1,
-            isPause = false,
-            dateTime,
-            index = 0,
-            direction = -1;
+            prevTarget = null,
+            percentTime = 0,
+            isPause = false;
         $head = $('.head-banner')
         $head = $('.head-banner').on("initialized.owl.carousel", function(res) {
-            index = 100;
+
+            progressBar();
+        })
+        $head = $('.head-banner').owlCarousel({
+            loop: true,
+            margin: 4,
+            dot: true,
+            items: 1
+        })
+
+        function progressBar(){
+
+            createBar();
             start();
-        })
-        $head.owlCarousel({
-            loop:true,
-            margin:4,
-            dot: false,
-            items: 1,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true
-        })
-        // function moveDot(curIndex){
-        //     if(prevIndex != -1){
-        //         $('.dots-wrap .dot').eq(prevIndex).addClass('noactive').siblings().removeClass('noactive');
-        //     }
-        //     $('.dots-wrap .dot').eq(curIndex).addClass('active').siblings().removeClass('active');
-        // }
+        }
 
-        // moveDot(0);
-
-        $head.on("translate.owl.carousel",res => {
-            prevIndex = curIndex
-            curIndex = res.page.index;
-            $(".rela-imgs li").eq(curIndex).addClass('active').siblings().removeClass('active');
-            if(prevIndex > curIndex && Math.abs(prevIndex-curIndex) <= 1 || prevIndex-curIndex == -res.page.count+1){
-                direction = 1;
-                index = 0;
-            }else{
-                direction = -1;
-                index = 100;
-            }
-            console.log(direction)
-            start()
-
-            // moveDot(curIndex);
-            // timer = setInterval(interval,10)
-            // prevIndex = curIndex;
-        })
-
+        function createBar(){
+            $barDom = $(".dots-wrap .dot").eq(curIndex);
+            $barDom.html('<span></span>');
+            $barDom.siblings().html('');
+        }
 
         function start(){
-            dateTime = new Date();
-            timer = setInterval(interval, 5);
+            percentTime = 0;
+            tick = setInterval(interval, 10);
         }
 
         function interval(){
-            if(new Date() - dateTime <= 3000){
-                var times = 100 * 10 / 3000 + 0.2;
-                index = index + times*direction;
-                if(direction > 0){
-
-                    if(index >= 100){
-                        index = 100;
-                        clearInterval(timer)
-                    }
-                    countLeft(index)
-                }else{
-                    if(index <= 0){
-                        index = 0;
-                        clearInterval(timer)
-                    }
-                    countRight(index)
+            if(isPause == false){
+                percentTime += 1 / time;
+                $barDom.find('span').css({
+                    width: percentTime+'%'
+                });
+                if(percentTime >= 100){
+                    clearInterval(tick)
+                    $head.trigger('next.owl.carousel')
                 }
-
-            }
-        }
-        function interval2(){
-            if(new Date() - dateTime <= 3000){
-                var num = 100 * 20 / 3000;
-                index = index + num;
-                if(index >= 100){
-                    index = 100;
-                    clearInterval(timer)
-                }
-                countRight(index)
             }
         }
 
-        function countRight(index){
-            $('.dots-wrap .dot').eq(curIndex).find("span").css({
-                right: index + "%",
-                left: 0
-            })
-            if(prevIndex != -1){
-                $('.dots-wrap .dot').eq(prevIndex).find("span").css({
-                    left: (100 - index) + "%",
-                    right: 0
-                })
+        $head.on("translated.owl.carousel",function(res) {
+            clearInterval(tick)
+            curIndex = res.page.index;
+            if(curIndex >=  res.item.count){
+                curIndex = 0;
             }
-        }
+            progressBar();
+        })
 
-        function countLeft(index){
-            $('.dots-wrap .dot').eq(prevIndex).find("span").css({
-                right: index + "%",
-                left: 0
-            })
-            $('.dots-wrap .dot').eq(curIndex).find("span").css({
-                left: (100 - index) + "%",
-                right: 0
-            })
-        }
+        $(".head-banner").on('mouseover',function(){
+            isPause = true;
+            interval();
+        })
+
+        $(".head-banner").on('mouseout',function(){
+            isPause = false;
+            interval();
+        });
 
 
 
