@@ -11,7 +11,7 @@
 use think\Route;
 Route::get('/home','home/index/index');
 Route::get('/cate','home/index/getCate');
-Route::get('/product/[:cate_id]','home/product/product',[],['cate_id'=>'\d+']);
+Route::get('/product/[:cate_id]','home/product/lst',[],['cate_id'=>'\d+']);
 Route::get('/product/list/[:cate_id]','home/product/lst',[],['cate_id'=>'\d+']);
 Route::get('/product/detail/:id','home/product/detail',[],['id'=>'\d+']);
 Route::get('/about/[:cate_id]','home/about/about',[],['cate_id'=>'\d+']);
