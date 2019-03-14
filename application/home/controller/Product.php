@@ -41,9 +41,12 @@ class Product extends Common
         if(intval($id) <= 0) return;
         $productData = $this->model->getProAndPropData($id);
         $rescData = $this->model->getRescPro(4);
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
         return $this->fetch('',[
             'productData' => $productData,
-            'rescData' => $rescData
+            'rescData' => $rescData,
+            'cateData' => $proCateData
         ]);
     }
 }
