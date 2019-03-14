@@ -19,10 +19,10 @@
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>栏目分类：</label>
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<select name="parent_id" class="select">
+				<select name="pid" class="select">
 					<option value="0">一级分类</option>
 				    {volist name="categorys" id="vo"}
-					<option value="{$vo.id}" {if condition="$category.parent_id eq $vo.id"} selected="selected"{/if}>--{$vo.name}</option>
+					<option value="{$vo.id}" {if condition="$category.pid eq $vo.id"} selected="selected"{/if}>--{$vo.name}</option>
                     {/volist}
 				</select>
 				</span>

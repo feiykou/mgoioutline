@@ -24,7 +24,7 @@ class Category extends Base
 
     // 获取分类列表和子类列表
     public function index(){
-        $parentId = input('param.parent_id',0,'intval');
+        $parentId = input('param.pid',0,'intval');
         $categorys = $this->model->getFirstCate($parentId);
         $crumbData = $this->crumb($parentId);
         return $this->fetch('',[

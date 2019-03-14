@@ -9,6 +9,7 @@
 namespace app\common\model;
 
 
+use catetree\Catetree;
 use think\Model;
 
 class Product extends Model
@@ -52,6 +53,10 @@ class Product extends Model
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
         return explode(';',$val);
+    }
+
+    protected function getCateIdAttr($val,$data){
+        return explode(',',$val);
     }
 
     protected static function init()
@@ -108,7 +113,6 @@ class Product extends Model
         $result = self::where($data)
             ->order($order)
             ->select();
-//        echo $this->getLastSql();
         return $result;
     }
 
@@ -151,9 +155,16 @@ class Product extends Model
 
 
 
+
+
+
     /**
      * 前台数据调用
      */
+    protected function getNameAttr($val,$data){
+        return explode(',', $val);
+    }
+
 
     public function getProAndPropData($id=0){
         $data = [
@@ -268,10 +279,13 @@ class Product extends Model
     }
 
     // 获取产品子栏目产品
-    public function getProductByClumn($clumnId){
+    public function getProductByClumn($cateId){
+        $cateTree = new Catetree();
+        $idArr = $cateTree->childrenids($cateId,model('procate'));
+        $idArr[] = $cateId;
         $data = [
             'status' => 1,
-            'column_id' => $clumnId
+            'cate_id' => ['in',$idArr]
         ];
         $order = [
             'listorder' => "desc",
@@ -280,6 +294,13 @@ class Product extends Model
         $result = self::where($data)->order($order)->select();
         return $result;
     }
+
+//    public function getSonData($cateId){
+//        $data = [
+//            'status' => 1,
+//            'cate_id' => $cateId
+//        ];
+//    }
 
 
 }

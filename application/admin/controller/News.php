@@ -19,17 +19,49 @@ class News extends Base
     }
 
     public function index(){
-        $newsAllData = $this->model->getAllNewsData();
+        $data = input('get.');
+        $sdata = [];
+        // 时间条件范围
+        if(!empty($data['start_time']) && !empty($data['end_time']) && strtotime($data['end_time']) > strtotime($data['start_time'])){
+            $sdata['create_time'] = [
+                ['gt',$data['start_time']],
+                ['lt',$data['end_time']]
+            ];
+        }
+        if(!empty($data['cate_id'])){
+            $ids = model('news_cate')->getChildCateIds($data['cate_id']);
+            if($ids == ''){
+                $ids .= $data['cate_id'];
+            }
+
+            $sdata['cate_id'] = [
+                'in',$ids
+            ];
+        }
+
+        if(!empty($data['name'])){
+            $sdata['name'] = ['like','%'.$data['name'].'%'];
+        }
+
+        $cateData = model('news_cate')->getCateData();
+        $newsAllData = $this->model->getAllNewsData($sdata);
         return $this->fetch('',[
-            'newsAllData'   => $newsAllData
+            'newsAllData'   => $newsAllData,
+            'cateData' => $cateData,
+            'start_time'   => empty($data['start_time']) ? '' : $data['start_time'],
+            'end_time'     => empty($data['end_time']) ? '' : $data['end_time'],
+            'name'         => empty($data['name']) ? '' : $data['name'],
+            'cate_id'  => empty($data['cate_id']) ? '' : $data['cate_id']
         ]);
     }
 
     public function add(){
 //        (new ProductValidate())->goCheck('add');
         $columnSortData = model('category')->getColumnCate();
+        $newCates = model('news_cate')->getCateData();
         return $this->fetch('',[
-            'columnSortData' => $columnSortData
+            'columnSortData' => $columnSortData,
+            'newCates' => $newCates
         ]);
     }
 
@@ -73,9 +105,11 @@ class News extends Base
 
         $newsAllData = $this->model->getNewsData($id);
         $columnSortData = model('category')->getColumnCate();
+        $newCates = model('news_cate')->getCateData();
         return $this->fetch('',[
             'newsAllData' => $newsAllData,
-            'columnSortData' => $columnSortData
+            'columnSortData' => $columnSortData,
+            'newCates' => $newCates
         ]);
     }
 
@@ -124,5 +158,6 @@ class News extends Base
             $this->result($_SERVER['HTTP_REFERER'], 0, '更新失败');
         }
     }
+
 
 }

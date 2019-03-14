@@ -8,7 +8,10 @@
 
 namespace app\admin\controller;
 
+use app\admin\validate\Cate;
 use app\admin\validate\procate as procateValidate;
+use catetree\Catetree;
+use app\common\model\Procate as ProcateModel;
 
 class Procate extends Base
 {
@@ -22,11 +25,9 @@ class Procate extends Base
 
     public function index(){
         $categorys = $this->model->getAllCateData();
-        $page = $categorys->render();
         $sortArr = sortData($categorys);
         return $this->fetch('',[
-            'categorys' => $sortArr,
-            'page'      => $page
+            'categorys' => $sortArr
         ]);
     }
 
@@ -56,7 +57,7 @@ class Procate extends Base
         if(!request()->isPost()){
             $this->error("请求失败");
         }
-        $validate = (new procateValidate())->goCheck('add');
+        $validate = (new Cate())->goCheck('add');
         if(!$validate['type']){
             $this->result("",'0',implode('',$validate['msg']));
         }
@@ -70,7 +71,7 @@ class Procate extends Base
             $this->result('','0','存在同名类');
         }
 
-        // 更新数据s
+        // 更新数据
         if(!$is_exist_id){
             return $update = $this->update($data);
         }
@@ -105,34 +106,37 @@ class Procate extends Base
     }
 
     //删除
-    public function del($id=-1){
-        if(request()->isPost()){
-            $id = request()->post()['idsArr'];
-            if($id == []){
-                $this->error("无选中的数据！");
-            }
-        }else{
-            if(intval($id)<1){
-                $this->error("参数不合法");
-            }
+    public function del($id){
+        if(intval($id) < 0 ){
+            $this->error("参数不合法");
         }
 
-        // 判断是否有子类
-        $is_child = $this->model->is_child($id);
-        if($is_child){
-            $this->result('', 0, '存在子类，请先删除子类');
-        }
-        $is_exist_pro = $this->model->is_exist_pro($id);
-        if($is_exist_pro){
-            $this->result('', 0, '存在产品，请先去产品列表删除相关产品！');
-        }
+        $catetree = new Catetree();
+        $sonids = $catetree->childrenids($id, $this->model);
+        $sonids[] = intval($id);
+        $result = ProcateModel::destroy($sonids);
 
-        if(!is_array($id)){
-            $id = [$id];
-        }
-        // 删除
-        $result = $this->model->delSelChild($id);
         // 返回状态码
+        if($result){
+            $this->result($_SERVER['HTTP_REFERER'], 1, '删除完成');
+        }else{
+            $this->result($_SERVER['HTTP_REFERER'], 0, '删除失败');
+        }
+    }
+
+    /**
+     * 删除多条
+     */
+    function delSel(){
+        $idArr = input('post.')['idsArr'];
+
+        if(!is_array($idArr)){
+            $this->error('参数错误');
+        }
+        $catetree = new Catetree();
+        $allson = $catetree->pdel($idArr, $this->model);
+        $result = ProcateModel::destroy($allson);
+
         if($result){
             $this->result($_SERVER['HTTP_REFERER'], 1, '删除完成');
         }else{

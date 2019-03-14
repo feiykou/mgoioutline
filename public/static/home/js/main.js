@@ -1,9 +1,8 @@
 var fnJsLoad = function(url, callback) {
-    console.log(111)
     callback = callback || function() {};
 
     var eleScript = document.createElement('script');
-
+    
     eleScript.onload = function() {
         if (!eleScript.isInited) {
             eleScript.isInited = true;
@@ -23,12 +22,11 @@ var fnJsLoad = function(url, callback) {
     document.getElementsByTagName('head')[0].appendChild(eleScript);
 };
 
-
 function IsPC() {
     var userAgentInfo = navigator.userAgent;
     var Agents = ["Android", "iPhone",
-        "SymbianOS", "Windows Phone",
-        "iPad", "iPod"];
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
     var flag = true;
     for (var v = 0; v < Agents.length; v++) {
         if (userAgentInfo.indexOf(Agents[v]) > 0) {

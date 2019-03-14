@@ -20,7 +20,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品标题：</label>
 			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
-				<input type="text" class="input-text" value="{$proAllData.name}" placeholder="" name="name">
+				<input type="text" class="input-text" value="{$proAllData.name[0]}" placeholder="" name="name">
 			</div>
 		</div>
 		<div class="row cl">
@@ -47,7 +47,7 @@
 				<select class="select" name="column_id">
 					<option value="">请选择所属栏目</option>
 					{volist name="columnSortData" id="cate"}
-                <option value="{$cate.id}" {if condition="$cate.id == $proAllData.column_id"}selected{/if}>{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+                <option value="{$cate.id}" {if condition="$cate.id == $proAllData.column_id"}selected{/if}>{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
 					{/volist}
 				</select>
 				</span> </div>
@@ -55,10 +55,10 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">产品类别：</label>
 			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
-				<select class="select" name="cate_id">
+				<select class="select cate-sel-wrap" multiple="multiple">
 					<option value="">请选择</option>
 					{volist name="cateData" id="cate"}
-                <option value="{$cate.id}" {if condition="$cate.id == $proAllData.cate_id"}selected{/if}>{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+                <option value="{$cate.id}" {if condition="in_array($cate.id,$proAllData.cate_id)"}selected{/if}>{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
 					{/volist}
 				</select>
 				</span> </div>
@@ -389,7 +389,13 @@
 				var mobileImgs = setUpdateUrl($mobileImgs_childs);
 				var code_img = setUpdateUrl($code_img_childs);
 
-				var params = "&imgs_url="+imgs_url+"&main_img_url="+main_img_url+"&mobile_imgs_url="+mobileImgs+"&code_img="+code_img;
+				var selVal = '';
+				$(".cate-sel-wrap option:selected").each(function(index,val){
+					selVal += $(val).val() + ',';
+				})
+				selVal = selVal.substring(0,selVal.length-1);
+				
+				var params = "&imgs_url="+imgs_url+"&main_img_url="+main_img_url+"&mobile_imgs_url="+mobileImgs+"&code_img="+code_img+"&cate_id="+selVal;
 				$.ajax({
 					url: "{:url('save')}",
 					type: "post",

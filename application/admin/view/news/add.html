@@ -11,13 +11,25 @@
 <div class="page-container">
 	<form action="" method="post" class="form form-horizontal" id="form-pro-add">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品标题：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
 			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
 				<input type="text" class="input-text" value="" placeholder="" name="name">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>产品介绍：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>副标题：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="" placeholder="" name="sub_name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">编辑者：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="mgoi" placeholder="" name="author">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>介绍：</label>
 			<div class="formControls col-xs-8 col-sm-9 col-lg-3">
 				<textarea name="introduce" cols="" rows="" class="textarea" placeholder="说点什么..."></textarea>
 			</div>
@@ -28,8 +40,19 @@
 				<select class="select" name="column_id">
 					<option value="">请选择所属栏目</option>
 					{volist name="columnSortData" id="cate"}
-                <option value="{$cate.id}">{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+                <option value="{$cate.id}">{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
                 {/volist}
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择所属分类：</label>
+			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
+				<select class="select" name="cate_id">
+					<option value="">请选择所属分类</option>
+					{volist name="newCates" id="cate"}
+					<option value="{$cate.id}">{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+					{/volist}
 				</select>
 				</span> </div>
 		</div>
@@ -40,13 +63,13 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>移动端产品图：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>移动端图：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				{Uploader:webuploader btnVal="上传移动端图" uploadId="mobileImgs"}{/Uploader:webuploader}
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>产品详情：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>详情：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<script id="detailCon" type="text/plain" name="content" style="width:100%;height:400px;"></script>
             </div>

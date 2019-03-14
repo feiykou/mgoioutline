@@ -12,19 +12,22 @@ namespace app\home\controller;
 use app\common\model\Procate;
 use app\home\model\BannerItem;
 use app\common\model\Product;
+use app\common\model\Column;
 
 class Index extends Common
 {
     public function index(){
-        $cateData = Procate::getIndexCateProduct();
         $bannerData = BannerItem::getIndexBanner();
         $resProData = Product::getRescPro();
-        $hotProData = Product::getHotProData();
+        $resColumnData = Column::getIndexResc();
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
+
         return $this->fetch('',[
-            'cateData' => $cateData,
             'bannerData' => $bannerData,
             'resProData' => $resProData,
-            'hotProData' => $hotProData
+            'resColumnData' => $resColumnData,
+            'cateData' => $proCateData
         ]);
     }
 }

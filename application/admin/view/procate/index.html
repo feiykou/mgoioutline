@@ -25,7 +25,7 @@
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
 		<span class="l">
 			<span class="btn btn-danger radius selectAll-del"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</span>
-			<span class="btn btn-primary radius ml-10 btn-add" data-toggle="modal" data-target="#add-modal"><i class="Hui-iconfont">&#xe600;</i> 添加分类</span>
+			<span class="btn btn-primary radius ml-10 btn-add" onclick="s_edit('添加分类','{:url(\'procate/add\')}','',560)"><i class="Hui-iconfont">&#xe600;</i> 添加分类</span>
 		</span></div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-sort table-hover">
@@ -44,16 +44,15 @@
 				<tr class="text-c" data-id="{$catelist.id}">
 					<td><input class="checkbox_sel" name="" type="checkbox" value=""></td>
 					<td>{$catelist.id}</td>
-					<td class="text-l">{if condition="$catelist.parent_id != 0"}┞{/if}{$catelist.level|str_repeat='┄',###*2}{$catelist.name}</td>
+					<td class="text-l">{if condition="$catelist.pid != 0"}┞{/if}{$catelist.level|str_repeat='┄',###*2}{$catelist.name}</td>
 					<td class="listorder"><input size="3" data-id="{$catelist.id}" name="listorder" value="{$catelist.listorder}"/></td>
-					<td>{if condition="$catelist.parent_id == 0"}顶级分类{else /}{$catelist.pname}{/if}</td>
+					<td>{if condition="$catelist.pid == 0"}顶级分类{else /}{$catelist.pname}{/if}</td>
 					<td class="f-14 product-brand-manage">
-						<span class="btn-edit" style="cursor: pointer;" title="编辑" data-id="{$catelist.id}" data-toggle="modal" data-target="#edit-modal"><i class="Hui-iconfont">&#xe6df;</i></span>
+						<span class="btn-edit" style="cursor: pointer;" title="编辑" onclick="s_edit('分类编辑','{:url('edit',['id'=>$catelist.id])}','',500)"><i class="Hui-iconfont">&#xe6df;</i></span>
 						<span class="btn-del ml-5" style="cursor: pointer;" title="删除" data-id="{$catelist.id}" data-toggle="modal" data-target="#del-modal"><i class="Hui-iconfont">&#xe6e2;</i></span></td>
 				</tr>
 				{/volist}
 
-				{$page}
 			</tbody>
 		</table>
 	</div>
@@ -100,53 +99,53 @@
 
 <script>
 	/*获取添加的内容*/
-    loadPage.init({
-        "clickDom": $(".btn-add"),
-		"url": "{:Url('add')}",
-        "modalConDom": $("#add-modal .modal-content")
-	});
-
-	/*获取编辑的内容*/
-    loadPage.init({
-        "clickDom": $(".btn-edit"),
-        "url": "{:Url('edit')}",
-        "modalConDom": $("#edit-modal .modal-content"),
-		"attrArr": ['id']
-    });
+//    loadPage.init({
+//        "clickDom": $(".btn-add"),
+//		"url": "{:Url('add')}",
+//        "modalConDom": $("#add-modal .modal-content")
+//	});
+//
+//	/*获取编辑的内容*/
+//    loadPage.init({
+//        "clickDom": $(".btn-edit"),
+//        "url": "{:Url('edit')}",
+//        "modalConDom": $("#edit-modal .modal-content"),
+//		"attrArr": ['id']
+//    });
 
 
     /*ajax请求添加的数据*/
-	$("#add-modal").on("click",'.cateAdd-sub',function(){
-		$.ajax({
-            url: "{:url('save')}",
-			type: "post",
-            data: $('#cate-add-form').serialize(),
-            success: function(res){
-                layer.msg(res.msg, {icon: 6,time:1000});
-                if(res.data){
-                    window.location = res.data;
-                }
-			}
-		})
-	});
-
-	/*ajax请求编辑的数据*/
-    $("#edit-modal").on("click",'.cateEdit-sub',function(){
-        $("#edit-modal").modal('hide');
-        $.ajax({
-            url: "{:url('save')}",
-            type: "post",
-            data: $('#cate-edit-form').serialize(),
-            success: function(res){
-                layer.msg(res.msg, {icon: 6,time:1000});
-                setTimeout(function(){
-                    if(res.data){
-                        window.location = res.data;
-                    }
-				},1000);
-            }
-        })
-    });
+//	$("#add-modal").on("click",'.cateAdd-sub',function(){
+//		$.ajax({
+//            url: "{:url('save')}",
+//			type: "post",
+//            data: $('#cate-add-form').serialize(),
+//            success: function(res){
+//                layer.msg(res.msg, {icon: 6,time:1000});
+//                if(res.data){
+//                    window.location = res.data;
+//                }
+//			}
+//		})
+//	});
+//
+//	/*ajax请求编辑的数据*/
+//    $("#edit-modal").on("click",'.cateEdit-sub',function(){
+//        $("#edit-modal").modal('hide');
+//        $.ajax({
+//            url: "{:url('save')}",
+//            type: "post",
+//            data: $('#cate-edit-form').serialize(),
+//            success: function(res){
+//                layer.msg(res.msg, {icon: 6,time:1000});
+//                setTimeout(function(){
+//                    if(res.data){
+//                        window.location = res.data;
+//                    }
+//				},1000);
+//            }
+//        })
+//    });
 
     /*排序*/
     $(".listorder>input").blur(function () {
@@ -204,12 +203,12 @@
                 idsArr.push($(trDom).data('id'));
             }
         });
-
         $.ajax({
-            url: "{:url('del')}",
+            url: "{:url('delSel')}",
             type: "post",
             data: {idsArr:idsArr},
             success: function(res){
+                console.log(res)
                 layer.msg(res.msg, {icon: 6,time:3000});
                 setTimeout(function(){
                     if(res.data){

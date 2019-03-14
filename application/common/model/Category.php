@@ -17,7 +17,7 @@ class Category extends Model
     public function getNormalFirstCate($id=0){
         $data = [
             'status'    => 1,
-            'parent_id' => 0,
+            'pid' => 0,
             'id'        => ['neq',$id]
         ];
 
@@ -42,7 +42,7 @@ class Category extends Model
     // 获取当前栏目下的所有子分类
     public function getFirstCate($pid = 0){
         $data = [
-            'parent_id' => $pid,
+            'pid' => $pid,
             'status'    => ['neq',-1]
         ];
         $order = [
@@ -70,7 +70,7 @@ class Category extends Model
     public function getAllColumn(){
         $data = [
             'status'    =>  1,
-            'parent_id' =>  0,
+            'pid' =>  0,
         ];
         $order = [
             'listorder' => 'desc',
@@ -79,7 +79,7 @@ class Category extends Model
         $column = db("category")->where($data)->order($order)->select();
         foreach ($column as $key => $v){
             $children = db("category")->where([
-                    'parent_id'=>$v['id'],
+                    'pid'=>$v['id'],
                     'status' => 1
                 ])->select();
                 if($children){

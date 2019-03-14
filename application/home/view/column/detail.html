@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/head" title="$title" /}
+</head>
+<body>
+<!-- 头部导航 -->
+{include file="public/header-nav" /}
+
+<!-- 左右固定 -->
+{include file="public/lr-fixed" type="column" /}
+
+<!-- 内容区 -->
+<div class="container detail-container">
+    <div class="index-content">
+        <div class="content-wrap">
+            <!-- 产品头图 -->
+            <div class="text-img-wrap hidden w1100">
+                <div class="left-wrap lr">
+                    <!-- strtotime -->
+                    <p>{$detailData.update_time}</p>
+                    <h1>{$detailData.name}</h1>
+                </div>
+                <div class="right-wrap">
+                    <img src="{$detailData.main_img_url[0]}" alt="">
+                </div>
+            </div>
+            <!-- 产品详情 -->
+            <div class="detail-wrap w1100">
+                <div class="detail-tit-info fl">
+                    <p class="rl">{$detailData.introduce}</p>
+                </div>
+                <div class="detail-con hidden">
+                    <div class="con-tit">
+                        <p>{$detailData.name}</p>
+                        <!-- <p>你是他的唯一</p> -->
+                    </div>
+                    <div class="sec-tit">{$detailData.sub_name}</div>
+                    <div class="con">
+                        {$detailData.content}
+                    </div>
+                </div>
+            </div>
+            <!-- 上下篇 -->
+            <div class="up-down-page hidden">
+                <p class="fl">上一篇：<a href="#">题目</a></p>
+                <p class="fr">下一篇：<a href="#">题目</a></p>
+            </div>
+        </div>
+        <!-- 底部 -->
+        {include file="public/footer" /}
+    </div>
+</div>
+<div class="bottom-line"></div>
+</body>
+</html>

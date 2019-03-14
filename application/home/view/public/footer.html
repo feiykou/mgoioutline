@@ -1,74 +1,23 @@
 <div class="footer-sec">
     <div class="contact-wrap">
-        <div class="form-box">
+        <div class="form-box fl">
             <p>业务联系</p>
             <div class="form-wrap">
                 <input placeholder="请输入您的邮箱" type="text" name="">
                 <span class="submit-btn">提交</span>
             </div>
         </div>
+        <div class="footer-banner hidden">
+            <div class="tel-wrap fr">
+                <p>T：020 3860 8003</p>
+                <p>E：m3goil@163.com</p>
+            </div>
+            <ul class="share-wrap fr">
+                <li><a href="#"><img src="__STATIC__/home/images/taobao@index.png" alt=""></a></li>
+                <li><a href="#"><img src="__STATIC__/home/images/wxcode@index.png" alt=""></a></li>
+                <li><a href="#"><img src="__STATIC__/home/images/weibo@index.png" alt=""></a></li>
+                <li><a href="#"><img src="__STATIC__/home/images/wx@index.png" alt=""></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="link-wrap">
-        <ul>
-            <li><a href="#" target="_blank">首页</a></li>
-            <li><a href="#" target="_blank">产品</a></li>
-            <li><a href="#" target="_blank">关于</a></li>
-            <li><a href="#" target="_blank">商城</a></li>
-            <li><a href="#" target="_blank">新闻</a></li>
-            <li><a href="#" target="_blank">联系我们</a></li>
-        </ul>
-        <p class="copyright">©MGOI</p>
-    </div>
 </div>
-</div>
-</div>
-<div class="bottom-line"></div>
-<script src="__STATIC__/home/js/jquery-1.10.1.min.js"></script>
-<script src="__STATIC__/home/js/main.js"></script>
-<script src="__STATIC__/home/js/lib.js"></script>
-<script src="__STATIC__/home/js/common.js"></script>
-<script src="__STATIC__/home/js/owl.carousel.js"></script>
-<script>
-        var sildeDom = document.querySelectorAll('.sildeUpnav');
-        var mark = true;
-        console.log(sildeDom[0])
-        sildeDom[0].addEventListener('touchstart',function(){
-            var maskDom = this.nextElementSibling;
-            if(mark){
-                maskDom.className += ' active';
-                mark = false;
-            }else{
-                maskDom.className = maskDom.getAttribute('class').replace(' active','');
-                mark = true;
-            }
-
-        })
-
-        $(function(){
-            var rescDom = $('.resc-banner');
-            var copyDom = $('.resc-banner-copy');
-            var wrapDom = $('.resc-banner-wrap');
-            scrollBanner(rescDom,copyDom,wrapDom);
-            var navDom = $('.nav-banner');
-            var navCopyDom = $('.nav-banner-copy');
-            var navWrapDom = $('.nav-banner-wrap');
-            scrollBanner(navDom,navCopyDom,navWrapDom);
-
-            function scrollBanner(rescDom,copyDom,wrapDom){
-                var maxW = rescDom.width();
-                var speed = 28,
-                    num = 0;
-                copyDom.html(rescDom.html());
-                setInterval(function(){
-                    num -= 1;
-                    if(Math.abs(num) >= maxW){
-                        num = 0;
-                    }
-                    wrapDom.css({
-                        left: num
-                    })
-                },speed)
-            }
-        })
-
-</script>

@@ -1,0 +1,26 @@
+<script src="__STATIC__/home/js/jquery-1.10.1.min.js"></script>
+<script src="__STATIC__/home/js/main.js"></script>
+<script src="__STATIC__/home/js/lib/antimoderate/preloadjs.min.js"></script>
+<script src="__STATIC__/home/js/lib.js"></script>
+<script src="__STATIC__/home/js/common.js"></script>
+<script src="__STATIC__/home/js/owl.carousel.js"></script>
+<script src="__STATIC__/home/js/owl.navigation.js"></script>
+<script src="__STATIC__/home/js/owl.autoplay.js"></script>
+<script src="__STATIC__/home/js/banner.js"></script>
+<script src="__STATIC__/home/js/lazyload.js"></script>
+<script>
+    var sildeDom = document.querySelectorAll('.sildeUpnav');
+    var mark = true;
+    sildeDom[0].addEventListener('touchstart',function(){
+        var maskDom = this.nextElementSibling;
+        if(mark){
+            maskDom.className += ' active';
+            mark = false;
+        }else{
+            maskDom.className = maskDom.getAttribute('class').replace(' active','');
+            mark = true;
+        }
+
+    })
+
+</script>

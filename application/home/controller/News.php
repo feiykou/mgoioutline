@@ -9,6 +9,8 @@
 namespace app\home\controller;
 
 
+use app\common\model\NewsCate;
+
 class News extends Common
 {
 
@@ -18,10 +20,28 @@ class News extends Common
         parent::_initialize();
         $this->model = model('news');
     }
-    public function index(){
-        $newsData =$this->model->getNewsIndexData();
-        return $this->fetch('news',[
-            'newsData' => $newsData
+    public function index($cate_id){
+        $newsData =$this->model->getNewsIndexData($cate_id);
+        $sonCateData = NewsCate::getSonData($cate_id);
+        $curentCate = model('news_cate')->getCateById($cate_id);
+        $cate = new NewsCate();
+        $cateData = $cate->getCateJson();
+        return $this->fetch('',[
+            'newsData' => $newsData,
+            'cateData' => $cateData,
+            'sonCateData' => $sonCateData,
+            'curentCate' => $curentCate,
+        ]);
+    }
+    public function detail($id){
+        if(intval($id) <= 0) return;
+        $detailData = $this->model->getNewsData($id);
+        $cate = new NewsCate();
+        $cateData = $cate->getCateJson();
+        // $rescData = $this->model->getRescPro(4);
+        return $this->fetch('',[
+            'detailData' => $detailData,
+            'cateData' => $cateData
         ]);
     }
 }

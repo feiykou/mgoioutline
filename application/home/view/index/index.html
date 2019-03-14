@@ -1,238 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Document</title>
-    {include file="public/head" /}
+    {include file="public/head" title="$title" /}
 </head>
 <body>
+<!-- 头部导航 -->
 {include file="public/header-nav" /}
 
+<!-- 左右固定 -->
+{include file="public/lr-fixed" type="product" /}
+
+
+<!-- 轮播图 -->
 <div class="banner-sec preloader">
-    <div class="head-banner owl-carousel">
-        {volist name="bannerData" id="data"}
-        <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{$data.img_url[2]}" data-image-xs="{$data.img_url[1]}" data-image-lg="{$data.img_url[0]}"></div>
-        {/volist}
+    <div class="w1100">
+        <div class="head-banner-wrap">
+            <div class="nav-box">
+                <div class="arrow prev">
+                    <span>
+                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
+                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
+                    </span>
+                </div>
+                <div class="arrow next">
+                    <span>
+                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
+                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="head-banner owl-carousel">
+                {volist name="bannerData" id="data"}
+                <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{present name="$data.img_url[2]"}{$data.img_url[2]}{/present}" data-image-xs="{present name="$data.img_url[1]"}{$data.img_url[1]}{/present}" data-image-lg="{$data.img_url[0]}"></div>
+                {/volist}
+            </div>
+        </div>
+        <div class="dots-wrap">
+            {volist name="bannerData" id="data"}
+                <div class="dot"><i></i></div>
+            {/volist}
+        </div>
+        <ul class="rela-imgs hidden">
+            {volist name="bannerData" id="data"}
+            <li class="active"><a href="{if condition='$data.type == 1'}
+                    /product/detail/{$data.key_word}
+                {elseif condition='$data.type eq 2'}
+                    /news/detail/{$data.key_word}
+                {else/}javascript:volid(0);
+            {/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
+            {/volist}
+        </ul>
     </div>
 </div>
+
+<!-- 内容区 -->
 <div class="container index-container">
     <div class="index-content">
         <div class="content-wrap">
-            <div class="resc-main-prop">
-                <ul class="gift-wrap">
-                    {volist name="hotProData" id="hotData"}
-                    <li class="w1100">
-                        <div class="item">
-                            <div class="img"><img src="{$hotData.main_img_url[1]}" alt=""><img src="{$hotData.main_img_url[1]}" alt=""></div>
-                            <div class="con">
-                                <p class="tit">{$hotData.name}</p>
-                                <p class="desc">{$hotData.introduce}</p>
+            <div class="section resc-banner-sec w1100 clearfix">
+                <div class="resc-banner-box">
+                    <div class="resc-banner-wrap">
+                        <ul class="resc-banner fl">
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                        </ul>
+                        <ul class="resc-banner-copy fl"></ul>
+                    </div>
+                </div>
+
+                <!-- <div class="title-wrap">
+                    <div class="con">
+                        <p class="tit">黑白也是有趣</p>
+                        <p>我们在这里，用最简单的笔触，提笔来描述出一个产品最原始的概念图，他是这样而诞生的。</p>
+                        <h2 class="none">宠物插画</h2>
+                    </div>
+                </div> -->
+            </div>
+            <div class="section product-sec">
+                <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
+                    <div class="index-product-box">
+                        <div class="product-wrap product-container">
+                            {volist name="resProData" id="data"}
+                            <div class="item">
+                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" data-src="{$data.main_img_url[0]}" lazyload="true" alt=""></a>
+                                <div class="info">
+                                    <h3 class="tit clearfix"><a class="fl" href="/product/detail/{$data.id}">{$data.name[0]}</a></h3>
+                                    <p class="desc-price"><span class="price">¥{$data.price}</span></p>
+                                </div>
                             </div>
-                            <div class="arrow"><span></span></div>
+                            {/volist}
+
                         </div>
+                        <div class="more-con"><span>ALL &gt;</span></div>
+                    </div>
+                </div>
+            </div>
+            <!--  招聘 -->
+            <div class="recruit-sec w1100 hidden">
+                <img src="__STATIC__/home/images/recruit@icon.png" alt="">
+                <div>招聘：我们正在寻找一名工业设计师</div>
+            </div>
+
+            <!-- 公司信息导航 -->
+            <div class="company-nav-sec w1100">
+                <ul class="hidden">
+                    {volist name="resColumnData" id="data"}
+                    <li>
+                        <div class="name">{$data.name}</div>
+                        <a href="/column/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
+                        <p class="tit">{$data.sub_name}</p>
+                        <p class="desc">{$data.introduce}</p>
+                        <p class="more"><a href="/column/detail/{$data.id}">了解更多 &gt;</a></p>
                     </li>
                     {/volist}
                 </ul>
             </div>
-            <div class="section product-sec">
-                {volist name="cateData" id="resData" key="k"}
-                <div class="item">
-                    <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
-                        <div class="nav"><span>产品 | {$resData.name}</span></div>
-                        <div class="index-product-wrap">
-                            <div class="banner-wrap product-banner-one owl-carousel">
-                                {volist name="resData['data']" id="data"}
-                                <div class="item">
-                                    <a href="/product/detail/{$data.id}"><img class="lazy" src="" data-src="{$data.main_img_url[0]}" alt=""></a>
-                                    <div class="info">
-                                        <h3 class="tit clearfix"><a class="fl" href="/product/detail/{$data.id}">{$data.name}</a></h3>
-                                        <p class="desc-price"><span class="desc">{$data.introduce}</span><span class="price fr">¥{$data.price}</span></p>
-                                    </div>
-                                </div>
-                                {/volist}
-                            </div>
-                            <div class="more-con"><span>ALL &gt;</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                {/volist}
-            </div>
-            <div class="section resc-banner-sec w1100 clearfix">
-                <div class="resc-banner-wrap">
-                    <ul class="resc-banner fl">
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                        <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                    </ul>
-                    <ul class="resc-banner-copy fl"></ul>
-                </div>
-            </div>
-            <div class="section company-info-sec">
-                <!-- <h2 class="about-tit">关于唔该</h2> -->
-                <ul class="about-box first w1100">
-                    <li>
-                        <div class="wrap">
-                            <div class="wrap-box">
-                                <div class="info"><img src="__STATIC__/home/images/logo.png"><span>唔该</span></div>
-                                <div class="con">
-                                    <p>唔该，读唔（m，阳平声）该（goi，阴平声）
-                                        这一句口头禅叫做“唔该”，它频繁出现在人际交往中理应表示谢意的场合——这场合本来应该说“谢谢”的。</p>
-                                    <p>“唔该”就等于“不应该”吗？钻进故纸堆中，我发现，古人所说的“该”原来并没有“应该”的意义。譬如左思《吴都赋》中的一句，“耳目之所不该”，应译成“耳目所不能包括的”。古语“该”通“赅”，意为具备、完备、包括。《说文解字》释“该”道：“军中约也。”这又把它的使用情况界定在军队内。作为语言发展的一种结果，“该”的派生义“应该”已成为今日使用中的主要义，而渐被人忘却的基本义则转由“赅”去承担（成语有“言简意赅”）。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wrap">
-                            <div class="wrap-box">
-                                <div class="con tc">
-                                    <img src="__STATIC__/home/images/logo.png">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="about-box second">
-                    <li>
-                        <div class="wrap">
-                            <div class="wrap-box">
-                                <div class="con tc">
-                                    <img src="__STATIC__/home/images/logo.png">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="wrap">
-                            <div class="wrap-box">
-                                <span class="info">唔该</span>
-                                <div class="con">
-                                    <p>倘设想“唔该”果真留有古文化的一条尾巴，这一口头禅则可理解成“不完备”。什么“不完备”？说话者自己呀！服务行业里的靓女冲你说“唔该”，说的是自己服务质量的“不完备”——潜台词是“怎么服务都无法表达我对你的一片感激”。至于热心助人的你让人们所感受到的古道热肠，对方那一叠连声的“唔该”，亦在表明其谢意的“不完备”哩。</p>
-                                    <p>这个社会在呼唤文明呼唤礼貌，那么，请从“唔该”说起吧。惟其不完备，才需要呼唤。当大家都沉浸在“唔该”声中仍觉不完备时，我们的精神文明建设就大大地前进了一步。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="index-recruit-wrap">
-                <div class="item w1100">
-                    <p class="img fl"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>
-                    <div class="con">
-                        <p>我们正在寻找一名工业设计师，期待您的加入</p>
-                        <p></p>
-                    </div>
-                    <!--<p class="img fr"><img src="__STATIC__/home/images/news-cion.png" alt=""></p>-->
-                </div>
-            </div>
         </div>
         {include file="public/footer" /}
-        <script src="__STATIC__/home/js/lib/antimoderate/preloadjs.min.js"></script>
+    </div>
+</div>
+<div class="bottom-line"></div>
+{include file="public/script" /}
+<script>
 
-        <script>
-            function feiy_preloader(imgUrl, handleComplete){
-                var queue = new createjs.LoadQueue(false);
-                var loadFile = [
-                    {id: "image", src:imgUrl}
-                ];
-                queue.on("complete", handleComplete, this);
-                queue.loadManifest(loadFile);
-            }
-
-            function setBannerPreload(){
-                var bigImgDom = $(".main-sec-big-img");
-                var smallImg = bigImgDom.data('small-img');
-                var bigImg = bigImgDom.data('image-lg');
-                var MobileImg = bigImgDom.data('image-xs');
-                var imgUrl = '';
-                bigImgDom.css({
-                    'backgroundImage':'url('+smallImg+')',
-                    'backgroundSize': '100% 100%',
-                    'filter': 'blur(20px)'
-                });
-                imgUrl = IsPC() ? bigImg : MobileImg;
-                feiy_preloader(imgUrl, function(){
-                    resize();
-                })
-            }
-            setBannerPreload();
-            $(window).on('resize',resize);
-            function resize(){
-                $('.banner-sec .item').each(function(index,item){
-                    var $this = $(item);
-                    var imgSrc = !IsPC() ? $this.data('image-xs'): $this.data('image-lg');
-                    // 设置背景图片
-                    $this.css({
-                        'backgroundImage': 'url('+imgSrc+')',
-                        'backgroundSize': 'cover',
-                        'filter': 'blur(0)'
-                    });
-                });
-            }
-
-
-
-            $(function(){
-                var dpr992 = dpr*992;
-                var dpr1200 = dpr*1200;
-                var obj = {};
-
-                $head = $('.head-banner').owlCarousel({
-                    loop:true,
-                    autoplay: true,
-                    margin:4,
-                    dot: true,
-                    items: 1
-                })
-
-                if(dpr == 1){
-                    obj = {
-                        0:{
-                            items:2,
-                        },
-                        992:{
-                            items:4,
-                            dot: true,
-                        },
-                        1200:{
-                            items:5,
-                            loop:true
-                        }
-                    };
+    $(function(){
+        // nav收缩展开
+        $('.nav-item>a').on('click',function(){
+            if (!$('.nav').hasClass('nav-mini')) {
+                if ($(this).next().css('display') == "none") {
+                    //展开未展开
+                    console.log($(this).next('ul'))
+                    $(this).parents('.nav').find(".nav-item").children('ul').slideUp(300);
+                    $(this).next('ul').slideDown(300);
+                    $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+                    $(this).find('.nav-more').text('-');
                 }else{
-                    obj = {
-                        0:{
-                            items:2,
-                        }
-                    };
+                    //收缩已展开
+                    $(this).next('ul').slideUp(300);
+                    $('.nav-item.nav-show').removeClass('nav-show');
+                    $(this).find('.nav-more').text('+');
                 }
+            }
+        });
+    });
 
 
-                $('.product-banner-one').owlCarousel({
-                    loop:true,
-                    margin:40,
-                    responsiveClass:true,
-                    nav:false,
-                    responsive:obj
-                });
-                $('.product-banner-two').owlCarousel({
-                    loop:true,
-                    margin:40,
-                    responsiveClass:true,
-                    responsive:obj
-                });
-            })
+</script>
+<script>
+    $(function(){
+        var rescDom = $('.resc-banner');
+        var copyDom = $('.resc-banner-copy');
+        var wrapDom = $('.resc-banner-wrap');
+        scrollBanner(rescDom,copyDom,wrapDom);
+        var navDom = $('.nav-banner');
+        var navCopyDom = $('.nav-banner-copy');
+        var navWrapDom = $('.nav-banner-wrap');
+        scrollBanner(navDom,navCopyDom,navWrapDom);
 
-        </script>
-        <script src="__STATIC__/home/js/lazyload.js"></script>
+        function scrollBanner(rescDom,copyDom,wrapDom){
+            var maxW = rescDom.width();
+            var speed = 28,
+                num = 0;
+            copyDom.html(rescDom.html());
+            setInterval(function(){
+                num -= 1;
+                if(Math.abs(num) >= maxW){
+                    num = 0;
+                }
+                wrapDom.css({
+                    left: num
+                })
+            },speed)
+        }
+
+
+    })
+
+
+    // $(document).ready(function () {
+    //     isScroll.init('.divanimate');
+    // });
+
+
+
+    $(function(){
+        var sildeDom = document.querySelector('.sildeUp');
+        var mark = true;
+        sildeDom.addEventListener('touchstart',function(){
+            var maskDom = this.children[1];
+            console.log(this)
+            if(mark){
+                maskDom.className += ' active';
+                mark = false;
+            }else{
+                maskDom.className = maskDom.getAttribute('class').replace(' active','');
+                mark = true;
+            }
+        })
+    })
+
+    $(function(){
+        $(".btn-menu").on('click',function(){
+            if(!$(this).hasClass('close')){
+                $(this).addClass("close");
+                $(this).next().removeClass('fadeOutUp')
+                $(this).next().show().addClass('swing')
+            }else{
+                $(this).removeClass("close");
+                $(this).next().removeClass('swing')
+                $(this).next().addClass('fadeOutUp').hide()
+            }
+        });
+    })
+</script>
 </body>
 </html>

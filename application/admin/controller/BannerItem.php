@@ -79,19 +79,16 @@ class BannerItem extends Base
         if($is_unique){
             $this->result('','0','存在同名类');
         }
-
         // 更新数据
         if(!$is_exist_id){
             return $update = $this->update($data);
         }
         $result = $this->model->save($data);
-
         if($result){
             $this->result(url('index'),'1','添加成功');
         }else{
             $this->result("",'0','添加失败');
         }
-
     }
 
     // 更新

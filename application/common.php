@@ -52,7 +52,7 @@ function attr($attr,$attr_name='暂无'){
 function sortData($arr,$pid=0,$level=0,$html="----"){
     $newArr = [];
     foreach ($arr as $k=>$v){
-        if($v['parent_id']==$pid){
+        if($v['pid']==$pid){
             $v['level'] = $level;
             $v['html'] = $html;
             $newArr[] = $v;

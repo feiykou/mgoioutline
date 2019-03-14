@@ -10,9 +10,16 @@
 // +----------------------------------------------------------------------
 use think\Route;
 Route::get('/home','home/index/index');
+Route::get('/cate','home/index/getCate');
 Route::get('/product/[:cate_id]','home/product/product',[],['cate_id'=>'\d+']);
+Route::get('/product/list/[:cate_id]','home/product/lst',[],['cate_id'=>'\d+']);
 Route::get('/product/detail/:id','home/product/detail',[],['id'=>'\d+']);
 Route::get('/about/[:cate_id]','home/about/about',[],['cate_id'=>'\d+']);
 Route::get('/contact/[:cate_id]','home/contact/contact',[],['cate_id'=>'\d+']);
 Route::get('/news/[:cate_id]','home/news/index',[],['cate_id'=>'\d+']);
+Route::get('/news/list/[:cate_id]','home/news/index',[],['cate_id'=>'\d+']);
+Route::get('/news/detail/:id','home/news/detail',[],['id'=>'\d+']);
+Route::get('/column/[:cate_id]','home/column/lst',[],['cate_id'=>'\d+']);
+Route::get('/column/list/:cate_id','home/column/index',[],['id'=>'\d+']);
+Route::get('/column/detail/:id','home/column/detail',[],['id'=>'\d+']);
 Route::get('/index','home/home/index');

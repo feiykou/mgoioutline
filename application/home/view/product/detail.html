@@ -1,141 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
-    {include file="public/head" /}
+    {include file="public/head" title="$title" /}
 </head>
 <body>
-    {include file="public/header-nav" /}
-    <div class="container product-container">
-        <div class="index-content">
-            <div class="product-detail-wrap">
-                <div class="product-detail-box">
-                    <div class="item product-img-wrap">
-                        <div class="imgs-wrap owl-carousel">
-                            {volist name="productData['imgs_url']" id="img_url" key="k"}
-                            <div class="item" data-image-xs="{$productData.mobile_imgs_url[$k-1]}" data-image-lg="{$img_url}"  data-dot="<div style='background-image:url({$img_url})'>" style="background-image:url('{$img_url}');"></div>
-                            {/volist}
+<!-- 头部导航 -->
+{include file="public/header-nav" /}
+
+<!-- 左右固定 -->
+{include file="public/lr-fixed" type="product" /}
+
+<!-- 内容区 -->
+<div class="container product-detail-container detail-container">
+    <div class="index-content">
+        <div class="content-wrap">
+            <!-- 产品头图 -->
+            <div class="head-img hidden">
+                <!-- 轮播图 -->
+                <div class="banner-sec preloader hidden">
+                    <div class="w1100">
+                        <div class="product-info">
+                            <h1 class="tit">{$productData.name[0]}</h1>
+                            <p class="attr">{volist name="$productData.prop" id="propData"}{$propData.prop_value} {/volist}</p>
+                            <p class="price">¥{$productData.price}</p>
+                            <p class="desc">{$productData.introduce}</p>
+                            <p class="buy"><a href="{$productData.link_url}">立即购买</a></p>
                         </div>
-                        <ul class="custom-dots">
-                            {volist name="productData['imgs_url']" id="img_url" key="k"}
-                            <li {if condition="$k eq 1"} class="active"{/if}></li>
-                            {/volist}
-                        </ul>
-                        <div class="detail-nav-container">
-                            <div class="detail-nav-wrap">
-                                <div class="switch-nav">
+                        <div class="head-banner-wrap">
+                            {if condition="count($productData['imgs_url']) gt 1"}
+                            <div class="nav-box">
+                                <div class="arrow prev">
+                                    <span>
+                                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
+                                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
+                                    </span>
+                                </div>
+                                <div class="arrow next">
+                                    <span>
+                                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
+                                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="item product-info-wrap">
-                        <h1 class="h1-tit">{$productData.name}</h1>
-                        <div class="price">¥{$productData.price}</div>
-                        <div class="line"></div>
-                        <div class="detail">
-                            <div class="con">
-                                {$productData.slogan|html_entity_decode=###}
-                            </div>
-                        </div>
-                        <div class="product-property-box">
-                            <ul class="clearfix">
-                                {volist name="$productData.prop" id="propData"}
-                                <li>
-                                    <div>
-                                        <p class="tit">{$propData.prop_name}：</p>
-                                        <p class="desc">{$propData.prop_value}</p>
-                                    </div>
-                                </li>
+                            {/if}
+                            <div class="head-banner owl-carousel">
+                                {volist name="$productData['imgs_url']" id="img_url" key="k"}
+                                <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{$img_url}" data-image-xs="{$productData.mobile_imgs_url[$k-1]}" data-image-lg="{$img_url}"></div>
                                 {/volist}
-                            </ul>
-                        </div>
-                        <div class="buy-btn-wrap clearfix">
-                            <a href="{$productData.link_url}" target="_blank" class="buy-btn">立即购买</a>
-                        </div>
-                        <div class="wx-code-wrap">
-                            <div class="img-box"><img src="{$productData.code_img[0]}" alt=""></div>
-                            <div class="text">
-                                <p>微信扫一扫</p>
-                                <p>小程序购买</p>
                             </div>
+                        </div>
+                        <div class="dots-wrap">
+                            {if condition="count($productData['imgs_url']) gt 1"}
+                            {for start="0" end="count($productData['imgs_url'])"}
+                                <div class="dot"><i></i></div>
+                            {/for}
+                            {/if}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-resc-wrap">
-                <div class="w1100">
-                    <h2 class="resc-tit">其他用户也看</h2>
-                    <div class="banner-wrap product-resc-banner owl-carousel">
-                        {volist name="rescData" id="data"}
-                        <div class="item">
-                            <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
-                            <div class="info">
-                                <h3 class="tit clearfix"><a class="fl" href="#">{$data.name}</a></h3>
-                                <p class="desc-price"><span class="desc">{$data.introduce}</span><span class="price fr">¥{$data.price}</span></p>
-                            </div>
-                        </div>
-                        {/volist}
-
+            <!-- 产品详情 -->
+            <div class="detail-wrap w1100">
+                <div class="detail-tit-info fl">
+                    <p class="rl">{$productData.slogan|html_entity_decode=###}</p>
+                </div>
+                <div class="detail-con hidden">
+                    <div class="con-tit">
+                        <p>{$productData.name[0]}</p>
+                        <p>{present name="$productData.name[1]"}{/present}</p>
+                    </div>
+                    <div class="sec-tit">{$productData.name_desc}</div>
+                    <div class="con">
+                        {$productData.content|html_entity_decode=###}
                     </div>
                 </div>
             </div>
-    {include file="public/footer" /}
-        <script>
-            var dpr992 = dpr*992;
-            var dpr1200 = dpr*1200;
-            var owl = $('.imgs-wrap').owlCarousel({
-                items: 1,
-                loop:true,
-                margin:20,
-                dots: true,
-                dotsData: true,
-                dotsContainer: '.switch-nav'
-            })
-            owl.on('changed.owl.carousel', function(event) {
-                var params = event.page;
-                $('.custom-dots li').removeClass('active').eq(params.index).addClass('active');
-            })
-            $('.product-resc-banner').owlCarousel({
-                loop:true,
-                margin:20,
-                nav: true,
-                responsiveClass:true,
-                responsive:{
-                    0:{
-                        items:3,
-                    },
-                    [dpr992]:{
-                        items:5,
-                    },
-                    [dpr1200]:{
-                        items:5,
-                        loop:true
-                    }
-                }
-            });
 
-
-            $(function () {
-                $(window).on('resize',resize).trigger('resize');
-
-                function resize(){
-                    resImg($(".product-img-wrap .owl-item"));
-                }
-                function resImg(dom){
-                    // 获取屏幕宽度
-                    var windowWidth = $(window).width();
-                    // 小屏
-                    var isSmallScreen = windowWidth < dpr*992;
-                    dom.each(function(index,item){
-                        var $this = $(item).find('.item');
-                        var imgSrc = isSmallScreen ? $this.data('image-xs'): $this.data('image-lg');
-                        // 设置背景图片
-                        $this.css('backgroundImage','url('+imgSrc+')');
-                    });
-                }
-            })
-
-        </script>
+            <!-- 相关推荐 -->
+            <div class="product-resc-wrap w1100">
+                <h2 class="resc-tit">最受欢迎的礼品</h2>
+                <div class="product-resc-banner product-container owl-carousel">
+                    {volist name="rescData" id="data"}
+                    <div class="item">
+                        <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
+                        <div class="info">
+                            <h3 class="tit clearfix"><a class="fl" href="#">{$data.name[0]}</a></h3>
+                            <p class="desc-price"><span class="price">¥{$data.price}</span></p>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        {include file="public/footer" /}
+    </div>
+</div>
+<div class="bottom-line"></div>
+{include file="public/script" /}
+<script>
+    var dpr992 = dpr*992;
+    var dpr1200 = dpr*1200;
+    $('.product-resc-banner').owlCarousel({
+        loop:true,
+        margin:30,
+        nav: true,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:3,
+            },
+            [dpr992]:{
+                items:5,
+            },
+            [dpr1200]:{
+                items:5,
+                loop:true
+            }
+        }
+    });
+</script>
 </body>
 </html>

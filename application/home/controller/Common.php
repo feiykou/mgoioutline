@@ -36,7 +36,7 @@ class Common extends Controller
         if($cate_id){
             $result = db("category")->where('id','=',$cate_id)->find();
             if($result){
-                $parent_id = $result['parent_id'];
+                $parent_id = $result['pid'];
             }else{
                 $parent_id = 0;
             }

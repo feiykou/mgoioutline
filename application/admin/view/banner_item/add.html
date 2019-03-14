@@ -37,9 +37,7 @@
             <div class="formControls skin-minimal col-xs-8">
                 {volist name="redic_typeArr" id="typeArr"}
                 <div class="radio-box">
-
                     <label class="radio-input"><input type="radio" name="type" value="{$typeArr.type}"  {if condition="$typeArr.type == 1"}checked{/if}><span class="radio-name">{$typeArr.name}</span></label>
-
                 </div>
                 {/volist}
             </div>
@@ -53,7 +51,13 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">缩略图：</label>
             <div class="formControls col-xs-8 col-sm-8">
-                {Uploader:webuploader btnVal="上传缩略图" uploadId="bannerImg"}{/Uploader:webuploader}
+                {Uploader:webuploader btnVal="上传缩略图" uploadId="imgUrl"}{/Uploader:webuploader}
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">缩略图：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                {Uploader:webuploader btnVal="上传缩略图" uploadId="thumbUrl"}{/Uploader:webuploader}
             </div>
         </div>
 
@@ -79,13 +83,25 @@
 <!--引入webuploaderJS-->
 {Uploader:webuploaderjs/}
 <script>
+
     feiy_upload.init({
-        wrap:$("#bannerImg"),
-        filePicker: $("#bannerImg").find(".filePicker"),
-        uploadId: "#bannerImg",
+        wrap:$("#imgUrl"),
+        filePicker: $("#imgUrl").find(".filePicker"),
+        uploadId: "#imgUrl",
         server: config.upload_server,
         fileNumLimit: 3
     });
+
+    feiy_upload.init({
+        wrap:$("#thumbUrl"),
+        filePicker: $("#thumbUrl").find(".filePicker"),
+        uploadId: "#thumbUrl",
+        server: config.upload_server,
+        fileNumLimit: 1
+    });
+
+
+
 </script>
 <script>
     $('.skin-minimal input').iCheck({
@@ -141,16 +157,17 @@
         },
         submitHandler: function(form){
             // 获取产品详情页
-            var $img_list_childs = $("#bannerImg .filelist > li");
+            var $img_list_childs = $("#imgUrl .filelist > li");
             var img_url = setUpdateUrl($img_list_childs);
-            if(img_url == 'undefined'){
+
+            var $thumb_list_childs = $("#thumbUrl .filelist > li");
+            var thumb_url = setUpdateUrl($thumb_list_childs);
+            if(img_url == 'undefined' || thumb_url == 'undefined'){
                 layer.msg('图片不存在，或者更改图片名称重新上传', {icon: 6,time:1000});
                 return ;
             }
 
-            var banner_id = $("select.form-control").val();
-
-            params = "&img_url="+img_url;
+            params = "&img_url="+img_url+"&thumb_url="+thumb_url;
             $.ajax({
                 url: "{:url('save')}",
                 type: "post",

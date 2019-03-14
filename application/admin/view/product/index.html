@@ -14,7 +14,7 @@
 				<select class="select" name="pro_cate_id">
 					<option value="">请选择</option>
 					{volist name="cateData" id="cate"}
-                <option value="{$cate.id}" {if condition="$pro_cate_id == $cate.id"}selected{/if}>{if condition="$cate.parent_id != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>{/volist}
+                <option value="{$cate.id}" {if condition="$pro_cate_id == $cate.id"}selected{/if}>{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>{/volist}
 				</select>
 			</span> </div>
 			日期范围：
@@ -52,7 +52,7 @@
 						<td>{$data.id}</td>
 
 						<td><a href="{$data.main_img_url[0]}" target="_blank"><img width="60" class="product-thumb" src="{$data.main_img_url[0]}"></a></td>
-						<td class="text-c"><a href="{:url('/product/detail')}?id={$data.id}" target="_blank">{$data.name}</a></td>
+						<td class="text-c"><a href="{:url('/product/detail')}?id={$data.id}" target="_blank">{$data.name[0]}</a></td>
 						<td class="text-c listorder"><input size="3" data-id="{$data.id}" name="listorder" value="{$data.listorder}"/></td>
 						<td class="text-c">{$data.market_price}</td>
 						<td class="text-c">{$data.price}</td>

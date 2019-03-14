@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">缩略图：</label>
+            <label class="form-label col-xs-4 col-sm-3">轮播图：</label>
             <div class="formControls col-xs-8 col-sm-8">
                 {Uploader:webuploader btnVal="上传轮播图" uploadId="bannerImg"}
                 {if condition="$bannerIdData.img_url neq ''"}
@@ -69,6 +69,23 @@
                         <span class="success"></span>
                     </li>
                     {/volist}
+                </ul>
+                {/if}
+                {/Uploader:webuploader}
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">缩略图：</label>
+            <div class="formControls col-xs-8 col-sm-8">
+                {Uploader:webuploader btnVal="上传缩略图" uploadId="thumbUrl"}
+                {if condition="$bannerIdData.thumb_url neq ''"}
+                <ul class="filelist filelist-exist clearfix">
+                    <li class="state-complete" data-src="{$bannerIdData.thumb_url}">
+                        <p class="imgWrap"><img src="{$bannerIdData.thumb_url}" width="110" height="110"></p>
+                        <div class="file-panel"><span class="cancel">删除</span></div>
+                        <span class="success"></span>
+                    </li>
                 </ul>
                 {/if}
                 {/Uploader:webuploader}
@@ -104,6 +121,14 @@
         server: config.upload_server,
         fileNumLimit: 3
     });
+
+    feiy_upload.init({
+        wrap:$("#thumbUrl"),
+        filePicker: $("#thumbUrl").find(".filePicker"),
+        uploadId: "#thumbUrl",
+        server: config.upload_server,
+        fileNumLimit: 1
+    });
 </script>
 <script>
     cancelImg();
@@ -114,9 +139,11 @@
 
     function checkUpload(){
         var $bannerImg_childs = $("#bannerImg .filelist > li");
+        var $thumbUrl_childs = $("#thumbUrl .filelist > li");
 
         setTimeout(function(){
             setNoDrop($bannerImg_childs,3);
+            setNoDrop($thumbUrl_childs,1);
         },500);
     }
 
@@ -190,14 +217,16 @@
             // 获取产品详情页
             var $img_list_childs = $("#bannerImg .filelist > li");
             var img_url = setUpdateUrl($img_list_childs);
-            if(img_url == 'undefined'){
+            var $thumb_list_childs = $("#thumbUrl .filelist > li");
+            var thumb_url = setUpdateUrl($thumb_list_childs);
+
+            if(img_url == 'undefined' || thumb_url == 'undefined'){
                 layer.msg('图片不存在，或者更改图片名称重新上传', {icon: 6,time:1000});
                 return ;
             }
 
-            var banner_id = $("select.form-control").val();
+            params = "&img_url="+img_url+"&thumb_url="+thumb_url;
 
-            params = "&img_url="+img_url;
             $.ajax({
                 url: "{:url('save')}",
                 type: "post",

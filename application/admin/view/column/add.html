@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!--包含头部文件-->
+	{include file="public/header" /}
+	<!--引入webuploaderCss-->
+	{Uploader:webuploadercss /}
+</head>
+
+<body>
+<div class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-pro-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="" placeholder="" name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>副标题：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="" placeholder="" name="sub_name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">编辑者：</label>
+			<div class="formControls col-xs-4 col-sm-4 col-lg-3">
+				<input type="text" class="input-text" value="mgoi" placeholder="" name="author">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>介绍：</label>
+			<div class="formControls col-xs-8 col-sm-9 col-lg-3">
+				<textarea name="introduce" cols="" rows="" class="textarea" placeholder="说点什么..."></textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择所属栏目：</label>
+			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
+				<select class="select" name="column_id">
+					<option value="">请选择所属栏目</option>
+					{volist name="columnSortData" id="cate"}
+                <option value="{$cate.id}">{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+                {/volist}
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择所属分类：</label>
+			<div class="formControls col-xs-2 col-sm-2"> <span class="select-box">
+				<select class="select" name="cate_id">
+					<option value="">请选择所属分类</option>
+					{volist name="newCates" id="cate"}
+					<option value="{$cate.id}">{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+					{/volist}
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">推荐位：</label>
+			<div class="formControls skin-minimal col-xs-5">
+				{volist name="attrData" id="attr" key="k"}
+				<div class="check-box">
+					<label class="checkbox-input"><input type="checkbox" name="attributes[]" value="{$k}"><span class="checkbox-name">{$attr}</span></label>
+				</div>
+				{/volist}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>缩略图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="上传缩略图" uploadId="mainImg"}{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>移动端图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{Uploader:webuploader btnVal="上传移动端图" uploadId="mobileImgs"}{/Uploader:webuploader}
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>详情：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<script id="detailCon" type="text/plain" name="content" style="width:100%;height:400px;"></script>
+            </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">点击数：</label>
+			<div class="formControls col-xs-1 col-sm-1">
+				<input type="text" class="input-text" value="0" name="click_num">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网页关键词：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" name="keywords">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网页描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="description" cols="" rows="" class="textarea"></textarea>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+			<button class="btn btn-primary radius save-sub-btn" type="button" data-id="1"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+			<button class="btn btn-secondary radius save-btn" type="button" data-id="0"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+			<button class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+		</div>
+		</div>
+	</form>
+</div>
+
+<!--包含尾部文件-->
+{include file="public/footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.all.js"></script>
+<script>
+	var config = {
+	    "upload_server": "{:url('getImg')}"
+	};
+</script>
+<!--引入webuploaderJS-->
+{Uploader:webuploaderjs/}
+<script>
+    feiy_upload.init({
+        wrap:$("#mainImg"),
+        filePicker: $("#mainImg").find(".filePicker"),
+        uploadId: "#mainImg",
+        server: config.upload_server,
+        fileNumLimit: 2
+    });
+    feiy_upload.init({
+        wrap:$("#mobileImgs"),
+        filePicker: $("#mobileImgs").find(".filePicker"),
+        uploadId: "#mobileImgs",
+        server: config.upload_server,
+        fileNumLimit: 5
+    });
+</script>
+
+
+
+<script type="text/javascript">
+
+    //checkbox 美化
+    $('.skin-minimal input').iCheck({
+        checkboxClass: 'icheckbox-blue',
+        radioClass: 'iradio-blue',
+        increaseArea: '20%'
+    });
+	// 编辑器
+	$(function(){
+		var ue1 = UE.getEditor('detailCon',{
+            enterTag: 'br'
+        });
+
+        $(".edit_wrapper").val('');
+	});
+
+    // 保存并审核提交
+    $(".save-sub-btn").on("click",function(){
+        config.save_id = $(this).data("id");
+        $("#form-pro-add").submit();
+    });
+    // 保存为草稿
+    $(".save-btn").on("click",function(){
+        config.save_id = $(this).data("id");
+        $("#form-pro-add").submit();
+    });
+
+
+
+    // 表单验证
+    $("#form-pro-add").validate({
+        rules:{
+            name:{
+                required:true
+            },
+            column_id:{
+                required:true
+            }
+        },
+        messages:{
+            name: "标题不能位空",
+            column_id: "请选择所属栏目"
+        },
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            //数据提交
+            // 获取产品详情页
+            var $mobileImgs_childs = $("#mobileImgs .filelist > li");
+            var $main_list_childs = $("#mainImg .filelist > li");
+
+            var main_img_url = setUpdateUrl($main_list_childs);
+            var mobileImgs = setUpdateUrl($mobileImgs_childs);
+
+            var params ="&main_img_url="+main_img_url+"&mobile_imgs_url="+mobileImgs;
+            $.ajax({
+                url: "{:url('save')}",
+                type: "post",
+                data: $("#form-pro-add").serialize()+params,
+                success: function(res){
+                    layer.msg(res.msg, {icon: 6,time:1000});
+                    setTimeout(function(){
+                        if(res.data){
+                            window.location = res.data;
+                        }
+                    },1000);
+                }
+            })
+
+        }
+    });
+
+</script>
+</body>
+</html>

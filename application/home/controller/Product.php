@@ -9,6 +9,7 @@
 namespace app\home\controller;
 
 
+use app\common\model\Procate;
 use think\Exception;
 use think\Validate;
 
@@ -21,11 +22,17 @@ class Product extends Common
         $this->model = model('product');
     }
 
-    public function product($cate_id){
+    public function lst($cate_id){
         $products = $this->model->getProductByClumn($cate_id);
-//        $rescPros = $this->model->getRescPro(3);
+        $sonCateData = Procate::getSonData($cate_id);
+        $curentCate = model('procate')->getCateById($cate_id);
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
         $this->assign([
-            'productsData'=> $products
+            'productsData'=> $products,
+            'sonCateData' => $sonCateData,
+            'curentCate' => $curentCate,
+            'cateData' => $proCateData
         ]);
         return $this->fetch();
     }

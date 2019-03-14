@@ -9,6 +9,7 @@
 namespace app\common\model;
 
 
+use catetree\Catetree;
 use think\Model;
 
 class Procate extends Model
@@ -16,6 +17,17 @@ class Procate extends Model
     protected $hidden = [
         'create_time','update_time'
     ];
+
+    protected function getImgUrlAttr($val,$data){
+        return $this->handleImgUrl($val);
+    }
+
+    private function handleImgUrl($val){
+        $val = str_replace('\\','/',$val);
+        return $val;
+    }
+
+
     public function getAllCateData(){
         $cateData = self::alias('a1')
             ->field('a1.*,a2.name as pname')
@@ -24,8 +36,8 @@ class Procate extends Model
                 'a1.listorder'=>'desc',
                 'a1.id' => 'desc'
             ])
-            ->join('procate a2','a1.parent_id=a2.id','left')
-            ->paginate();
+            ->join('procate a2','a1.pid=a2.id','left')
+            ->select();
         return $cateData;
     }
 
@@ -104,7 +116,7 @@ class Procate extends Model
             $id = [$id];
         }
         $data = [
-            "parent_id"  => ['in',$id],
+            "pid"  => ['in',$id],
             'status' => 1
         ];
         $result = self::where($data)->find();
@@ -139,7 +151,7 @@ class Procate extends Model
     public static function getIndexCateProduct(){
         $data = [
             'status'    =>  1,
-            'parent_id' =>  0,
+            'pid' =>  0,
         ];
         $order = [
             'listorder' => 'desc',
@@ -158,5 +170,25 @@ class Procate extends Model
 
         }
         return $cateData;
+    }
+
+    public static function getCateJson(){
+        $cateTree = new Catetree();
+        $data = $cateTree->cateData(new self());
+        return $data;
+    }
+
+    public static function getSonData($cateId){
+        $cateTree = new Catetree();
+        $ids = $cateTree->childrenids($cateId, new self());
+        $data = null;
+        if(count($ids) > 0){
+            $data = self::where('status','=','1')
+                ->order([
+                    'listorder' => 'desc',
+                    'id' => 'desc'
+                ])->select($ids);
+        }
+        return $data;
     }
 }

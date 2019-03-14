@@ -1,0 +1,45 @@
+<div class="lr-container">
+    <div class="l-content">
+        {present name="$cateData"}
+        <div class="nav-box">
+            {volist name="$cateData" id="data" key="k"}
+            {if condition="count($data['sub']) eq 0"}
+            <div class="nav nav-top-wrap">
+                <ul class="block">
+                    <li class="nav-item">
+                        <a href="/[type]/list/{$data.id}"><span>{$data['name']}</span></a>
+                    </li>
+                </ul>
+            </div>
+            {else/}
+            <div class="nav">
+                <div class="nav-top">
+                    <a href="javascript:;">{$data['name']}</a>
+                </div>
+                <ul>
+                    {volist name="$data['sub']" id="sonData" key="sonk"}
+                    <li class="nav-item">
+                        {if condition="count($sonData['sub']) eq 0"}
+                            <a href="/[type]/list/{$sonData.id}"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span></a>
+                        {else /}
+                            <a href="javascript:voild(0);"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span><i class="my-icon nav-more">+</i></a>
+                        {/if}
+                        <ul style="display:block;">
+                            {if condition="count($sonData['sub']) neq 0"}
+                            {volist name="$sonData['sub']" id="grandData" key="grandk"}
+                            <li><a href="/[type]/list/{$grandData.id}"><span>- {$grandData.name}</span></a></li>
+                            {/volist}
+                            {/if}
+                        </ul>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            {/if}
+            {/volist}
+        </div>
+        {/present}
+    </div>
+    <div class="r-content">
+    </div>
+</div>

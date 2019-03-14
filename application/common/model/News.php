@@ -9,6 +9,7 @@
 namespace app\common\model;
 
 
+use catetree\Catetree;
 use think\Model;
 
 class News extends Model
@@ -17,6 +18,10 @@ class News extends Model
     protected $hidden = [
         'delete_time','create_time','update_time','status','column_id','listorder','click_num'
     ];
+
+    public function cate(){
+        return $this->hasMany('news_cate','id','cate_id');
+    }
 
     protected function getMainImgUrlAttr($val,$data){
         return $this->handleImgUrl($val);
@@ -31,7 +36,7 @@ class News extends Model
     }
 
 
-    public function getAllNewsData(){
+    public function getAllNewsData($data){
         $data['status'] = ['neq',-1];
         $order = [
             'listorder' => 'desc',
@@ -39,10 +44,10 @@ class News extends Model
         ];
         $result = self::where($data)
             ->order($order)
+            ->with('cate')
             ->select();
         return $result;
     }
-
 
 
     // 判断是否存在同名
@@ -86,12 +91,26 @@ class News extends Model
      * 前台数据调用
      */
 
-    public function getNewsIndexData(){
+    public function getNewsIndexData($cateId){
+        // 获取产品子栏目产品
+        $cateTree = new Catetree();
+        $idArr = $cateTree->childrenids($cateId,model('newsCate'));
+        $idArr[] = $cateId;
         $data = [
-            'status' => 1
+            'status' => 1,
+            'cate_id' => ['in',$idArr]
         ];
-        $newsData = self::where($data)->order('update_time desc')->select();
-        return $newsData;
+        $order = [
+            'listorder' => "desc",
+            'id'        => "desc"
+        ];
+        $result = self::where($data)->order($order)->select();
+        return $result;
+//        $data = [
+//            'status' => 1
+//        ];
+//        $newsData = self::where($data)->order('update_time desc')->select();
+//        return $newsData;
     }
 
 
