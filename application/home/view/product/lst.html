@@ -14,7 +14,7 @@
     <div class="index-content">
         <div class="content-wrap">
             <div class="head-cate-list w1100" style="background:url('{$curentCate.img_url}') no-repeat; background-size:cover; ">
-                <div class="tit"><i class="fl"></i><i class="fr"></i><span>{$curentCate.name}</span></div>
+                <div class="tit"><i class="fl"></i><i class="fr"></i><span>{if condition="$curentCate.name"}{$curentCate.name}{else/}全部产品分类{/if}</span></div>
                 <ul class="hidden">
                     {volist name="sonCateData" id="data"}
                     <li>

@@ -20,7 +20,7 @@ class News extends Common
         parent::_initialize();
         $this->model = model('news');
     }
-    public function index($cate_id){
+    public function index($cate_id=0){
         $newsData =$this->model->getNewsIndexData($cate_id);
         $sonCateData = NewsCate::getSonData($cate_id);
         $curentCate = model('news_cate')->getCateById($cate_id);

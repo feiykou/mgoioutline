@@ -22,7 +22,7 @@ class Product extends Common
         $this->model = model('product');
     }
 
-    public function lst($cate_id){
+    public function lst($cate_id=0){
         $products = $this->model->getProductByClumn($cate_id);
         $sonCateData = Procate::getSonData($cate_id);
         $curentCate = model('procate')->getCateById($cate_id);
@@ -49,4 +49,6 @@ class Product extends Common
             'cateData' => $proCateData
         ]);
     }
+
+
 }

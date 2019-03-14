@@ -11,7 +11,7 @@ class Column extends Common
         parent::_initialize();
         $this->model = model('column');
     }
-    public function index($cate_id){
+    public function index($cate_id=0){
         $newsData =$this->model->getNewsIndexData($cate_id);
         $sonCateData = ColumnCate::getSonData($cate_id);
         $curentCate = model('column_cate')->getCateById($cate_id);
