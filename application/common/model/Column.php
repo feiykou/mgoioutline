@@ -9,6 +9,7 @@
 namespace app\common\model;
 
 
+use catetree\Catetree;
 use think\Model;
 
 class Column extends Model

@@ -2,6 +2,7 @@
 <div class="header-sec">
     <div class="header-box">
         <div class="logo-wrap">
+            <a href="/home">
             <div id="origin"></div>
             <!-- <svg id="origin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 390 80" style="enable-background:new 0 0 390 78;" xml:space="preserve"></svg> -->
             <!-- <circle cx="39" cy="39" r="37" fill="#fff" stroke="#000" stroke-width="4"></circle> -->
@@ -41,6 +42,7 @@
                             c2.9,2.8,3.5,3.3,6.1,7.5c1-1.2,2.8-3.5,2.8-3.5s-3.6-4.5-6.6-6.5c0,0,4.8-5.6,5.8-8.5C303.5,38.9,302.2,37.9,302.2,37.9z"/>
                         </g>
                 </svg>
+            </a>
         </div>
         <div class="nav-wrap">
             <div class="btn-menu btn">
@@ -57,29 +59,33 @@
                     <ul class="main-nav-ul">
                         {volist name="columnData" id="column"}
                         <li class="sildeUp">
-                            {if condition="!is_array($column['children'])"}
-                            <a class="active-{$key} {present name="cur_cate_id"}
-                            {if condition="$column.id eq $cur_cate_id || $parent_id eq $column.id || ($cur_cate_id eq '0' && $column.id eq 5)"} active{/if}
-                            {/present}"
 
-                            href="{if condition='$column.template_id gt 1'}/{:getTemplateView($column.template_id)}/{$column.id}
-                            {elseif condition="$column.template_id eq 1"/}/home
-                            {else/}{$column.link_url}
-                            {/if}"><span>{$column.name}</span>
-                            </a>
-                            {else/}
-                            <a class="sildeUpnav active-{$key} {present name='parent_id'}{if condition='$column.id eq $parent_id'} active{/if}{/present}"><span>{$column.name}</span></a>
-                            {/if}
+                            <a href="{if condition='$column.template_id gt 1'}/{:getTemplateView($column.template_id)}/{$column.id}{elseif condition="$column.template_id eq 1"/}/home{else/}{$column.link_url}{/if}" class="{if condition='getTemplateView($column.template_id) eq $controllName'}active{/if}"><span>{$column.name}</span></a>
 
-                            {if condition="$column['children'] neq 0"}
-                            <div class="mask">
-                                <ul>
-                                    <?php foreach ($column['children'] as $k => $v):?>
-                                    <li><a {present name="cur_cate_id"}{if condition="$v.id eq $cur_cate_id"}class="active"{/if}{/present} href="/{:getTemplateView($v.template_id)}/{$v.id}"><?php echo $v['name']?></a></li>
-                                    <?php endforeach;?>
-                                </ul>
-                            </div>
-                            {/if}
+
+                            <!--{if condition="!is_array($column['children'])"}-->
+                            <!--<a class="active-{$key} {present name="cur_cate_id"}-->
+                            <!--{if condition="$column.id eq $cur_cate_id || $parent_id eq $column.id || ($cur_cate_id eq '0' && $column.id eq 5)"} active{/if}-->
+                            <!--{/present}"-->
+
+                            <!--href="{if condition='$column.template_id gt 1'}/{:getTemplateView($column.template_id)}/{$column.id}-->
+                            <!--{elseif condition="$column.template_id eq 1"/}/home-->
+                            <!--{else/}{$column.link_url}-->
+                            <!--{/if}"><span>{$column.name}</span>-->
+                            <!--</a>-->
+                            <!--{else/}-->
+                            <!--<a class="sildeUpnav active-{$key} {present name='parent_id'}{if condition='$column.id eq $parent_id'} active{/if}{/present}"><span>{$column.name}</span></a>-->
+                            <!--{/if}-->
+
+                            <!--{if condition="$column['children'] neq 0"}-->
+                            <!--<div class="mask">-->
+                                <!--<ul>-->
+                                    <!--<?php foreach ($column['children'] as $k => $v):?>-->
+                                    <!--<li><a {present name="cur_cate_id"}{if condition="$v.id eq $cur_cate_id"}class="active"{/if}{/present} href="/{:getTemplateView($v.template_id)}/{$v.id}"><?php echo $v['name']?></a></li>-->
+                                    <!--<?php endforeach;?>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--{/if}-->
                         </li>
                         {/volist}
                     </ul>

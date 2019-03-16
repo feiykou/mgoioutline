@@ -13,6 +13,7 @@ return [
         ['key'=>3,'name'=>'联系我们','view'=>'contact','selClass'=>'contact-active'],
         ['key'=>4,'name'=>'新闻','view'=>'news','selClass'=>'news-active'],
         ['key'=>5,'name'=>'关于我们','view'=>'about','selClass'=>'about-active'],
+        ['key'=>6,'name'=>'新手专栏','view'=>'column','selClass'=>'column-active'],
         ['key'=>0,'name'=>'其他','view'=>'','selClass'=>'other-active'],
     ]
 ];

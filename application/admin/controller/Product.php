@@ -101,7 +101,6 @@ class Product extends Base
             'slogan'        =>      empty($data['slogan'])?'':$data['slogan'],
             'attributes'     =>      keyInArray($data,'attributes')? implode(',',$data['attributes']):'',
             'label_attr'     =>      keyInArray($data,'label_attr')? implode(',',$data['label_attr']):'',
-            'cate_id'        =>      $data['cate_id'],
             'click_num'      =>      $data['click_num'],
             'column_id'      =>      $data['column_id'],
             'price'          =>      $data['price'],
@@ -118,7 +117,7 @@ class Product extends Base
             $this->result('','0','存在同名类');
         }
 
-        // 更新数据s
+        // 更新数据
         if(!$is_exist_id){
             $proData['id'] = $data['id'];
             return $update = $this->update($proData);
@@ -145,8 +144,16 @@ class Product extends Base
         $labelsData = config('attributes.labels_type');
         $columnSortData = model('category')->getColumnCate();
 
+        // 获取属性
         $productPropData = db('product_prop')->where('product_id',$id)->select();
         $propData = model('property')->select();
+
+        // 获取分类
+        $productCateData = db('product_cate')->field('cate_id')->where('product_id',$id)->select();
+        $selCateData = [];
+        foreach ($productCateData as $val){
+            array_push($selCateData, $val['cate_id']);
+        }
 
         return $this->fetch('',[
             'proAllData' => $proAllData,
@@ -155,6 +162,7 @@ class Product extends Base
             'cateData'   => $cateData,
             'columnSortData' => $columnSortData,
             'productPropData' => $productPropData,
+            'selCateData' => $selCateData,
             'propData' => $propData
         ]);
     }

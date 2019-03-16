@@ -20,7 +20,7 @@ class Common extends Controller
         $this->getNavCates();
         // 获取当前栏目id
         $this->getCateId();
-
+        $this->getControllerName();
     }
 
     // 获取全部栏目数据
@@ -30,9 +30,18 @@ class Common extends Controller
             'columnData'    => $columnData
         ]);
     }
+
+    public function getControllerName(){
+        $view = strtolower(request()->controller());
+        $view = $view != 'index' ? $view : '/';
+        $this->assign([
+            'controllName' => $view
+        ]);
+    }
+
     // 获取当前栏目id
     public function getCateId(){
-        $cate_id = input('param.cate_id');
+        $cate_id = input('param.columnId');
         if($cate_id){
             $result = db("category")->where('id','=',$cate_id)->find();
             if($result){

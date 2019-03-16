@@ -20,9 +20,9 @@ class Product extends Model
         'delete_time','create_time','update_time','status','cate_id','column_id','listorder','click_num'
     ];
 
-    public function procate(){
-        return $this->hasMany('procate','id','cate_id')->field('name');
-    }
+//    public function procate(){
+//        return $this->hasMany('procate','id','cate_id')->field('name');
+//    }
 
     public function category(){
         return $this->belongsTo('category','column_id','id')->field('name');
@@ -31,6 +31,10 @@ class Product extends Model
     public function product_prop(){
         return $this->hasMany('product_prop','product_id','id');
     }
+    public function product_cate(){
+        return $this->hasMany('product_cate','product_id','id');
+    }
+
     public function prop(){
         return $this->hasMany('product_prop','product_id','id');
     }
@@ -76,6 +80,16 @@ class Product extends Model
                 if(!$data) return;
                 $products->product_prop()->saveAll($data);
             }
+            if(isset($productData['cate_id'])){
+                $cateId_arr = explode(',',$productData['cate_id']);
+                $data = [];
+                $param = [];
+                foreach ($cateId_arr  as $val){
+                    $param['cate_id'] = $val;
+                    $data[] = $param;
+                }
+                $products->product_cate()->saveAll($data);
+            }
 
         });
 
@@ -98,6 +112,17 @@ class Product extends Model
                 }
                 if(!$data) return;
                 $products->product_prop()->saveAll($data);
+            }
+            if(isset($productData['cate_id'])){
+                $cateId_arr = explode(',',$productData['cate_id']);
+                $data = [];
+                $param = [];
+                foreach ($cateId_arr  as $val){
+                    $param['cate_id'] = $val;
+                    $data[] = $param;
+                }
+                db('product_cate')->where('product_id',$product_id)->delete();
+                $products->product_cate()->saveAll($data);
             }
         });
 
@@ -236,22 +261,6 @@ class Product extends Model
     }
 
 
-//
-//    public function getCate(){
-//        $data = [
-//            'status' => 1,
-//        ];
-//
-//        $order = [
-//            'listorder' => "desc",
-//            'id'        => "desc"
-//        ];
-//        $result = db('procate')->where($data)->order($order)->select();
-//        var_dump($result);
-//        return $result;
-//    }
-
-
     // 获取分类下的产品
     public function getCateProducts(){
         $data = [
@@ -278,29 +287,23 @@ class Product extends Model
         return $productCateArr;
     }
 
+
+
     // 获取产品子栏目产品
     public function getProductByClumn($cateId){
-        $cateTree = new Catetree();
-        $idArr = $cateTree->childrenids($cateId,model('procate'));
-        $idArr[] = $cateId;
+//        $cateTree = new Catetree();
+//        $idArr = $cateTree->childrenids($cateId,model('procate'));
+//        $idArr[] = $cateId;
         $data = [
-            'status' => 1,
-            'cate_id' => ['in',$idArr]
+            'status' => 1
         ];
         $order = [
             'listorder' => "desc",
             'id'        => "desc"
         ];
-        $result = self::where($data)->order($order)->select();
+        $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
+//        $result = self::where($data)->order($order)->select();
         return $result;
     }
-
-//    public function getSonData($cateId){
-//        $data = [
-//            'status' => 1,
-//            'cate_id' => $cateId
-//        ];
-//    }
-
 
 }

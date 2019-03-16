@@ -14,7 +14,7 @@
             {else/}
             <div class="nav">
                 <div class="nav-top">
-                    <a href="javascript:;">{$data['name']}</a>
+                    <a>{$data['name']}</a>
                 </div>
                 <ul>
                     {volist name="$data['sub']" id="sonData" key="sonk"}
@@ -22,7 +22,7 @@
                         {if condition="count($sonData['sub']) eq 0"}
                             <a href="/[type]/list/{$sonData.id}"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span></a>
                         {else /}
-                            <a href="javascript:voild(0);"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span><i class="my-icon nav-more">+</i></a>
+                            <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span><i class="my-icon nav-more">+</i></a>
                         {/if}
                         <ul style="display:block;">
                             {if condition="count($sonData['sub']) neq 0"}

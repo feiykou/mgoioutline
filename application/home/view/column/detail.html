@@ -22,7 +22,7 @@
                     <h1>{$detailData.name}</h1>
                 </div>
                 <div class="right-wrap">
-                    <img src="{$detailData.main_img_url[0]}" alt="">
+                    <img src="{$detailData.main_img_url[1]}" alt="">
                 </div>
             </div>
             <!-- 产品详情 -->
@@ -37,7 +37,7 @@
                     </div>
                     <div class="sec-tit">{$detailData.sub_name}</div>
                     <div class="con">
-                        {$detailData.content}
+                        {$detailData.content|html_entity_decode}
                     </div>
                 </div>
             </div>
@@ -52,5 +52,7 @@
     </div>
 </div>
 <div class="bottom-line"></div>
+<!-- 公共js -->
+{include file="public/common" /}
 </body>
 </html>

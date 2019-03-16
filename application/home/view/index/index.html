@@ -41,13 +41,8 @@
             {/volist}
         </div>
         <ul class="rela-imgs hidden">
-            {volist name="bannerData" id="data"}
-            <li class="active"><a href="{if condition='$data.type == 1'}
-                    /product/detail/{$data.key_word}
-                {elseif condition='$data.type eq 2'}
-                    /news/detail/{$data.key_word}
-                {else/}javascript:volid(0);
-            {/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
+            {volist name="bannerData" id="data" key="k"}
+            <li class="{if condition="$k eq 1"}active{/if}"><a href="{if condition='$data.type == 1'}/product/detail/{$data.key_word}{elseif condition='$data.type eq 2'}/news/detail/{$data.key_word}{else/}javascript:volid(0);{/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
             {/volist}
         </ul>
     </div>
@@ -152,6 +147,8 @@
     </div>
 </div>
 <div class="bottom-line"></div>
+<!-- 公共js -->
+{include file="public/common" /}
 {include file="public/script" /}
 <script>
 

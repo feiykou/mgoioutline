@@ -27,6 +27,23 @@ class Procate extends Model
         return $val;
     }
 
+    protected function productCate(){
+        return $this->belongsToMany('product','product_cate','product_id','cate_id');
+    }
+
+    // 获取产品子栏目产品
+    public function getProductByClumn($cateId){
+        $data = [
+            'status' => 1
+        ];
+        $order = [
+            'listorder' => "desc",
+            'id'        => "desc"
+        ];
+        $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
+        return $result;
+    }
+
 
     public function getAllCateData(){
         $cateData = self::alias('a1')

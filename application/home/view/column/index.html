@@ -36,7 +36,7 @@
                         <a href="/column/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
                         <p class="tit">{$data.sub_name}</p>
                         <p class="desc">{$data.introduce}</p>
-                        <p class="more"><a href="/news/column/{$data.id}">了解更多 &gt;</a></p>
+                        <p class="more"><a href="/column/detail/{$data.id}">了解更多 &gt;</a></p>
                     </li>
                     {/volist}
                 </ul>
@@ -47,6 +47,7 @@
     </div>
 </div>
 <div class="bottom-line"></div>
-
+<!-- 公共js -->
+{include file="public/common" /}
 </body>
 </html>

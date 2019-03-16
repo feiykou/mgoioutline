@@ -1,4 +1,3 @@
-
 function feiy_preloader(imgUrl, handleComplete){
     var queue = new createjs.LoadQueue(false);
     var loadFile = [
@@ -27,7 +26,9 @@ function setBannerPreload(){
             'filter': 'blur(20px)'
         })
     }
-
+    if(!imgSrc){
+        return;
+    }
     feiy_preloader(imgSrc, function(){
         resize();
     })
@@ -71,16 +72,17 @@ function resize(){
             'filter': 'blur(0)'
         })
     });
-    
+
 }
-
-
-
 $(function(){
+
+
+
+
     var time = 2;    //进度条时间，以秒为单位，越小越快
     var $barDom = $(".dots-wrap .dot").eq(0),
-        $head, tick, 
-        curIndex = 0, 
+        $head, tick,
+        curIndex = 0,
         prevTarget = null,
         percentTime = 0,
         isPause = false;
@@ -101,7 +103,7 @@ $(function(){
         createBar();
         start();
     }
-    
+
     function createBar(){
         $barDom = $(".dots-wrap .dot").eq(curIndex);
         $barDom.siblings().find('i').html('');
@@ -148,7 +150,7 @@ $(function(){
             interval();
         });
     }
-    
+
     var arrowDate = new Date();
     $(".nav-box .prev").on('click', function(){
         if(new Date() - arrowDate > 800){

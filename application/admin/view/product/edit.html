@@ -58,7 +58,7 @@
 				<select class="select cate-sel-wrap" multiple="multiple">
 					<option value="">请选择</option>
 					{volist name="cateData" id="cate"}
-                <option value="{$cate.id}" {if condition="in_array($cate.id,$proAllData.cate_id)"}selected{/if}>{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
+                <option value="{$cate.id}" {if condition="in_array($cate.id,$selCateData)"}selected{/if}>{if condition="$cate.pid != 0"}┞{/if}{$cate.level|str_repeat='┄',###*2}{$cate.name}</option>
 					{/volist}
 				</select>
 				</span> </div>

@@ -10,6 +10,38 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+/**
+ * 获取栏目名
+ */
+function getColumn($template_id){
+    $str = '';
+    switch ($template_id){
+        case 1:
+            $str = "index";
+            break;
+        case 2:
+            $str = "product";
+            break;
+        case 3:
+            $str = "contact";
+            break;
+        case 4:
+            $str = "news";
+            break;
+        case 5:
+            $str = "about";
+            break;
+        case 6:
+            $str = "column";
+            break;
+        default:
+            $str = "index";
+    }
+    return $str;
+}
+
+
 /**
  * 状态
  * @param $status
@@ -91,8 +123,6 @@ function pagination($obj){
 function getTemplateView($template_id=0){
     $templateArr = config('template.template_type');
     foreach ($templateArr as $k=>$v){
-//        var_dump($v['key'].'====='.$template_id);
-//        var_dump($v['key'] == $template_id);
         if($v['key'] == $template_id){
             return $v['view'];
         }
