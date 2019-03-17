@@ -616,7 +616,6 @@ body {
 .head-cate-list {
   min-height: 5.33333333rem;
   padding: 0.64rem 0.64rem;
-  background: url('../images/2.jpg') no-repeat;
   background-size: cover;
   display: flex;
 }
@@ -640,7 +639,6 @@ body {
   height: 2.18666667rem;
   padding: 0.2rem 0;
   margin: 0 0 0.4rem 0.92rem;
-  background-color: #f9e8ec;
 }
 .head-cate-list li .img {
   display: flex;
@@ -649,7 +647,9 @@ body {
   width: 1.06666667rem;
   height: 1.44rem;
   margin-top: 0.26666667rem;
-  background-color: #000;
+}
+.head-cate-list li .img img {
+  width: 100%;
 }
 .product-list {
   padding: 0.88rem 0.64rem;

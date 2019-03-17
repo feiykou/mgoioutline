@@ -250,7 +250,7 @@
             var t, e, n, o, a;
             return a = Snap("#origin"),
             t = Snap("#base"),
-            getLocalSession("intro") || $(window).width() > $(window).height() ? (setLocalSession("intro", 1), t.attr({
+            true || $(window).width() > $(window).height() ? (setLocalSession("intro", 1), t.attr({
                 width: 42,
                 height: 56,
                 x: 18,
