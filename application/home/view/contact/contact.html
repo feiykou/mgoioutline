@@ -1,181 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
-    {include file="public/head" /}
+    {include file="public/head" title="$title" /}
 </head>
 <body>
-    {include file="public/header-nav" /}
-    <div class="container contact-container">
-        <div class="index-content">
-            <div class="video-about">
-                <div class="about-wrap">
-                    <ul>
-                        <li>
-                            <h2 class="h2-tit fl">关于唔该</h2>
-                            <div class="con">
-                                <p>“唔该”就等于“不应该”吗？钻进故纸堆中，我发现，古人所说的“该”原来并没有“应该”的意义。譬如左思《吴都赋》中的一句，“耳目之所不该”，应译成“耳目所不能包括的”。古语“该”通“赅”，意为具备、完备、包括。《说文解字》释“该”道：“军中约也。”这又把它的使用情况界定在军队内。作为语言发展的一种结果，“该”的派生义“应该”已成为今日使用中的主要义，而渐被人忘却的基本义则转由“赅”去承担（成语有“言简意赅”）。 </p>
-                            </div>
-                        </li>
-                        <li>
-                            <h2 class="h2-tit fl">唔该使命</h2>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h2 class="h2-tit fl">唔该愿景</h2>
-                            <div class="con">
-                                <p>“唔该”开始用的时候，表示“不该”，还没有“感谢”等意。在后来的演变中“唔该”成为了“麻烦您真不应该”的简略表达形式。</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <img class="logo-img" src="__STATIC__/home/images/logo.png">
+<!-- 头部导航 -->
+{include file="public/header-nav" /}
+<div class="lr-container">
+    <div class="l-content">
+        <div class="nav-box">
+            <div class="nav">
+                <div class="nav-top">
+                    <a href="javascript:;">品牌精神</a>
                 </div>
-                <div class="video-wrap" style="background: url('__STATIC__/home/images/cantact.png') no-repeat center center; background-size:cover;"></div>
-
+                <ul>
+                    <li class="nav-item">
+                        <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>品牌精神</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>招聘</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>联系方式</span></a>
+                    </li>
+                </ul>
             </div>
-            <div class="content-wrap">
-
-                <div class="color-block share-wrap">
-                    <ul>
-                        <li class="item item1">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/share/red@high.png">
-                            </div>
-                            <div class="mask-con">
-                                <span>点击进入</span>
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/share/red@high.png">
-                            </div> -->
-                        </li>
-                        <li class="item item2">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/share/mini@high.png">
-                            </div>
-                            <div class="mask-con">
-                                <img src="__STATIC__/home/images/wxcode.png">
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/share/mini@high.png">
-                            </div> -->
-                        </li>
-                        <li class="item item3">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/share/taobao@high.png">
-                            </div>
-                            <div class="mask-con">
-                                <span>点击进入</span>
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/share/taobao@high.png">
-                            </div> -->
-                        </li>
-                        <li class="item item4">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/share/weibo@high.png">
-                            </div>
-                            <div class="mask-con">
-                                <span>点击进入</span>
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/share/weibo@high.png">
-                            </div> -->
-                        </li>
-                        <li class="item item5">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/share/wx@high.png">
-                            </div>
-                            <div class="mask-con">
-                                <img src="__STATIC__/home/images/wxcode.png">
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/share/wx@high.png">
-                            </div> -->
-                        </li>
-                        <li class="item item6">
-                            <div class="forward-wrap">
-                                <img class="img" src="__STATIC__/home/images/logo.png">
-                            </div>
-                            <!-- <div class="code-wrap">
-                                <img src="images/logo.png">
-                            </div> -->
-                        </li>
-                    </ul>
+        </div>
+    </div>
+    <div class="r-content">
+    </div>
+</div>
+<!-- 内容区 -->
+<div class="container detail-container">
+    <div class="index-content">
+        <div class="content-wrap">
+            <!-- 产品头图 -->
+            <div class="text-img-wrap hidden w1100">
+                <div class="left-wrap lr">
+                    <p>2019.3.10</p>
+                    <h1>他决定开始陪伴你</h1>
                 </div>
-
-                <div class="contact-address">
-                    <div class="w1100">
-                        <div class="info-wrap">
-                            <ul>
-                                <li>地址：广州市南沙区丰泽东路106号</li>
-                                <li>电话：020-38608033</li>
-                                <li>邮箱：m3goi1@163.com</li>
-                            </ul>
-                        </div>
-
-                        <div class="map-wrap">
-                            <div id="allmap"></div>
-                        </div>
+                <div class="right-wrap">
+                    <img src="__STATIC__/home/images/b1.jpg" alt="">
+                </div>
+            </div>
+            <!-- 产品详情 -->
+            <div class="detail-wrap w1100">
+                <div class="detail-tit-info fl">
+                    <p class="rl">前后移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的的一部</p>
+                </div>
+                <div class="detail-con hidden">
+                    <div class="con-tit">
+                        <p>他决定开始陪伴你</p>
+                        <p>你是他的唯一</p>
+                    </div>
+                    <div class="sec-tit">要好好照顾他哦</div>
+                    <div class="con">
+                        <p>前后移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的的一部分，是感情的重要习俗。</p>
+                        <p>前后移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的一部分，是感情的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的重要习俗。</p>
+                        <p>前后移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的一部分，是感情的重要移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的习俗。</p>
+                        <p>前后移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的一部分，是感情的重要习俗移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的移动，不仅连接了熟悉的人的后缘的问候，它是把一个势头的信徒的。</p>
                     </div>
                 </div>
-
             </div>
 
-    {include file="public/footer" /}
- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0wEz61xb7uFphoffxcDd9anzzTyyKlp7"></script>
+            <div class="contact-address">
+                <div class="w1100">
+                    <div class="map-wrap">
+                        <div id="allmap"></div>
+                    </div>
+                    <div class="info-wrap">
+                        <ul>
+                            <li>地址：<span>广州市南沙区丰泽东路106号</span></li>
+                            <li>电话：<span>020-38608033</span></li>
+                            <li>邮箱：<span>m3goi1@163.com</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- 底部 -->
+        {include file="public/footer" /}
+    </div>
+</div>
+<div class="bottom-line"></div>
+<!-- 公共js -->
+{include file="public/common" /}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0wEz61xb7uFphoffxcDd9anzzTyyKlp7"></script>
 <script>
-     var fdata = {
-         baiduGpsLat: '113.2719437397',
-         baiduGpsLog: '23.1059797775',
-         name: '大误',
-         address: '广东省广州市海珠区海幢街道仁厚直社区'
-     };
-     // 百度地图API功能
-     var map = new BMap.Map("allmap");
-     var point = new BMap.Point(fdata.baiduGpsLat, fdata.baiduGpsLog);
-     map.centerAndZoom(point, 15);
-     var marker = new BMap.Marker(point);  // 创建标注
-     map.addOverlay(marker);               // 将标注添加到地图中
-     marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
-     map.addEventListener("click", function(){
-         openClient();
-     });
-     map.enableScrollWheelZoom(true);
+    var fdata = {
+        baiduGpsLat: '113.2719437397',
+        baiduGpsLog: '23.1059797775',
+        name: '大误',
+        address: '广东省广州市海珠区海幢街道仁厚直社区'
+    };
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(fdata.baiduGpsLat, fdata.baiduGpsLog);
+    map.centerAndZoom(point, 15);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);               // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    map.addEventListener("click", function(){
+        openClient();
+    });
+    map.enableScrollWheelZoom(true);
 
 
-     var baiduConfig = {
-         scheme_Android: 'bdapp://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
-         scheme_IOS: 'baidumap://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
-         scheme_web: 'http://api.map.baidu.com/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address+'&output=html'
-     };
-     var timeout = 600;
-     // 判断操作系统，返回百度的不同操作系统下的接口
-     function adjustOS(){
-         var ua = window.navigator.userAgent.toLowerCase();
-         return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
-     }
-     function openClient() {
-         var startTime = Date.now();
-         var ifr = document.createElement('iframe');
-         ifr.src = adjustOS();
-         ifr.style.display = 'none';
-         document.body.appendChild(ifr);
-         var t = setTimeout(function() {
-             var endTime = Date.now();
-             if (!startTime || endTime - startTime < timeout + 200) {
-                 window.location.href = baiduConfig.scheme_web;
-             }
-         }, timeout);
-         window.onblur = function() {
-             clearTimeout(t);
-         }
-     }
-
-
-
-
+    var baiduConfig = {
+        scheme_Android: 'bdapp://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
+        scheme_IOS: 'baidumap://map/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address,
+        scheme_web: 'http://api.map.baidu.com/marker?location='+fdata.baiduGpsLat+','+fdata.baiduGpsLog+'&title='+fdata.name+'&content='+fdata.address+'&output=html'
+    };
+    var timeout = 600;
+    // 判断操作系统，返回百度的不同操作系统下的接口
+    function adjustOS(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
+    }
+    function openClient() {
+        var startTime = Date.now();
+        var ifr = document.createElement('iframe');
+        ifr.src = adjustOS();
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        var t = setTimeout(function() {
+            var endTime = Date.now();
+            if (!startTime || endTime - startTime < timeout + 200) {
+                window.location.href = baiduConfig.scheme_web;
+            }
+        }, timeout);
+        window.onblur = function() {
+            clearTimeout(t);
+        }
+    }
 
 </script>
+
+</body>
 </html>

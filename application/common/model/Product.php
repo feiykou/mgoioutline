@@ -302,7 +302,6 @@ class Product extends Model
             'id'        => "desc"
         ];
         $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
-//        $result = self::where($data)->order($order)->select();
         return $result;
     }
 

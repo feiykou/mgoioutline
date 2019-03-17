@@ -11,35 +11,24 @@
 {include file="public/lr-fixed" type="news" /}
 
 <!-- 内容区 -->
-<div class="container library-list-container">
+<div class="container news-list-conatiner">
     <div class="index-content">
         <div class="content-wrap">
-            {present name="sonCateData"}
-            <div class="head-cate-list w1100">
-                <div class="tit"><i class="fl"></i><i class="fr"></i><span>节假日所有产品</span></div>
-                <ul class="hidden">
-                    {volist name="sonCateData" id="data"}
-                    <li>
-                        <p class="name"><a href="#">{$data.name}</a></p>
-                        <p class="img"><a href="#"><img src="{$data.img_url}"></a></p>
-                    </li>
-                    {/volist}
-                </ul>
-            </div>
-            {/present}
-            <!-- 公司信息导航 -->
-            <div class="company-nav-sec w1100">
-                <ul class="hidden">
-                    {volist name="newsData" id="data"}
-                    <li>
-                        <div class="name">{$data.name}</div>
-                        <a href="/news/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
-                        <p class="tit">{$data.sub_name}</p>
-                        <p class="desc">{$data.introduce}</p>
-                        <p class="more"><a href="/news/detail/{$data.id}">了解更多 &gt;</a></p>
-                    </li>
-                    {/volist}
-                </ul>
+            <div class="w1100">
+                {volist name="newsData" id="data"}
+                <div class="item text-img-wrap">
+                    <div class="left-wrap">
+                        <div class="inline-block">
+                            <h3 class="tit"><a href="/news/detail/{$data.id}">{$data.name}</a></h3>
+                            <p class="author"><span>{$data.author}编辑</span></p>
+                            <p class="desc">{$data.introduce}</p>
+                        </div>
+                    </div>
+                    <div class="right-wrap">
+                        <a href="/news/detail/{$data.id}"><img src="{$data.main_img_url[1]}" alt=""></a>
+                    </div>
+                </div>
+                {/volist}
             </div>
         </div>
         <!-- 底部 -->
@@ -51,3 +40,5 @@
 {include file="public/common" /}
 </body>
 </html>
+
+

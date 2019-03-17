@@ -38,10 +38,14 @@ class News extends Common
         $detailData = $this->model->getNewsData($id);
         $cate = new NewsCate();
         $cateData = $cate->getCateJson();
-        // $rescData = $this->model->getRescPro(4);
         return $this->fetch('',[
             'detailData' => $detailData,
             'cateData' => $cateData
         ]);
+    }
+    public function cate($cate_id){
+        if(intval($cate_id) <= 0) return;
+        $products = model('news')->getNewsIndexData($cate_id);
+        return json($products);
     }
 }

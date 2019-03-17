@@ -24,7 +24,12 @@ Route::get('/contact/[:cate_id]','home/contact/contact',[],['cate_id'=>'\d+']);
 Route::get('/news/[:columnId]','home/news/index',[],['columnId'=>'\d+']);
 Route::get('/news/list/[:cate_id]','home/news/index',[],['cate_id'=>'\d+']);
 Route::get('/news/detail/:id','home/news/detail',[],['id'=>'\d+']);
+Route::get('/news/cate/:cate_id','home/news/cate',[],['cate_id'=>'\d+']);
+
+
 Route::get('/column/[:columnId]','home/column/index',[],['columnId'=>'\d+']);
 Route::get('/column/list/:cate_id','home/column/index',[],['id'=>'\d+']);
 Route::get('/column/detail/:id','home/column/detail',[],['id'=>'\d+']);
+Route::get('/column/cate/:cate_id','home/column/cate',[],['cate_id'=>'\d+']);
+
 Route::get('/index','home/home/index');

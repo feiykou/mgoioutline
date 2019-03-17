@@ -11,47 +11,48 @@
 {include file="public/lr-fixed" type="product" /}
 
 
-<!-- 轮播图 -->
-<div class="banner-sec preloader">
-    <div class="w1100">
-        <div class="head-banner-wrap">
-            <div class="nav-box">
-                <div class="arrow prev">
-                    <span>
-                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
-                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
-                    </span>
-                </div>
-                <div class="arrow next">
-                    <span>
-                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
-                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
-                    </span>
-                </div>
-            </div>
-            <div class="head-banner owl-carousel">
-                {volist name="bannerData" id="data"}
-                <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{present name="$data.img_url[2]"}{$data.img_url[2]}{/present}" data-image-xs="{present name="$data.img_url[1]"}{$data.img_url[1]}{/present}" data-image-lg="{$data.img_url[0]}"></div>
-                {/volist}
-            </div>
-        </div>
-        <div class="dots-wrap">
-            {volist name="bannerData" id="data"}
-                <div class="dot"><i></i></div>
-            {/volist}
-        </div>
-        <ul class="rela-imgs hidden">
-            {volist name="bannerData" id="data" key="k"}
-            <li class="{if condition="$k eq 1"}active{/if}"><a href="{if condition='$data.type == 1'}/product/detail/{$data.key_word}{elseif condition='$data.type eq 2'}/news/detail/{$data.key_word}{else/}javascript:volid(0);{/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
-            {/volist}
-        </ul>
-    </div>
-</div>
+
 
 <!-- 内容区 -->
 <div class="container index-container">
     <div class="index-content">
         <div class="content-wrap">
+            <!-- 轮播图 -->
+            <div class="banner-sec preloader">
+                <div class="w1100">
+                    <div class="head-banner-wrap">
+                        <div class="nav-box">
+                            <div class="arrow prev">
+                    <span>
+                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
+                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
+                    </span>
+                            </div>
+                            <div class="arrow next">
+                    <span>
+                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
+                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
+                    </span>
+                            </div>
+                        </div>
+                        <div class="head-banner owl-carousel">
+                            {volist name="bannerData" id="data"}
+                            <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{present name="$data.img_url[2]"}{$data.img_url[2]}{/present}" data-image-xs="{present name="$data.img_url[1]"}{$data.img_url[1]}{/present}" data-image-lg="{$data.img_url[0]}"></div>
+                        {/volist}
+                    </div>
+                </div>
+                <div class="dots-wrap">
+                    {volist name="bannerData" id="data"}
+                    <div class="dot"><i></i></div>
+                    {/volist}
+                </div>
+                <ul class="rela-imgs hidden">
+                    {volist name="bannerData" id="data" key="k"}
+                    <li class="{if condition="$k eq 1"}active{/if}"><a href="{if condition='$data.type == 1'}/product/detail/{$data.key_word}{elseif condition='$data.type eq 2'}/news/detail/{$data.key_word}{else/}javascript:volid(0);{/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
+                    {/volist}
+                </ul>
+            </div>
+            </div>
             <div class="section resc-banner-sec w1100 clearfix">
                 <div class="resc-banner-box">
                     <div class="resc-banner-wrap">

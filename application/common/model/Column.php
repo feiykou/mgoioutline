@@ -106,7 +106,7 @@ class Column extends Model
     public function getNewsIndexData($cateId){
         // 获取产品子栏目产品
         $cateTree = new Catetree();
-        $idArr = $cateTree->childrenids($cateId,model('newsCate'));
+        $idArr = $cateTree->childrenids($cateId,model('column_cate'));
         $idArr[] = $cateId;
         $data = [
             'status' => 1,

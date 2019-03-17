@@ -34,4 +34,10 @@ class Column extends Common
             'cateData' => $cateData
         ]);
     }
+
+    public function cate($cate_id){
+        if(intval($cate_id) <= 0) return;
+        $products = $this->model->getNewsIndexData($cate_id);
+        return json($products);
+    }
 }

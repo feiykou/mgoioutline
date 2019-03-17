@@ -39,8 +39,7 @@ body {
 .content-wrap {
   overflow: hidden;
 }
-.index-content,
-.banner-sec {
+.index-content {
   padding: 0 5% 0 18%;
 }
 .lr-container > div {
@@ -605,6 +604,7 @@ body {
 .head-cate-list li .img {
   width: 80px;
   height: 90px;
+  line-height: 90px;
 }
 .head-cate-list li .img img {
   width: 100%;
@@ -754,9 +754,10 @@ body {
   margin-top: 50px;
 }
 .news-list-conatiner .text-img-wrap {
-  overflow: hidden;
   margin-bottom: 80px;
   font-size: 0;
+  max-height: 390px;
+  overflow: hidden;
 }
 .news-list-conatiner .text-img-wrap .left-wrap:after {
   content: '';
@@ -786,6 +787,8 @@ body {
 }
 .text-img-wrap {
   position: relative;
+  max-height: 390px;
+  overflow: hidden;
 }
 .text-img-wrap .left-wrap {
   position: absolute;
@@ -977,6 +980,9 @@ body {
   vertical-align: middle;
   background-color: #eee;
 }
+.contact-wrap .contact-type-tit {
+  display: none;
+}
 .contact-wrap .footer-banner {
   height: 140px;
   border-left: 1px solid #000;
@@ -985,9 +991,11 @@ body {
   box-sizing: border-box;
 }
 .contact-wrap .footer-banner .tel-wrap {
+  float: left;
   padding-top: 5px;
 }
 .contact-wrap .footer-banner .share-wrap {
+  float: right;
   overflow: hidden;
   margin-left: 3%;
 }
@@ -1008,6 +1016,32 @@ body {
   text-align: center;
   background-color: #dd4a31;
   color: #fff;
+}
+/*************  联系  ***************/
+.contact-address {
+  border-top: 4px solid #000;
+  padding-top: 42px;
+}
+.contact-address .map-wrap {
+  height: 448px;
+}
+.contact-address .map-wrap #allmap {
+  height: 100%;
+}
+.contact-address .info-wrap {
+  margin: 30px 10px;
+}
+.contact-address .info-wrap li {
+  line-height: 48px;
+  font-size: 18px;
+}
+.contact-address .info-wrap li span {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 300px;
+  line-height: 32px;
+  border-bottom: 1px solid #000;
 }
 @media screen and (max-width: 1500px) {
   .banner-wrap {
