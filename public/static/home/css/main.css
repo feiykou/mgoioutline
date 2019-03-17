@@ -991,11 +991,11 @@ body {
   box-sizing: border-box;
 }
 .contact-wrap .footer-banner .tel-wrap {
-  float: left;
+  float: right;
   padding-top: 5px;
 }
 .contact-wrap .footer-banner .share-wrap {
-  float: right;
+  float: left;
   overflow: hidden;
   margin-left: 3%;
 }
