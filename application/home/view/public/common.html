@@ -48,17 +48,20 @@
     var isShow = false;
     var mskDom = document.getElementById('backdropWrap');
     document.getElementById('menuBtnWrap').addEventListener('tap', function() {
+        isShow = offCanvasWrapper.offCanvas().isShown();
         if(!isShow){
             offCanvasWrapper.offCanvas('show');
             mskDom.style.display = 'block';
-            isShow = true;
         }else{
             offCanvasWrapper.offCanvas('close');
             mskDom.style.display = 'none';
-            isShow = false;
         }
-
     });
+
+    mskDom.addEventListener('tap', function() {
+        offCanvasWrapper.offCanvas('close');
+        mskDom.style.display = 'none';
+    })
 
     var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
     Array.prototype.forEach.call(cateListDom, function(val){
