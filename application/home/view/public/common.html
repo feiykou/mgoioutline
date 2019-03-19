@@ -1,3 +1,83 @@
+</div>
+<div id="menuBtnWrap">menu</div>
+<div id="backdropWrap"></div>
+</div>
+</div>
+
+<link rel="stylesheet" href="__STATIC__/home/css/mui.min.css">
+<script src="__STATIC__/home/js/mui.min.js"></script>
+<script>
+
+    //主界面和侧滑菜单界面均支持区域滚动；
+    mui('#offCanvasSideScroll').scroll();
+    mui('#offCanvasContentScroll').scroll();
+
+    mui.init();
+    //侧滑容器父节点
+    var offCanvasWrapper = mui('#offCanvasWrapper');
+    //主界面容器
+    var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+    //菜单容器
+    var offCanvasSide = document.getElementById("offCanvasSide");
+    //移动效果是否为整体移动
+    var moveTogether = false;
+    //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+    var classList = offCanvasWrapper[0].classList;
+
+    offCanvasSide.classList.remove('mui-transitioning');
+    offCanvasSide.setAttribute('style', '');
+    classList.remove('mui-slide-in');
+    classList.remove('mui-scalable');
+    if (moveTogether) {
+        //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+        offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+    }
+    classList.add('mui-scalable');
+    offCanvasWrapper.offCanvas().refresh();
+
+
+    //主界面‘显示侧滑菜单’按钮的点击事件
+    // document.getElementById('offCanvasShow').addEventListener('tap', function() {
+    //     offCanvasWrapper.offCanvas('show');
+    // });
+    //     //菜单界面，‘关闭侧滑菜单’按钮的点击事件
+    // document.getElementById('offCanvasHide').addEventListener('tap', function() {
+    //     offCanvasWrapper.offCanvas('close');
+    // });
+
+    var isShow = false;
+    var mskDom = document.getElementById('backdropWrap');
+    document.getElementById('menuBtnWrap').addEventListener('tap', function() {
+        if(!isShow){
+            offCanvasWrapper.offCanvas('show');
+            mskDom.style.display = 'block';
+            isShow = true;
+        }else{
+            offCanvasWrapper.offCanvas('close');
+            mskDom.style.display = 'none';
+            isShow = false;
+        }
+
+    });
+
+    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
+    Array.prototype.forEach.call(cateListDom, function(val){
+        val.addEventListener('tap', function() {
+            offCanvasWrapper.offCanvas('show');
+        })
+    })
+
+
+    //实现ios平台原生侧滑关闭页面；
+    if (mui.os.plus && mui.os.ios) {
+        mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
+            plus.webview.currentWebview().setStyle({
+                'popGesture': 'none'
+            });
+        });
+    }
+
+</script>
 <script src="__STATIC__/home/js/jquery-1.10.1.min.js"></script>
 <script src="__STATIC__/home/js/lib.js"></script>
 <script src="__STATIC__/home/js/common.js"></script>

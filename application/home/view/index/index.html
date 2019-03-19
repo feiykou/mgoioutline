@@ -1,247 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {include file="public/head" title="$title" /}
 </head>
 <body>
-<!-- 头部导航 -->
+{include file="public/lr-fixed" /}
 {include file="public/header-nav" /}
+<div class="mui-scroll index-container">
+    <div class="head-swiper-container" dir="ltr">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 
-<!-- 左右固定 -->
-{include file="public/lr-fixed" type="product" /}
+    <div class="section theme-sec">
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 
-
-
-
-<!-- 内容区 -->
-<div class="container index-container">
-    <div class="index-content">
-        <div class="content-wrap">
-            <!-- 轮播图 -->
-            <div class="banner-sec preloader">
-                <div class="w1100">
-                    <div class="head-banner-wrap">
-                        <div class="nav-box">
-                            <div class="arrow prev">
-                    <span>
-                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
-                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
-                    </span>
-                            </div>
-                            <div class="arrow next">
-                    <span>
-                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
-                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
-                    </span>
-                            </div>
-                        </div>
-                        <div class="head-banner owl-carousel">
-                            {volist name="bannerData" id="data"}
-                            <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{present name="$data.img_url[2]"}{$data.img_url[2]}{/present}" data-image-xs="{present name="$data.img_url[1]"}{$data.img_url[1]}{/present}" data-image-lg="{$data.img_url[0]}"></div>
-                        {/volist}
-                    </div>
-                </div>
-                <div class="dots-wrap">
-                    {volist name="bannerData" id="data"}
-                    <div class="dot"><i></i></div>
-                    {/volist}
-                </div>
-                <ul class="rela-imgs hidden">
-                    {volist name="bannerData" id="data" key="k"}
-                    <li class="{if condition="$k eq 1"}active{/if}"><a href="{if condition='$data.type == 1'}/product/detail/{$data.key_word}{elseif condition='$data.type eq 2'}/news/detail/{$data.key_word}{else/}javascript:volid(0);{/if}"><img src="{$data.thumb_url}" alt="{$data.name}"></a></li>
-                    {/volist}
+    <div class="section resc-banner-sec w1100 clearfix">
+        <div class="resc-banner-box">
+            <div class="resc-banner-wrap">
+                <ul class="resc-banner fl">
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/1.png" alt=""></li>
+                    <li><img src="__STATIC__/home/images/2.png" alt=""></li>
                 </ul>
-            </div>
-            </div>
-            <div class="section resc-banner-sec w1100 clearfix">
-                <div class="resc-banner-box">
-                    <div class="resc-banner-wrap">
-                        <ul class="resc-banner fl">
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/1.png" alt=""></li>
-                            <li><img src="__STATIC__/home/images/2.png" alt=""></li>
-                        </ul>
-                        <ul class="resc-banner-copy fl"></ul>
-                    </div>
-                </div>
-
-                <!-- <div class="title-wrap">
-                    <div class="con">
-                        <p class="tit">黑白也是有趣</p>
-                        <p>我们在这里，用最简单的笔触，提笔来描述出一个产品最原始的概念图，他是这样而诞生的。</p>
-                        <h2 class="none">宠物插画</h2>
-                    </div>
-                </div> -->
-            </div>
-            <div class="section product-sec">
-                <div class="product-item w1100 divanimate animated" style="opacity:1;" data-animation="lightSpeedIn">
-                    <div class="index-product-box">
-                        <div class="product-wrap product-container">
-                            {volist name="resProData" id="data"}
-                            <div class="item">
-                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" data-src="{$data.main_img_url[0]}" lazyload="true" alt=""></a>
-                                <div class="info">
-                                    <h3 class="tit clearfix"><a class="fl" href="/product/detail/{$data.id}">{$data.name[0]}</a></h3>
-                                    <p class="desc-price"><span class="price">¥{$data.price}</span></p>
-                                </div>
-                            </div>
-                            {/volist}
-
-                        </div>
-                        <div class="more-con"><span>ALL &gt;</span></div>
-                    </div>
-                </div>
-            </div>
-            <!--  招聘 -->
-            <div class="recruit-sec w1100 hidden">
-                <img src="__STATIC__/home/images/recruit@icon.png" alt="">
-                <div>招聘：我们正在寻找一名工业设计师</div>
-            </div>
-
-            <!-- 公司信息导航 -->
-            <div class="company-nav-sec w1100">
-                <ul class="hidden">
-                    {volist name="resColumnData" id="data"}
-                    <li>
-                        <div class="name">{$data.name}</div>
-                        <a href="/column/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
-                        <p class="tit">{$data.sub_name}</p>
-                        <p class="desc">{$data.introduce}</p>
-                        <p class="more"><a href="/column/detail/{$data.id}">了解更多 &gt;</a></p>
-                    </li>
-                    {/volist}
-                </ul>
+                <ul class="resc-banner-copy fl"></ul>
             </div>
         </div>
-        {include file="public/footer" /}
+        <!-- <div class="title-wrap">
+            <div class="con">
+                <p class="tit">黑白也是有趣</p>
+                <p>我们在这里，用最简单的笔触，提笔来描述出一个产品最原始的概念图，他是这样而诞生的。</p>
+                <h2 class="none">宠物插画</h2>
+            </div>
+        </div> -->
     </div>
-</div>
-<div class="bottom-line"></div>
-<!-- 公共js -->
-{include file="public/common" /}
-{include file="public/script" /}
-<script>
 
-    $(function(){
-        // nav收缩展开
-        $('.nav-item>a').on('click',function(){
-            if (!$('.nav').hasClass('nav-mini')) {
-                if ($(this).next().css('display') == "none") {
-                    //展开未展开
-                    console.log($(this).next('ul'))
-                    $(this).parents('.nav').find(".nav-item").children('ul').slideUp(300);
-                    $(this).next('ul').slideDown(300);
-                    $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
-                    $(this).find('.nav-more').text('-');
-                }else{
-                    //收缩已展开
-                    $(this).next('ul').slideUp(300);
-                    $('.nav-item.nav-show').removeClass('nav-show');
-                    $(this).find('.nav-more').text('+');
-                }
-            }
-        });
+    <div class="section">
+        <!-- Swiper -->
+        <div class="product-swiper-container resc-product-list-container">
+            <h3 class="tit">推荐产品</h3>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
+                    <div class="info">
+                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
+                        <p class="price">¥166.00</p>
+                        <p class="buy"><a href="#">立即购买</a></p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
+                    <div class="info">
+                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
+                        <p class="price">¥166.00</p>
+                        <p class="buy"><a href="#">立即购买</a></p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
+                    <div class="info">
+                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
+                        <p class="price">¥166.00</p>
+                        <p class="buy"><a href="#">立即购买</a></p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
+                    <div class="info">
+                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
+                        <p class="price">¥166.00</p>
+                        <p class="buy"><a href="#">立即购买</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Swiper -->
+        <div class="product-swiper-container resc-product-list-container">
+            <h3 class="tit">新品上新</h3>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <div class="section index-cate-sec">
+        <ul class="list index-cate-sec-list">
+            <li>
+                <a href="#mamian">
+                    <p class="name">衣料品</p>
+                    <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+                </a>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li>
+                <p class="name">衣料品</p>
+                <p class="img"><img src="__STATIC__/home/images/head/1.png" alt=""></p>
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="section column-sec">
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!--  招聘 -->
+    <div class="recruit-sec w1100 hidden">
+        <img src="__STATIC__/home/images/recruit@icon.png" alt="">
+        <div>招聘：我们正在寻找一名工业设计师</div>
+    </div>
+
+    {include file="public/footer" /}
+</div>
+{include file="public/common" /}
+
+<!--<script src="js/main.js"></script>-->
+<!--<script src="js/lib/antimoderate/preloadjs.min.js"></script>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+<!-- <script src="js/banner.js"></script> -->
+<script>
+    new Swiper('.head-swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+        }
     });
 
-
+    new Swiper('.resc-product-list-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+    });
 </script>
-<script>
-    $(function(){
-        var rescDom = $('.resc-banner');
-        var copyDom = $('.resc-banner-copy');
-        var wrapDom = $('.resc-banner-wrap');
-        scrollBanner(rescDom,copyDom,wrapDom);
-        var navDom = $('.nav-banner');
-        var navCopyDom = $('.nav-banner-copy');
-        var navWrapDom = $('.nav-banner-wrap');
-        scrollBanner(navDom,navCopyDom,navWrapDom);
-
-        function scrollBanner(rescDom,copyDom,wrapDom){
-            var maxW = rescDom.width();
-            var speed = 28,
-                num = 0;
-            copyDom.html(rescDom.html());
-            setInterval(function(){
-                num -= 1;
-                if(Math.abs(num) >= maxW){
-                    num = 0;
-                }
-                wrapDom.css({
-                    left: num
-                })
-            },speed)
-        }
 
 
-    })
-
-
-    // $(document).ready(function () {
-    //     isScroll.init('.divanimate');
-    // });
-
-
-
-    $(function(){
-        var sildeDom = document.querySelector('.sildeUp');
-        var mark = true;
-        sildeDom.addEventListener('touchstart',function(){
-            var maskDom = this.children[1];
-            console.log(this)
-            if(mark){
-                maskDom.className += ' active';
-                mark = false;
-            }else{
-                maskDom.className = maskDom.getAttribute('class').replace(' active','');
-                mark = true;
-            }
-        })
-    })
-
-    $(function(){
-        $(".btn-menu").on('click',function(){
-            if(!$(this).hasClass('close')){
-                $(this).addClass("close");
-                $(this).next().removeClass('fadeOutUp')
-                $(this).next().show().addClass('swing')
-            }else{
-                $(this).removeClass("close");
-                $(this).next().removeClass('swing')
-                $(this).next().addClass('fadeOutUp').hide()
-            }
-        });
-    })
-</script>
 </body>
 </html>

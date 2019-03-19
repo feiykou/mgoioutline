@@ -1,45 +1,71 @@
-<div class="lr-container">
-    <div class="l-content">
-        {present name="$cateData"}
-        <div class="nav-box">
-            {volist name="$cateData" id="data" key="k"}
-            {if condition="count($data['sub']) eq 0"}
-            <div class="nav nav-top-wrap">
-                <ul class="block">
-                    <li class="nav-item">
-                        <a href="/[type]/list/{$data.id}"><span>{$data['name']}</span></a>
-                    </li>
-                </ul>
-            </div>
-            {else/}
-            <div class="nav">
-                <div class="nav-top">
-                    <a>{$data['name']}</a>
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap">
+    <!--侧滑菜单部分-->
+    <aside id="offCanvasSide" class="mui-off-canvas-left asider-container">
+        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+            <div class="mui-scroll l-content">
+                <div class="l-logo-wrap"></div>
+                <div class="nav-box">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="b"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="1"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="mamian"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="mamian"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell mui-collapse">
+                            <a class="mui-navigate-right" href="#">衣料品</a>
+                            <div class="mui-collapse-content">
+                                <div class="child-item"><a href="#" name="mamian"><span>-</span> 麻棉</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
+                                <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
-                <ul>
-                    {volist name="$data['sub']" id="sonData" key="sonk"}
-                    <li class="nav-item">
-                        {if condition="count($sonData['sub']) eq 0"}
-                            <a href="/[type]/list/{$sonData.id}"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span></a>
-                        {else /}
-                            <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>{$sonData.name}</span><i class="my-icon nav-more">+</i></a>
-                        {/if}
-                        <ul style="display:block;">
-                            {if condition="count($sonData['sub']) neq 0"}
-                            {volist name="$sonData['sub']" id="grandData" key="grandk"}
-                            <li><a href="/[type]/list/{$grandData.id}"><span>- {$grandData.name}</span></a></li>
-                            {/volist}
-                            {/if}
-                        </ul>
-                    </li>
-                    {/volist}
-                </ul>
             </div>
-            {/if}
-            {/volist}
         </div>
-        {/present}
-    </div>
-    <div class="r-content">
-    </div>
-</div>
+    </aside>
+    <!--主界面部分-->
+    <div class="mui-inner-wrap">
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
