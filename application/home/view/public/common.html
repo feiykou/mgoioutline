@@ -63,12 +63,7 @@
         mskDom.style.display = 'none';
     })
 
-    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
-    Array.prototype.forEach.call(cateListDom, function(val){
-        val.addEventListener('tap', function() {
-            offCanvasWrapper.offCanvas('show');
-        })
-    })
+
 
 
     //实现ios平台原生侧滑关闭页面；

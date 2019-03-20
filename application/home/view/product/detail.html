@@ -4,122 +4,145 @@
     {include file="public/head" title="$title" /}
 </head>
 <body>
-<!-- 头部导航 -->
+
 {include file="public/header-nav" /}
-
-<!-- 左右固定 -->
 {include file="public/lr-fixed" type="product" /}
-
-<!-- 内容区 -->
-<div class="container product-detail-container detail-container">
-    <div class="index-content">
-        <div class="content-wrap">
-            <!-- 产品头图 -->
-            <div class="head-img hidden">
-                <!-- 轮播图 -->
-                <div class="banner-sec preloader hidden">
-                    <div class="w1100">
-                        <div class="product-info">
-                            <h1 class="tit">{$productData.name[0]}</h1>
-                            <p class="attr">{volist name="$productData.prop" id="propData"}{$propData.prop_value} {/volist}</p>
-                            <p class="price">¥{$productData.price}</p>
-                            <p class="desc">{$productData.introduce}</p>
-                            <p class="buy"><a href="{$productData.link_url}">立即购买</a></p>
-                        </div>
-                        <div class="head-banner-wrap">
-                            {if condition="count($productData['imgs_url']) gt 1"}
-                            <div class="nav-box">
-                                <div class="arrow prev">
-                                    <span>
-                                        <img class="default" src="__STATIC__/home/images/banner/larrow.png" alt="">
-                                        <img class="high none" src="__STATIC__/home/images/banner/larrow@high.png" alt="">
-                                    </span>
-                                </div>
-                                <div class="arrow next">
-                                    <span>
-                                        <img class="default" src="__STATIC__/home/images/banner/rarrow.png" alt="">
-                                        <img class="high none" src="__STATIC__/home/images/banner/rarrow@high.png" alt="">
-                                    </span>
-                                </div>
-                            </div>
-                            {/if}
-                            <div class="head-banner owl-carousel">
-                                {volist name="$productData['imgs_url']" id="img_url" key="k"}
-                                <div class="item {if condition='$key eq 0'}main-sec-big-img{/if}" data-small-img="{$img_url}" data-image-xs="{$productData.mobile_imgs_url[$k-1]}" data-image-lg="{$img_url}"></div>
-                                {/volist}
-                            </div>
-                        </div>
-                        <div class="dots-wrap">
-                            {if condition="count($productData['imgs_url']) gt 1"}
-                            {for start="0" end="count($productData['imgs_url'])"}
-                                <div class="dot"><i></i></div>
-                            {/for}
-                            {/if}
-                        </div>
-                    </div>
-                </div>
+<div class="mui-scroll container product-detail-container">
+    <div class="thumbs-wrap">
+        <!-- Swiper -->
+        <div class="detail-swiper-container gallery-top">
+            <div class="swiper-wrapper">
+                {volist name="$productData['mobile_imgs_url']" id="img_url" key="k"}
+                <div class="swiper-slide" style="background-image:url('{$img_url}')"></div>
+                {/volist}
             </div>
-            <!-- 产品详情 -->
-            <div class="detail-wrap w1100">
-                <div class="detail-tit-info fl">
-                    <p class="rl">{$productData.slogan|html_entity_decode=###}</p>
-                </div>
-                <div class="detail-con hidden">
-                    <div class="con-tit">
-                        <p>{$productData.name[0]}</p>
-                        <p>{present name="$productData.name[1]"}{/present}</p>
-                    </div>
-                    <div class="sec-tit">{$productData.name_desc}</div>
-                    <div class="con">
-                        {$productData.content|html_entity_decode=###}
-                    </div>
-                </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+        <div class="detail-swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                {volist name="$productData['mobile_imgs_url']" id="img_url" key="k"}
+                <div class="swiper-slide" style="background-image:url('{$img_url}')"></div>
+                {/volist}
             </div>
-
-            <!-- 相关推荐 -->
-            <div class="product-resc-wrap w1100">
-                <h2 class="resc-tit">最受欢迎的礼品</h2>
-                <div class="product-resc-banner product-container owl-carousel">
-                    {volist name="rescData" id="data"}
-                    <div class="item">
-                        <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
-                        <div class="info">
-                            <h3 class="tit clearfix"><a class="fl" href="#">{$data.name[0]}</a></h3>
-                            <p class="desc-price"><span class="price">¥{$data.price}</span></p>
-                        </div>
-                    </div>
-                    {/volist}
+        </div>
+    </div>
+    <div class="detail-content">
+        <div class="product-info">
+            <h1 class="tit">{$productData.name[0]}</h1>
+            <p class="price">¥{$productData.price}</p>
+            <ul class="attr-wrap">
+                <li>商品名称：宠物自循环活氧饮水器</li>
+                <li>产品型号：YX-QSQ-01A</li>
+                <li>额定电压：5V 直流</li>
+            </ul>
+            <p class="buy"><a href="{$productData.link_url}">立即购买</a></p>
+        </div>
+        <div class="product-content">
+            <h2 class="detail-tit"><span>商品详情</span></h2>
+            <div class="con">
+                <h3 class="con-tit">商品故事</h3>
+                <div class="story-wrap">
+                    {$productData.content|html_entity_decode=###}
+                </div>
+                <div class="imgs-con">
+                    <!--<img src="/images/1.jpg" alt="">-->
                 </div>
             </div>
         </div>
-        {include file="public/footer" /}
+
     </div>
+    <!-- Swiper -->
+    <div class="product-swiper-container resc-product-list-container">
+        <h3 class="tit">推荐产品</h3>
+        <div class="swiper-wrapper">
+            {volist name="rescData" id="data"}
+            <div class="swiper-slide">
+                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                <div class="info">
+                    <p class="tit">{$data.name[0]}</p>
+                    <p class="price">¥{$data.price}</p>
+                    <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <!--<div class="section index-cate-sec">-->
+        <!--<h2>唔该商店&商品</h2>-->
+        <!--<div class="label"><span>CATEGOFY</span></div>-->
+        <!--<ul class="list index-cate-sec-list">-->
+            <!--<li>-->
+                <!--<a href="#mamian">-->
+                    <!--<p class="name">衣料品</p>-->
+                    <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p class="name">衣料品</p>-->
+                <!--<p class="img"><img src="./images/head/1.png" alt=""></p>-->
+            <!--</li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+            <!--<li></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    {include file="public/footer" /}
 </div>
-<div class="bottom-line"></div>
-<!-- 公共js -->
 {include file="public/common" /}
-{include file="public/script" /}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
 <script>
-    var dpr992 = dpr*992;
-    var dpr1200 = dpr*1200;
-    $('.product-resc-banner').owlCarousel({
-        loop:true,
-        margin:30,
-        nav: true,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:3,
-            },
-            [dpr992]:{
-                items:5,
-            },
-            [dpr1200]:{
-                items:5,
-                loop:true
-            }
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 5,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 5,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
         }
     });
+
+    new Swiper('.resc-product-list-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+    });
+
 </script>
+
 </body>
 </html>

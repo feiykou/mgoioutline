@@ -5,7 +5,7 @@
 </head>
 <body>
 {include file="public/header-nav" /}
-{include file="public/lr-fixed" /}
+{include file="public/lr-fixed" type="product" /}
 <div class="mui-scroll index-container">
     <div class="head-swiper-container" dir="ltr">
         <div class="swiper-wrapper">
@@ -231,6 +231,12 @@
                 })
             },speed)
         }
+    })
+    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
+    Array.prototype.forEach.call(cateListDom, function(val){
+        val.addEventListener('tap', function() {
+            offCanvasWrapper.offCanvas('show');
+        })
     })
 </script>
 

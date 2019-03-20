@@ -24,7 +24,7 @@ class Procate extends Model
 
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
-        return $val;
+        return explode(';',$val);
     }
 
     protected function productCate(){

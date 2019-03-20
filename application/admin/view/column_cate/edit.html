@@ -36,15 +36,15 @@
                 <label class="form-label col-xs-2 col-sm-3">缩略图：</label>
                 <div class="formControls col-xs-8 col-sm-8">
                     {Uploader:webuploader btnVal="上传轮播图" uploadId="imgUrl"}
-                    {if condition="$cateCurrent.img_url neq ''"}
                     <ul class="filelist filelist-exist clearfix">
-                        <li class="state-complete" data-src="{$cateCurrent.img_url}">
-                            <p class="imgWrap"><img src="{$cateCurrent.img_url}" width="110" height="110"></p>
+                        {volist name="$cateCurrent.img_url" id="imgs_arr"}
+                        <li class="state-complete" data-src="{$imgs_arr}">
+                            <p class="imgWrap"><img src="{$imgs_arr}" width="110" height="110"></p>
                             <div class="file-panel"><span class="cancel">删除</span></div>
                             <span class="success"></span>
                         </li>
+                        {/volist}
                     </ul>
-                    {/if}
                     {/Uploader:webuploader}
                 </div>
             </div>

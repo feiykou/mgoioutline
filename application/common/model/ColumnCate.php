@@ -17,6 +17,17 @@ class ColumnCate extends Model
     protected $hidden = [
         'create_time','update_time'
     ];
+
+    protected function getImgUrlAttr($val,$data){
+        return $this->handleImgUrl($val);
+    }
+
+    private function handleImgUrl($val){
+        $val = str_replace('\\','/',$val);
+        return explode(';',$val);
+    }
+
+
     public function getAllCateData(){
         $cateData = self::alias('a1')
             ->field('a1.*,a2.name as pname')
