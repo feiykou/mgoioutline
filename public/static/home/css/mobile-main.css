@@ -901,6 +901,7 @@ body {
 .product-detail-container .product-content .detail-tit {
   margin-bottom: 0.8rem;
   border-bottom: 0.01333333rem solid #ddd;
+  font-size: 0.4rem !important;
 }
 .product-detail-container .product-content .detail-tit span {
   display: inline-block;
@@ -912,6 +913,7 @@ body {
 .product-detail-container .product-content .con-tit {
   font-weight: bold;
   margin-bottom: 0.26666667rem;
+  font-size: 0.37333333rem;
 }
 .product-detail-container .product-content .story-wrap p {
   line-height: 1.6;
