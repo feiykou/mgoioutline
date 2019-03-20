@@ -402,6 +402,10 @@ body {
 .index-cate-sec .list li .img {
   margin: 0.26666667rem 0 0.26666667rem;
 }
+.index-cate-sec .list li .img img {
+  width: 1.32rem;
+  height: 1.32rem;
+}
 .index-cate-sec .list li:nth-last-child(1),
 .index-cate-sec .list li:nth-last-child(2),
 .index-cate-sec .list li:nth-last-child(3) {
