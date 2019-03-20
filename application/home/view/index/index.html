@@ -9,9 +9,9 @@
 <div class="mui-scroll index-container">
     <div class="head-swiper-container" dir="ltr">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
+            {volist name="bannerData" id="data"}
+            <div class="swiper-slide" style="background: url({$data.img_url[0]});"></div>
+            {/volist}
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -19,10 +19,10 @@
 
     <div class="section theme-sec">
         <ul class="list">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li> <a href="#"><img src="__STATIC__/home/images/add/a1.jpg" alt=""></a></li>
+            <li> <a href="#"><img src="__STATIC__/home/images/add/a2.jpg" alt=""></a></li>
+            <li> <a href="#"><img src="__STATIC__/home/images/add/a3.jpg" alt=""></a></li>
+            <li> <a href="#"><img src="__STATIC__/home/images/add/a4.jpg" alt=""></a></li>
         </ul>
     </div>
 
@@ -72,55 +72,32 @@
         <div class="product-swiper-container resc-product-list-container">
             <h3 class="tit">推荐产品</h3>
             <div class="swiper-wrapper">
+                {volist name="resProData" id="data"}
                 <div class="swiper-slide">
-                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
+                    <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
                     <div class="info">
-                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
-                        <p class="price">¥166.00</p>
-                        <p class="buy"><a href="#">立即购买</a></p>
+                        <p class="tit">{$data.name[0]}</p>
+                        <p class="price">¥{$data.price}</p>
+                        <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
-                    <div class="info">
-                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
-                        <p class="price">¥166.00</p>
-                        <p class="buy"><a href="#">立即购买</a></p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
-                    <div class="info">
-                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
-                        <p class="price">¥166.00</p>
-                        <p class="buy"><a href="#">立即购买</a></p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#"><img src="__STATIC__/home/images/fp2.jpg" alt=""></a>
-                    <div class="info">
-                        <p class="tit">猫抓猫抓猫抓猫抓猫抓板</p>
-                        <p class="price">¥166.00</p>
-                        <p class="buy"><a href="#">立即购买</a></p>
-                    </div>
-                </div>
-
+                {/volist}
             </div>
         </div>
         <!-- Swiper -->
         <div class="product-swiper-container resc-product-list-container">
             <h3 class="tit">新品上新</h3>
             <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                <div class="swiper-slide">Slide 4</div>
-                <div class="swiper-slide">Slide 5</div>
-                <div class="swiper-slide">Slide 6</div>
-                <div class="swiper-slide">Slide 7</div>
-                <div class="swiper-slide">Slide 8</div>
-                <div class="swiper-slide">Slide 9</div>
-                <div class="swiper-slide">Slide 10</div>
+                {volist name="newsProData" id="data"}
+                <div class="swiper-slide">
+                    <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                    <div class="info">
+                        <p class="tit">{$data.name[0]}</p>
+                        <p class="price">¥{$data.price}</p>
+                        <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
+                    </div>
+                </div>
+                {/volist}
             </div>
         </div>
     </div>
@@ -170,6 +147,30 @@
 
     <div class="section column-sec">
         <ul class="list">
+            {volist name="resColumnData" id="data" key="k"}
+            {if condition="$k neq 1"}
+            <li class="item">
+                <a href="#">
+                    <img src="{$data.main_img_url[0]}" alt="">
+                    <div class="info">
+                        <p class="tit">{$data.name}</p>
+                        <p class="date">{$data.update_time}</p>
+                    </div>
+                </a>
+            </li>
+            {else/}
+            <li>
+                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                <div class="info">
+                    <a href="#">
+                        <p class="tit">{$data.name}</p>
+                        <p class="desc">{$data.introduce}</p>
+                    </a>
+                </div>
+            </li>
+
+            {/if}
+            {/volist}
             <li></li>
             <li></li>
             <li></li>
@@ -204,6 +205,33 @@
         slidesPerView: 'auto',
         spaceBetween: 30,
     });
+
+    $(function(){
+        var rescDom = $('.resc-banner');
+        var copyDom = $('.resc-banner-copy');
+        var wrapDom = $('.resc-banner-wrap');
+        scrollBanner(rescDom,copyDom,wrapDom);
+        var navDom = $('.nav-banner');
+        var navCopyDom = $('.nav-banner-copy');
+        var navWrapDom = $('.nav-banner-wrap');
+        scrollBanner(navDom,navCopyDom,navWrapDom);
+
+        function scrollBanner(rescDom,copyDom,wrapDom){
+            var maxW = rescDom.width();
+            var speed = 28,
+                num = 0;
+            copyDom.html(rescDom.html());
+            setInterval(function(){
+                num -= 1;
+                if(Math.abs(num) >= maxW){
+                    num = 0;
+                }
+                wrapDom.css({
+                    left: num
+                })
+            },speed)
+        }
+    })
 </script>
 
 

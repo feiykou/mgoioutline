@@ -19,13 +19,17 @@ class Index extends Common
     public function index(){
         $bannerData = BannerItem::getIndexBanner();
         $resProData = Product::getRescPro();
+        $newsProData = Product::getRescPro(2);
+
         $resColumnData = Column::getIndexResc();
+
         $proCate = new Procate();
         $proCateData = $proCate->getCateJson();
 
         return $this->fetch('',[
             'bannerData' => $bannerData,
             'resProData' => $resProData,
+            'newsProData' => $newsProData,
             'resColumnData' => $resColumnData,
             'cateData' => $proCateData
         ]);
