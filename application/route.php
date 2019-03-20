@@ -9,7 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\Route;
-Route::get('/home','home/index/index');
+Route::get('/','home/index/index');
 Route::get('/cate','home/index/getCate');
 
 
