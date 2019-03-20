@@ -1,5 +1,11 @@
 </div>
-<div id="menuBtnWrap">menu</div>
+<div id="menuBtnWrap" class="btn-menu">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <div id="backdropWrap"></div>
 </div>
 </div>
@@ -47,20 +53,36 @@
 
     var isShow = false;
     var mskDom = document.getElementById('backdropWrap');
-    document.getElementById('menuBtnWrap').addEventListener('tap', function() {
+    var menuDom = document.getElementById('menuBtnWrap');
+    menuDom.addEventListener('tap', function() {
         isShow = offCanvasWrapper.offCanvas().isShown();
         if(!isShow){
             offCanvasWrapper.offCanvas('show');
             mskDom.style.display = 'block';
+            addClass(menuDom, 'close')
         }else{
             offCanvasWrapper.offCanvas('close');
             mskDom.style.display = 'none';
+            removeClass(menuDom, ' close')
         }
     });
+
+    function addClass(menuDom, className){
+        var classVal = menuDom.getAttribute("class");
+        classVal = classVal.concat(" "+className);
+        menuDom.setAttribute("class",classVal);
+    }
+
+    function removeClass(menuDom, className){
+        var classVal = menuDom.getAttribute("class");
+        classVal = classVal.replace(className, '');
+        menuDom.setAttribute("class",classVal);
+    }
 
     mskDom.addEventListener('tap', function() {
         offCanvasWrapper.offCanvas('close');
         mskDom.style.display = 'none';
+        removeClass(menuDom, ' close')
     })
 
 
