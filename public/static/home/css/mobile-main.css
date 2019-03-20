@@ -725,41 +725,41 @@ body {
   opacity: 0.6;
   transition: all .5s;
 }
-.contact-container .contact-address {
+.contact-address {
   overflow: hidden;
   background-color: #dd4a31;
   border-top: 0.05333333rem solid #000;
   padding: 1.33333333rem 0.6rem;
 }
-.contact-container .contact-address .w1100 {
+.contact-address .w1100 {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
-.contact-container .contact-address .info-wrap {
+.contact-address .info-wrap {
   color: #fff;
 }
-.contact-container .contact-address .info-wrap::before {
+.contact-address .info-wrap::before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: bottom;
 }
-.contact-container .contact-address .info-wrap ul {
+.contact-address .info-wrap ul {
   display: inline-block;
   margin-top: 0.4rem;
 }
-.contact-container .contact-address .info-wrap li {
+.contact-address .info-wrap li {
   height: 1.01333333rem;
   line-height: 1.33333333rem;
   border-bottom: 0.02666667rem solid #fff;
   font-size: 0.32rem;
 }
-.contact-container .contact-address .map-wrap {
+.contact-address .map-wrap {
   height: 380px;
   background-color: #ccc;
   overflow: hidden;
 }
-.contact-container .contact-address .map-wrap #allmap {
+.contact-address .map-wrap #allmap {
   height: 100%;
 }
 .cate-line {
