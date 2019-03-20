@@ -37,26 +37,13 @@
             <a href="/column/detail/{$data.id}"><img class="column-img" src="{$data.main_img_url[0]}" data-src="{$data.main_img_url[0]}" lazyload="true" alt=""></a>
             <div class="info">
                 <h3 class="tit clearfix"><a href="/column/detail/{$data.id}">{$data.name}</a></h3>
+                <p class="desc">猫用专用麻猫用专用麻制项圈制项圈猫用专用麻猫用专用麻制项麻猫用专用麻制项圈制项圈</p>
                 <p class="author-cate"><span>{$data.author}</span><a href="#">新手养宠</a></p>
             </div>
         </div>
         {/volist}
     </div>
-    <div class="footer-sec">
-        <ul class="share-wrap">
-            <li><a href="#"><img src="images/taobao@index.png" alt=""></a></li>
-            <li><a href="#"><img src="images/wxcode@index.png" alt=""></a></li>
-            <li><a href="#"><img src="images/weibo@index.png" alt=""></a></li>
-            <li><a href="#"><img src="images/wx@index.png" alt=""></a></li>
-        </ul>
-        <div class="info">
-            <div class="copy-wrap">
-                <p>Copyright©2000-2019</p>
-                <p>广州市二月二十二宠物有限公司</p>
-            </div>
-            <div class="logo">MGOI 唔该</div>
-        </div>
-    </div>
+    {include file="public/footer" /}
 </div>
 {include file="public/common" /}
 

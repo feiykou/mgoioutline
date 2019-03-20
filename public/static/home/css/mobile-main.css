@@ -510,6 +510,7 @@ body {
 .column-list-wrap .item .info {
   position: relative;
   margin-left: 0.26666667rem;
+  flex: 1;
 }
 .column-list-wrap .item .column-img {
   width: 2.8rem;
@@ -531,6 +532,9 @@ body {
 }
 .column-list-wrap .item .author-cate a {
   color: #e84466;
+}
+.column-list-wrap .item .desc {
+  display: none;
 }
 .column-list-wrap .item:nth-child(3n+3) {
   flex-direction: column;
@@ -560,6 +564,7 @@ body {
   margin-left: 0;
 }
 .column-list-wrap .item:nth-child(3n+3) .desc {
+  display: block;
   color: #fff;
   height: 0.96rem;
   line-height: 0.48rem;
