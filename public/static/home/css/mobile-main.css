@@ -273,9 +273,12 @@ body {
   align-items: center;
 }
 .index-container .column-sec .list li.item img {
-  width: 1.89333333rem;
-  height: 1.06666667rem;
+  width: 2.8rem;
+  height: 1.89333333rem;
   margin-right: 0.26666667rem;
+}
+.index-container .column-sec .list li.item .tit {
+  margin-top: 0.04rem;
 }
 .index-container .column-sec .list li.item .date {
   font-size: 0.32rem;
@@ -307,7 +310,7 @@ body {
   color: #fff;
 }
 .index-container .column-sec .list li:nth-child(1) .info a .tit {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.13333333rem;
   font-size: 0.42666667rem;
 }
 .index-container .column-sec .list li:nth-child(1) .info a .desc {
@@ -399,7 +402,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 0.01333333rem solid #e84466;
-  padding: 0.13333333rem 0.2rem;
+  padding: 0.10666667rem 0.2rem;
   color: #e84466;
   font-size: 0.32rem;
 }
