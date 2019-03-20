@@ -83,6 +83,10 @@ body {
 .l-content .mui-table-view:before {
   height: 0!important;
 }
+.l-content .mui-navigate-right:after,
+.l-content .mui-push-right:after {
+  right: 0!important;
+}
 .l-content .nav-box {
   margin-bottom: 0.4rem;
 }
