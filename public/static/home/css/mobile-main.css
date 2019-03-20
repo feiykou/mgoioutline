@@ -13,6 +13,7 @@ body {
 }
 #offCanvasWrapper {
   border: 0.05333333rem solid #000;
+  border-top: 0;
 }
 .mui-off-canvas-wrap:not(.mui-slide-in).mui-scalable {
   background-color: #eee!important;
