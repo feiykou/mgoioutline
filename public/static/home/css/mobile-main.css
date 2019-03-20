@@ -94,14 +94,19 @@ body {
   font-weight: bold;
 }
 .l-content .nav-tit {
-  height: 0.24rem;
-  margin: 0.21333333rem 0 0.4rem;
+  height: 0.18666667rem;
+  margin: 0.21333333rem 0 0.37333333rem;
   border-bottom: 0.01333333rem solid #000;
+  font-size: 0;
+  vertical-align: top;
 }
 .l-content .nav-tit span {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0.37333333rem;
   position: relative;
-  top: 0.08rem;
   background-color: #fff;
+  line-height: 1;
   padding: 0 15px;
   font-weight: bold;
 }
