@@ -93,6 +93,9 @@ body {
   padding: 3px 15px!important;
   font-weight: bold;
 }
+.l-content .nav-top-wrap .nav-item > a {
+  height: 1.06666667rem;
+}
 .l-content .nav-tit {
   height: 0.18666667rem;
   margin: 0.21333333rem 0 0.37333333rem;
