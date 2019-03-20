@@ -10,27 +10,29 @@
 <div class="mui-scroll container product-list-container">
 
     <div class="head-cate-list w1100" style="{if condition='isset($curentCate.img_url[1])'}background:url('{$curentCate.img_url[1]}') no-repeat;{else/}background:url('__STATIC__/home/images/cate-bg.jpg') no-repeat;{/if} background-size: cover;background-position: center;">
-        <div class="tit">
-            <span>{if condition="$curentCate.name"}{$curentCate.name}{else/}全部产品{/if}</span>
-            <div class="cate-line"><i></i><span>CATEGORY</span></div>
+        <div class="con">
+            <div class="tit">
+                <span>{if condition="$curentCate.name"}{$curentCate.name}{else/}全部产品{/if}</span>
+                <div class="cate-line"><i></i><span>CATEGORY</span></div>
+            </div>
+            {present name="sonCateData"}
+            <div class="section index-cate-sec">
+                <ul class="list index-cate-sec-list">
+                    {volist name="sonCateData" id="data"}
+                    <li>
+                        <a href="/product/list/{$data.id}">
+                            <p class="name">{$data.name}</p>
+                            <p class="img"><img src="{$data.img_url[0]}" alt=""></p>
+                        </a>
+                    </li>
+                    {/volist}
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            {/present}
         </div>
-        {present name="sonCateData"}
-        <div class="section index-cate-sec">
-            <ul class="list index-cate-sec-list">
-                {volist name="sonCateData" id="data"}
-                <li>
-                    <a href="/product/list/{$data.id}">
-                        <p class="name">{$data.name}</p>
-                        <p class="img"><img src="{$data.img_url[0]}" alt=""></p>
-                    </a>
-                </li>
-                {/volist}
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        {/present}
     </div>
 
     <div class="product-list">
