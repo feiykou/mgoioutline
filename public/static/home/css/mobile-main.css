@@ -572,45 +572,6 @@ body {
 .column-list-wrap .item .desc {
   display: none;
 }
-.column-list-wrap .item:nth-child(3n+3) {
-  flex-direction: column;
-  position: relative;
-}
-.column-list-wrap .item:nth-child(3n+3) .column-img {
-  width: 100%;
-  height: auto;
-}
-.column-list-wrap .item:nth-child(3n+3) .tit {
-  margin-top: 0.26666667rem;
-}
-.column-list-wrap .item:nth-child(3n+3) a {
-  color: #fff;
-}
-.column-list-wrap .item:nth-child(3n+3) .info {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding: 0 0.4rem 0.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin-left: 0;
-}
-.column-list-wrap .item:nth-child(3n+3) .desc {
-  display: block;
-  color: #fff;
-  height: 0.96rem;
-  line-height: 0.48rem;
-  font-size: 0.32rem;
-  overflow: hidden;
-  margin-top: 0.13333333rem;
-}
-.column-list-wrap .item:nth-child(3n+3) .author-cate {
-  display: none;
-}
 .footer-sec {
   padding: 1.6rem 0.6rem;
   background-color: #ededed;
