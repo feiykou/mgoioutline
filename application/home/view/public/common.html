@@ -54,16 +54,19 @@
     var isShow = false;
     var mskDom = document.getElementById('backdropWrap');
     var menuDom = document.getElementById('menuBtnWrap');
+    var silderDom = document.getElementById('offCanvasSideScroll');
     menuDom.addEventListener('tap', function() {
         isShow = offCanvasWrapper.offCanvas().isShown();
         if(!isShow){
             offCanvasWrapper.offCanvas('show');
             mskDom.style.display = 'block';
             addClass(menuDom, 'close')
+
         }else{
             offCanvasWrapper.offCanvas('close');
             mskDom.style.display = 'none';
             removeClass(menuDom, ' close')
+//            silderDom.style.display = 'none';
         }
     });
 
@@ -82,9 +85,13 @@
     mskDom.addEventListener('tap', function() {
         offCanvasWrapper.offCanvas('close');
         mskDom.style.display = 'none';
-        removeClass(menuDom, ' close')
+        removeClass(menuDom, ' close');
+//        silderDom.style.display = 'none';
     })
 
+    setTimeout(function () {
+        silderDom.style.display = 'block';
+    }, 100)
 
 
 
