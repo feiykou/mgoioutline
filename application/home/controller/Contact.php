@@ -9,11 +9,16 @@
 namespace app\home\controller;
 
 
+use app\common\model\Procate;
 use think\Controller;
 
 class Contact extends Common
 {
     public function contact(){
-        return $this->fetch();
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
+        return $this->fetch('',[
+            'cateData' => $proCateData
+        ]);
     }
 }
