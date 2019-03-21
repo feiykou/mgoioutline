@@ -625,6 +625,9 @@ body {
   background-color: #fff;
   margin-top: 0.56rem;
 }
+.news-list-container .item:active {
+  opacity: 0.5;
+}
 .news-list-container .item img {
   width: 100%;
 }
