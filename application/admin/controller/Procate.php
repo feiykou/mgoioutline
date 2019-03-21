@@ -65,11 +65,11 @@ class Procate extends Base
         $data = input('post.');
         $is_exist_id = empty($data['id']);
         $data['name'] = htmlentities($data['name']);
-        //判断是否存在同名
-        $is_unique = $this->model->is_unique($data['name'],$is_exist_id?0:$data['id']);
-        if($is_unique){
-            $this->result('','0','存在同名类');
-        }
+//        //判断是否存在同名
+//        $is_unique = $this->model->is_unique($data['name'],$is_exist_id?0:$data['id']);
+//        if($is_unique){
+//            $this->result('','0','存在同名类');
+//        }
 
         // 更新数据
         if(!$is_exist_id){
