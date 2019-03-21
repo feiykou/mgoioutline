@@ -318,8 +318,9 @@ body {
 }
 .index-container .theme-sec .list li {
   width: 4.93333333rem;
-  height: 5.6rem;
-  margin-bottom: 0.06666667rem;
+  height: 7.73333333rem;
+  padding-bottom: 0.06666667rem;
+  box-sizing: border-box;
   background-color: #eee;
   overflow: hidden;
 }
@@ -518,7 +519,7 @@ body {
 .recruit-sec {
   display: flex;
   align-items: center;
-  margin: 0.26666667rem 0.6rem 1.06666667rem;
+  margin: 0.26666667rem 0.6rem;
   padding: 0.26666667rem 0.13333333rem;
   background-color: #eee;
 }
@@ -603,7 +604,7 @@ body {
   display: none;
 }
 .footer-sec {
-  padding: 1.6rem 0;
+  padding: 1.6rem 0.6rem;
   background-color: #ededed;
   border-top: 0.01333333rem solid #ddd;
 }
@@ -635,7 +636,7 @@ body {
   font-weight: bold;
 }
 /************  新闻列表页  *************/
-.news-list-container {
+.news-list-container .news-con {
   padding-left: 0.6rem;
   padding-right: 0.6rem;
 }
