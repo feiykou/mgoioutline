@@ -299,7 +299,7 @@ body {
   position: absolute;
   left: auto!important;
   right: 0;
-  top: calc(1.9333333333333333rem + 0.5333333333333333rem);
+  top: calc(1.9333333333333333rem + 0.4rem);
 }
 .head-swiper-container .swiper-pagination-bullet {
   width: 12px;
