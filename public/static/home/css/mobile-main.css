@@ -644,6 +644,7 @@ body {
   height: 0.8rem;
   background-color: #f3f3f3;
   padding: 0 0.26666667rem;
+  display: none;
 }
 .news-list-container .item .desc {
   line-height: 1.2;
