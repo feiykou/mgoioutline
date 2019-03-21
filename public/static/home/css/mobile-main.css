@@ -298,7 +298,7 @@ body {
 .head-swiper-container .swiper-pagination {
   position: absolute;
   left: auto!important;
-  right: -0.8rem;
+  right: -0.96rem;
   top: calc(1.9333333333333333rem + 0.4rem);
 }
 .head-swiper-container .swiper-pagination-bullet {
