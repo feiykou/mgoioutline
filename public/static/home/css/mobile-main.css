@@ -58,6 +58,9 @@ body {
 #offCanvasSideScroll {
   display: none;
 }
+.mui-scrollbar-vertical {
+  background-color: #fff;
+}
 .l-content {
   padding: 0.8rem 0.64rem;
 }
