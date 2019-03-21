@@ -129,7 +129,7 @@ class Product extends Model
     }
 
 
-    public function getAllProData($data){
+    public function getAllProData($data=[]){
         $data['status'] = ['neq',-1];
         $order = [
             'listorder' => 'desc',

@@ -197,7 +197,8 @@ class Procate extends Model
 
     public static function getSonData($cateId){
         $cateTree = new Catetree();
-        $ids = $cateTree->childrenids($cateId, new self());
+        $ids = $cateTree->sonids($cateId, new self());
+
         $data = null;
         if(count($ids) > 0){
             $data = self::where('status','=','1')

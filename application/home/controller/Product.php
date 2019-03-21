@@ -22,10 +22,16 @@ class Product extends Common
         $this->model = model('product');
     }
 
-    public function lst($cate_id=25){
-        $products = model('procate')->getProductByClumn($cate_id);
+    public function lst($cate_id=0){
+        $curentCate = [];
+        if($cate_id == 0){
+            $products = $this->model->getAllProData();
+        }else{
+            $products = model('procate')->getProductByClumn($cate_id);
+            $curentCate = model('procate')->getCateById($cate_id);
+        }
+
         $sonCateData = Procate::getSonData($cate_id);
-        $curentCate = model('procate')->getCateById($cate_id);
         $proCate = new Procate();
         $proCateData = $proCate->getCateJson();
         $this->assign([

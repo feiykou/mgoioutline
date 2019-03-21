@@ -12,7 +12,7 @@
     <div class="head-cate-list w1100" style="{if condition='isset($curentCate.img_url[1])'}background:url('{$curentCate.img_url[1]}') no-repeat;{else/}background:url('__STATIC__/home/images/cate-bg.jpg') no-repeat;{/if} background-size: cover;background-position: center;">
         <div class="con">
             <div class="tit">
-                <span>{if condition="$curentCate.name"}{$curentCate.name}{else/}全部产品{/if}</span>
+                <span>{if condition="isset($curentCate.name)"}{$curentCate.name}{else/}全部产品{/if}</span>
                 <div class="cate-line"><i></i><span>CATEGORY</span></div>
             </div>
             {present name="sonCateData"}
