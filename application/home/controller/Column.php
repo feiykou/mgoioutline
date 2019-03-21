@@ -2,6 +2,7 @@
 
 namespace app\home\controller;
 use app\common\model\ColumnCate;
+use app\common\model\Procate;
 
 class Column extends Common
 {
@@ -12,14 +13,18 @@ class Column extends Common
         $this->model = model('column');
     }
     public function index($cate_id=0){
-        $newsData =$this->model->getNewsIndexData($cate_id);
+//        $newsData =$this->model->getNewsIndexData($cate_id);
+        $newsData = $this->model->getAllNewsData();
         $sonCateData = ColumnCate::getSonData($cate_id);
         $curentCate = model('column_cate')->getCateById($cate_id);
-        $cate = new ColumnCate();
-        $cateData = $cate->getCateJson();
+//        $cate = new ColumnCate();
+//        $cateData = $cate->getCateJson();
+//
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
         return $this->fetch('',[
             'newsData' => $newsData,
-            'cateData' => $cateData,
+            'cateData' => $proCateData,
             'sonCateData' => $sonCateData,
             'curentCate' => $curentCate,
         ]);
@@ -27,11 +32,11 @@ class Column extends Common
     public function detail($id){
         if(intval($id) <= 0) return;
         $detailData = $this->model->getNewsData($id);
-        $cate = new ColumnCate();
-        $cateData = $cate->getCateJson();
+        $proCate = new Procate();
+        $proCateData = $proCate->getCateJson();
         return $this->fetch('',[
             'detailData' => $detailData,
-            'cateData' => $cateData
+            'cateData' => $proCateData
         ]);
     }
 

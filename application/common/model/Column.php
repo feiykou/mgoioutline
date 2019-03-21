@@ -36,7 +36,7 @@ class Column extends Model
     }
 
 
-    public function getAllNewsData($data){
+    public function getAllNewsData($data=[]){
         $data['status'] = ['neq',-1];
         $order = [
             'listorder' => 'desc',

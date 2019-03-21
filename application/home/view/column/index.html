@@ -6,7 +6,7 @@
 <body>
 
 {include file="public/header-nav" /}
-{include file="public/lr-fixed" type="column" /}
+{include file="public/lr-fixed" type="product" /}
 <div class="mui-scroll container list-container">
     <div class="head-cate-list w1100" style="{if condition='isset($curentCate.img_url[1])'}background:url('{$curentCate.img_url[1]}') no-repeat;{else/}background:url('__STATIC__/home/images/cate-bg.jpg') no-repeat;{/if} background-size: cover;background-position: center;">
         <div class="con">
@@ -30,8 +30,8 @@
                     <li></li>
                 </ul>
             </div>
+            {/present}
         </div>
-        {/present}
     </div>
     <div class="column-list-wrap">
         {volist name="newsData" id="data"}
@@ -40,11 +40,12 @@
             <div class="info">
                 <h3 class="tit clearfix"><a href="/column/detail/{$data.id}">{$data.name}</a></h3>
                 <p class="desc">猫用专用麻猫用专用麻制项圈制项圈猫用专用麻猫用专用麻制项麻猫用专用麻制项圈制项圈</p>
-                <p class="author-cate"><span>{$data.author}</span><a href="#">新手养宠</a></p>
+                <p class="author-cate"><span>作者：{$data.author}</span><a href="#"></a></p>
             </div>
         </div>
         {/volist}
     </div>
+
     {include file="public/footer" /}
 </div>
 {include file="public/common" /}
