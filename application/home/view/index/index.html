@@ -6,214 +6,180 @@
 <body>
 {include file="public/header-nav" /}
 {include file="public/lr-fixed" type="product" /}
-<div class="mui-scroll index-container">
-    <div class="head-swiper-container" dir="ltr">
+<!--主界面部分-->
+<div id="panel-container">
+    <div class="build-swiper-container index-container">
         <div class="swiper-wrapper">
-            {volist name="bannerData" id="data"}
-            <div class="swiper-slide" style="background-image: url({$data.img_url[0]});background-repeat:no-reapeat"></div>
-            {/volist}
+            <div class="swiper-slide">
+                <div class="head-swiper-container" dir="ltr">
+                    <div class="swiper-wrapper">
+                        {volist name="bannerData" id="data"}
+                        <div class="swiper-slide" style="background-image: url({$data.img_url[0]});background-repeat:no-reapeat"></div>
+                        {/volist}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="head-swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="section theme-sec">
+                    <ul class="list">
+                        <li> <a href="#"><img src="__STATIC__/home/images/add/a1.jpg" alt=""></a></li>
+                        <li> <a href="#"><img src="__STATIC__/home/images/add/a2.jpg" alt=""></a></li>
+                        <li> <a href="#"><img src="__STATIC__/home/images/add/a3.jpg" alt=""></a></li>
+                        <li> <a href="#"><img src="__STATIC__/home/images/add/a4.jpg" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="section resc-product-section">
+                    <!-- Swiper -->
+                    <div class="product-swiper-container resc-product-list-container">
+                        <h3 class="tit">推荐产品</h3>
+                        <div class="swiper-wrapper">
+                            {volist name="resProData" id="data"}
+                            <div class="swiper-slide">
+                                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                <div class="info">
+                                    <p class="tit">{$data.name[0]}</p>
+                                    <p class="price">¥{$data.price}</p>
+                                    <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                    <!-- Swiper -->
+                    <div class="product-swiper-container resc-product-list-container">
+                        <h3 class="tit">新品上新</h3>
+                        <div class="swiper-wrapper">
+                            {volist name="newsProData" id="data"}
+                            <div class="swiper-slide">
+                                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                <div class="info">
+                                    <p class="tit">{$data.name[0]}</p>
+                                    <p class="price">¥{$data.price}</p>
+                                    <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide cate-swiper-slide">
+                <!-- 导航 -->
+                <div class="section index-cate-sec">
+                    <h2>唔该商店&商品</h2>
+                    <div class="label"><span>CATEGOFY</span></div>
+                    <ul class="list index-cate-sec-list">
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">成年</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/1.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">初次</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/2.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">春节</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/3.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">端午</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/4.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">狗的专属</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/5.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">猫的专属</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/6.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">生日</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/7.png" alt=""></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mamian">
+                                <p class="name">中秋</p>
+                                <p class="img"><img src="__STATIC__/home/images/cate/8.png" alt=""></p>
+                            </a>
+                        </li>
+
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="section column-sec">
+                    <ul class="list">
+                        {volist name="resColumnData" id="data" key="k"}
+                        {if condition="$k neq 1"}
+                        <li class="item">
+                            <a href="#">
+                                <img src="{$data.main_img_url[0]}" alt="">
+                                <div class="info">
+                                    <p class="tit">{$data.name}</p>
+                                    <!--<p class="desc">{$data.introduce}</p>-->
+                                    <p class="date">2019-03-20</p>
+                                </div>
+                            </a>
+                        </li>
+                        {else/}
+                        <li>
+                            <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                            <div class="info">
+                                <a href="#">
+                                    <p class="tit">{$data.name}</p>
+                                    <p class="desc">{$data.introduce}</p>
+                                </a>
+                            </div>
+                        </li>
+
+                        {/if}
+                        {/volist}
+                    </ul>
+                </div>
+                <div class="recruit-sec w1100 hidden">
+                    <img src="__STATIC__/home/images/recruit@icon.png" alt="">
+                    <div>招聘：我们正在寻找一名工业设计师</div>
+                </div>
+            </div>
+            <div class="swiper-slide footer-swiper-slide">
+                {include file="public/footer" /}
+            </div>
+
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination swiper-pagination-progressbar"></div>
     </div>
 
-    <div class="section theme-sec">
-        <ul class="list">
-            <li> <a href="#"><img src="__STATIC__/home/images/add/a1.jpg" alt=""></a></li>
-            <li> <a href="#"><img src="__STATIC__/home/images/add/a2.jpg" alt=""></a></li>
-            <li> <a href="#"><img src="__STATIC__/home/images/add/a3.jpg" alt=""></a></li>
-            <li> <a href="#"><img src="__STATIC__/home/images/add/a4.jpg" alt=""></a></li>
-        </ul>
-    </div>
-
-    <!--<div class="section resc-banner-sec w1100 clearfix">-->
-        <!--<div class="resc-banner-box">-->
-            <!--<div class="resc-banner-wrap">-->
-                <!--<ul class="resc-banner fl">-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/1.png" alt=""></li>-->
-                    <!--<li><img src="__STATIC__/home/images/2.png" alt=""></li>-->
-                <!--</ul>-->
-                <!--<ul class="resc-banner-copy fl"></ul>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; <div class="title-wrap">-->
-            <!--<div class="con">-->
-                <!--<p class="tit">黑白也是有趣</p>-->
-                <!--<p>我们在这里，用最简单的笔触，提笔来描述出一个产品最原始的概念图，他是这样而诞生的。</p>-->
-                <!--<h2 class="none">宠物插画</h2>-->
-            <!--</div>-->
-        <!--</div> &ndash;&gt;-->
-    <!--</div>-->
-
-    <div class="section">
-        <!-- Swiper -->
-        <div class="product-swiper-container resc-product-list-container">
-            <h3 class="tit">推荐产品</h3>
-            <div class="swiper-wrapper">
-                {volist name="resProData" id="data"}
-                <div class="swiper-slide">
-                    <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
-                    <div class="info">
-                        <p class="tit">{$data.name[0]}</p>
-                        <p class="price">¥{$data.price}</p>
-                        <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
-                    </div>
-                </div>
-                {/volist}
-            </div>
-        </div>
-        <!-- Swiper -->
-        <div class="product-swiper-container resc-product-list-container">
-            <h3 class="tit">新品上新</h3>
-            <div class="swiper-wrapper">
-                {volist name="newsProData" id="data"}
-                <div class="swiper-slide">
-                    <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
-                    <div class="info">
-                        <p class="tit">{$data.name[0]}</p>
-                        <p class="price">¥{$data.price}</p>
-                        <p class="buy"><a href="{$data.link_url}">立即购买</a></p>
-                    </div>
-                </div>
-                {/volist}
-            </div>
-        </div>
-    </div>
-
-    <!-- 导航 -->
-    <div class="section index-cate-sec">
-        <ul class="list index-cate-sec-list">
-            <li>
-                <a href="#mamian">
-                    <p class="name">成年</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/1.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">初次</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/2.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">春节</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/3.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">端午</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/4.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">狗的专属</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/5.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">猫的专属</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/6.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">生日</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/7.png" alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="#mamian">
-                    <p class="name">中秋</p>
-                    <p class="img"><img src="__STATIC__/home/images/cate/8.png" alt=""></p>
-                </a>
-            </li>
-
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-
-    <div class="section column-sec">
-        <ul class="list">
-            {volist name="resColumnData" id="data" key="k"}
-            {if condition="$k neq 1"}
-            <li class="item">
-                <a href="#">
-                    <img src="{$data.main_img_url[0]}" alt="">
-                    <div class="info">
-                        <p class="tit">{$data.name}</p>
-                        <!--<p class="desc">{$data.introduce}</p>-->
-                        <p class="date">2019-03-20</p>
-                    </div>
-                </a>
-            </li>
-            {else/}
-            <li>
-                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
-                <div class="info">
-                    <a href="#">
-                        <p class="tit">{$data.name}</p>
-                        <p class="desc">{$data.introduce}</p>
-                    </a>
-                </div>
-            </li>
-
-            {/if}
-            {/volist}
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-
-    <!--  招聘 -->
-    <div class="recruit-sec w1100 hidden">
-        <img src="__STATIC__/home/images/recruit@icon.png" alt="">
-        <div>招聘：我们正在寻找一名工业设计师</div>
-    </div>
-
-    {include file="public/footer" /}
-</div>
 {include file="public/common" /}
 
-<!--<script src="js/main.js"></script>-->
-<!--<script src="js/lib/antimoderate/preloadjs.min.js"></script>-->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
-<!-- <script src="js/banner.js"></script> -->
 <script>
     new Swiper('.head-swiper-container', {
         pagination: {
-            el: '.swiper-pagination',
-            dynamicBullets: true,
+            el: '.head-swiper-pagination',
+            dynamicBullets: true
         }
     });
 
@@ -222,38 +188,22 @@
         spaceBetween: 30,
     });
 
-    $(function(){
-        var rescDom = $('.resc-banner');
-        var copyDom = $('.resc-banner-copy');
-        var wrapDom = $('.resc-banner-wrap');
-        scrollBanner(rescDom,copyDom,wrapDom);
-        var navDom = $('.nav-banner');
-        var navCopyDom = $('.nav-banner-copy');
-        var navWrapDom = $('.nav-banner-wrap');
-        scrollBanner(navDom,navCopyDom,navWrapDom);
+    var swiper = new Swiper('.build-swiper-container', {
+        direction: 'vertical',
+        slidesPerView : 'auto',
+        pagination: {
+            el: '.swiper-pagination-progressbar',
+            clickable: true,
+            type: 'progressbar'
+        },
+    });
 
-        function scrollBanner(rescDom,copyDom,wrapDom){
-            var maxW = rescDom.width();
-            var speed = 28,
-                num = 0;
-            copyDom.html(rescDom.html());
-            setInterval(function(){
-                num -= 1;
-                if(Math.abs(num) >= maxW){
-                    num = 0;
-                }
-                wrapDom.css({
-                    left: num
-                })
-            },speed)
-        }
-    })
-    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
-    Array.prototype.forEach.call(cateListDom, function(val){
-        val.addEventListener('tap', function() {
-            offCanvasWrapper.offCanvas('show');
-        })
-    })
+//    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
+//    Array.prototype.forEach.call(cateListDom, function(val){
+//        val.addEventListener('tap', function() {
+//            offCanvasWrapper.offCanvas('show');
+//        })
+//    })
 </script>
 
 

@@ -1,4 +1,3 @@
-</div>
 <div id="menuBtnWrap" class="btn-menu">
     <ul>
         <li></li>
@@ -7,104 +6,77 @@
     </ul>
 </div>
 <div id="backdropWrap"></div>
+<div class="left-line-item"></div>
 </div>
+<div class="line-wrap">
+    <div class="line left lr"></div>
+    <div class="line right lr"></div>
+    <div class="line top tb"></div>
+    <div class="line bottom tb"></div>
+</div>
+<div class="btn-close">
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
 
-<link rel="stylesheet" href="__STATIC__/home/css/mui.min.css">
-<script src="__STATIC__/home/js/mui.min.js"></script>
+
+<script src="__STATIC__/home/js/zepto.js"></script>
+<script src="__STATIC__/home/js/main.js"></script>
+<script src="__STATIC__/home/js/lib.js"></script>
+<script src="__STATIC__/home/js/common.js"></script>
+
+<script src="__STATIC__/home/js/slideout.js"></script>
 <script>
 
-    //主界面和侧滑菜单界面均支持区域滚动；
-    mui('#offCanvasSideScroll').scroll();
-    mui('#offCanvasContentScroll').scroll();
-
-    mui.init();
-    //侧滑容器父节点
-    var offCanvasWrapper = mui('#offCanvasWrapper');
-    //主界面容器
-    var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
-    //菜单容器
-    var offCanvasSide = document.getElementById("offCanvasSide");
-    //移动效果是否为整体移动
-    var moveTogether = false;
-    //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
-    var classList = offCanvasWrapper[0].classList;
-
-    offCanvasSide.classList.remove('mui-transitioning');
-    offCanvasSide.setAttribute('style', '');
-    classList.remove('mui-slide-in');
-    classList.remove('mui-scalable');
-    if (moveTogether) {
-        //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
-        offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
-    }
-    classList.add('mui-scalable');
-    offCanvasWrapper.offCanvas().refresh();
-
-
-    //主界面‘显示侧滑菜单’按钮的点击事件
-    // document.getElementById('offCanvasShow').addEventListener('tap', function() {
-    //     offCanvasWrapper.offCanvas('show');
-    // });
-    //     //菜单界面，‘关闭侧滑菜单’按钮的点击事件
-    // document.getElementById('offCanvasHide').addEventListener('tap', function() {
-    //     offCanvasWrapper.offCanvas('close');
-    // });
-
-    var isShow = false;
-    var mskDom = document.getElementById('backdropWrap');
-    var menuDom = document.getElementById('menuBtnWrap');
-    var silderDom = document.getElementById('offCanvasSideScroll');
-    menuDom.addEventListener('tap', function() {
-        isShow = offCanvasWrapper.offCanvas().isShown();
-        if(!isShow){
-            offCanvasWrapper.offCanvas('show');
-            mskDom.style.display = 'block';
-            addClass(menuDom, 'close')
-
+    // nav收缩展开
+    $('.nav-item .nav-child-tit').on('click',function(){
+        if ($(this).next().css('display') == "none") {
+            //展开未展开
+            $(this).next().slideDown(100);
+            $(this).addClass('active');
         }else{
-            offCanvasWrapper.offCanvas('close');
-            mskDom.style.display = 'none';
-            removeClass(menuDom, ' close')
-//            silderDom.style.display = 'none';
+            //收缩已展开
+            $(this).next().slideUp(100);
+            $(this).removeClass('active');
         }
     });
 
-    function addClass(menuDom, className){
-        var classVal = menuDom.getAttribute("class");
-        classVal = classVal.concat(" "+className);
-        menuDom.setAttribute("class",classVal);
-    }
 
-    function removeClass(menuDom, className){
-        var classVal = menuDom.getAttribute("class");
-        classVal = classVal.replace(className, '');
-        menuDom.setAttribute("class",classVal);
-    }
+    // 左侧导航
+    var slideout = new Slideout({
+        'panel': document.getElementById('panel-container'),
+        'menu': document.getElementById('menu'),
+        'padding': 500,
+        'tolerance': 70,
+        'easing': 'cubic-bezier(.32,2,.55,.27)',
+        'touch': false
+    });
 
-    mskDom.addEventListener('tap', function() {
-        offCanvasWrapper.offCanvas('close');
-        mskDom.style.display = 'none';
-        removeClass(menuDom, ' close');
-//        silderDom.style.display = 'none';
+    $('#menuBtnWrap').on('click', function(){
+        slideout.toggle();
     })
 
-    setTimeout(function () {
-        silderDom.style.display = 'block';
-    }, 100)
+    $('.btn-close').on('click', function(){
+        slideout.toggle();
+    })
 
+    slideout.on('beforeopen', function () {
+        $("#backdropWrap").show();
+        $("#menuBtnWrap").hide();
+    });
 
+    slideout.on('beforeclose', function () {
+        $(".btn-close").hide();
+        $("#backdropWrap").hide();
+        $("#menuBtnWrap").show();
+    });
 
-    //实现ios平台原生侧滑关闭页面；
-    if (mui.os.plus && mui.os.ios) {
-        mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
-            plus.webview.currentWebview().setStyle({
-                'popGesture': 'none'
-            });
-        });
-    }
+    slideout.on('open', function () {
+        $(".btn-close").show();
+
+    });
+
 
 </script>
-<script src="__STATIC__/home/js/jquery-1.10.1.min.js"></script>
-<script src="__STATIC__/home/js/lib.js"></script>
-<script src="__STATIC__/home/js/common.js"></script>
