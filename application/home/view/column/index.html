@@ -7,7 +7,8 @@
 
 {include file="public/header-nav" /}
 {include file="public/lr-fixed" type="product" /}
-<div class="mui-scroll container list-container">
+<!--主界面部分-->
+<div id="panel-container" class="container list-container">
     <div class="head-cate-list w1100" style="{if condition='isset($curentCate.img_url[1])'}background:url('{$curentCate.img_url[1]}') no-repeat;{else/}background:url('__STATIC__/home/images/cate-bg.jpg') no-repeat;{/if} background-size: cover;background-position: center;">
         <div class="con">
             <div class="tit">
@@ -47,9 +48,7 @@
     </div>
 
     {include file="public/footer" /}
-</div>
-{include file="public/common" /}
-
+    {include file="public/common" /}
 
 </body>
 </html>

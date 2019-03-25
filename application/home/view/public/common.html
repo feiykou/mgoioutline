@@ -45,10 +45,12 @@
 
 
     // 左侧导航
+    var fontSize = parseInt($("html").css('fontSize').replace('px',''));
+    var slideW = 10/750*500*fontSize;
     var slideout = new Slideout({
         'panel': document.getElementById('panel-container'),
         'menu': document.getElementById('menu'),
-        'padding': 500,
+        'padding': slideW,
         'tolerance': 70,
         'easing': 'cubic-bezier(.32,2,.55,.27)',
         'touch': false
