@@ -39,7 +39,7 @@
                         <div class="swiper-wrapper">
                             {volist name="resProData" id="data"}
                             <div class="swiper-slide">
-                                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
                                 <div class="info">
                                     <p class="tit">{$data.name[0]}</p>
                                     <p class="price">¥{$data.price}</p>
