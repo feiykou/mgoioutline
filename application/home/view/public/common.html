@@ -58,6 +58,7 @@
 
     $('#menuBtnWrap').on('click', function(){
         slideout.toggle();
+        $("#menu").show();
     })
 
     $('.btn-close').on('click', function(){
@@ -79,6 +80,14 @@
         $(".btn-close").show();
 
     });
+
+
+    $('.index-cate-sec-list>li').on('click',function () {
+        slideout.toggle();
+        $("#menu").show();
+        $("#backdropWrap").show();
+        $("#menuBtnWrap").hide();
+    })
 
 
 </script>

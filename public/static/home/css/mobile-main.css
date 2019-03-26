@@ -121,6 +121,7 @@ body {
   display: flex!important;
   align-items: center;
   height: 0.8rem;
+  line-height: 1;
 }
 .asider-container .nav-child-tit {
   display: flex;
@@ -176,6 +177,7 @@ body {
 }
 .asider-container .ul-child .child-item {
   height: 0.8rem;
+  line-height: 1;
   border-bottom: 0.01333333rem solid #EFEFF0;
 }
 .asider-container .ul-child .child-item span {
