@@ -88,16 +88,8 @@ body {
 .asider-container .nav-box {
   margin-bottom: 0.4rem;
 }
-.asider-container .nav-top-wrap {
-  margin-bottom: 0;
-}
-.asider-container .nav-top-wrap .nav-item {
-  padding: 3px 15px!important;
-  font-weight: bold;
+.asider-container .nav-item {
   font-size: 0.32rem;
-}
-.asider-container .nav-top-wrap .nav-item > a {
-  height: 1.06666667rem;
 }
 .asider-container .nav-tit {
   height: 0.18666667rem;
