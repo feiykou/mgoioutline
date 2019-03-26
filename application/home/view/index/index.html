@@ -55,7 +55,7 @@
                         <div class="swiper-wrapper">
                             {volist name="newsProData" id="data"}
                             <div class="swiper-slide">
-                                <a href="#"><img src="{$data.main_img_url[0]}" alt=""></a>
+                                <a href="/product/detail/{$data.id}"><img src="{$data.main_img_url[0]}" alt=""></a>
                                 <div class="info">
                                     <p class="tit">{$data.name[0]}</p>
                                     <p class="price">¥{$data.price}</p>
@@ -73,55 +73,14 @@
                     <h2>唔该商店&商品</h2>
                     <div class="label"><span>CATEGOFY</span></div>
                     <ul class="list index-cate-sec-list">
+                        {volist name="indexCateData" id="data"}
                         <li>
                             <a href="#cate">
-                                <p class="name">成年</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/1.png" alt=""></p>
+                                <p class="name">{$data.name}</p>
+                                <p class="img"><img src="{$data.img_url[0]}" alt=""></p>
                             </a>
                         </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">初次</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/2.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">春节</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/3.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">端午</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/4.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">狗的专属</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/5.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">猫的专属</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/6.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">生日</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/7.png" alt=""></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#mamian">
-                                <p class="name">中秋</p>
-                                <p class="img"><img src="__STATIC__/home/images/cate/8.png" alt=""></p>
-                            </a>
-                        </li>
-
+                        {/volist}
                         <li></li>
                         <li></li>
                         <li></li>

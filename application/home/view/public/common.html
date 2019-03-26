@@ -56,12 +56,13 @@
         'touch': false
     });
 
-    $('#menuBtnWrap').on('click', function(){
+    $('#menuBtnWrap').on('tap',function(){
+        console.log(11111)
         slideout.toggle();
         $("#menu").show();
     })
 
-    $('.btn-close').on('click', function(){
+    $('.btn-close').on('tap', function(){
         slideout.toggle();
     })
 
@@ -82,7 +83,7 @@
     });
 
 
-    $('.index-cate-sec-list>li').on('click',function () {
+    $('.index-cate-sec-list>li').on('tap',function () {
         slideout.toggle();
         $("#menu").show();
         $("#backdropWrap").show();

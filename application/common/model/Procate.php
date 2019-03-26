@@ -195,17 +195,65 @@ class Procate extends Model
         return $data;
     }
 
+    /*
+     * 获取分类信息  --- 多个分类
+     */
+    private static function _getSelCate($ids=[]){
+        $data = self::where('status','=','1')
+            ->field('id,name,img_url')
+            ->order([
+                'listorder' => 'desc',
+                'id' => 'desc'
+            ])->select($ids);
+        return $data;
+    }
+
+    /**
+     * 获取顶级分类下的子类 -- 一级
+     */
+    private static function _getSonBypid(){
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc'
+        ];
+        $parentId = self::where([
+            'pid' => 0,
+            'status' => 1
+        ])->order($order)
+          ->field('id')
+          ->select();
+        return $parentId;
+    }
+
     public static function getSonData($cateId){
         $cateTree = new Catetree();
         $ids = $cateTree->sonids($cateId, new self());
 
         $data = null;
         if(count($ids) > 0){
-            $data = self::where('status','=','1')
-                ->order([
-                    'listorder' => 'desc',
-                    'id' => 'desc'
-                ])->select($ids);
+            $data = self::_getSelCate($ids);
+        }
+        return $data;
+    }
+
+    /*
+     * 获取顶级分类下子类信息
+     */
+    public static function getSecondCate(){
+        $cateTree = new Catetree();
+        $parentId = self::_getSonBypid();
+        $ids = [];
+        foreach ($parentId as $cateId){
+            if(!$cateId) break;
+            $arr = $cateTree->sonids($cateId['id'], new self());
+            if(count($arr) >= 1){
+                $ids = array_merge($ids,$arr);
+            }
+        }
+
+        $data = null;
+        if(count($ids) > 0){
+            $data = self::_getSelCate($ids);
         }
         return $data;
     }
