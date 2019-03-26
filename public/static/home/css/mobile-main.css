@@ -94,6 +94,7 @@ body {
 .asider-container .nav-top-wrap .nav-item {
   padding: 3px 15px!important;
   font-weight: bold;
+  font-size: 0.32rem;
 }
 .asider-container .nav-top-wrap .nav-item > a {
   height: 1.06666667rem;
@@ -179,7 +180,6 @@ body {
   height: 0.8rem;
   line-height: 1;
   border-bottom: 0.01333333rem solid #EFEFF0;
-  font-size: 0.32rem;
 }
 .asider-container .ul-child .child-item span {
   display: inline-block;
