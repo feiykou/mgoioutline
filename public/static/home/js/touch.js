@@ -181,7 +181,7 @@
                             console.log()
                             // touchTimeout = setTimeout(function(){
 
-                            if(Date.now() - touch.last > 110){
+                            if(Date.now() - touch.last > 120){
                                 // touchTimeout = null
                                 if (touch.el) touch.el.trigger('singleTap')
                                 touch = {}
