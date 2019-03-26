@@ -177,11 +177,17 @@
 
                         // trigger single tap after 250ms of inactivity
                         else {
-                            touchTimeout = setTimeout(function(){
-                                touchTimeout = null
+                            console.log()
+                            console.log()
+                            // touchTimeout = setTimeout(function(){
+
+                            if(Date.now() - touch.last > 110){
+                                // touchTimeout = null
                                 if (touch.el) touch.el.trigger('singleTap')
                                 touch = {}
-                            }, 250)
+                            }
+
+                            // }, 250)
                         }
                     }, 0)
                 } else {
