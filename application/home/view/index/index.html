@@ -75,7 +75,7 @@
                     <ul class="list index-cate-sec-list">
                         {volist name="indexCateData" id="data"}
                         <li>
-                            <a href="#cate">
+                            <a href="/product/list/{$data.id}">
                                 <p class="name">{$data.name}</p>
                                 <p class="img"><img src="{$data.img_url[0]}" alt=""></p>
                             </a>
@@ -158,12 +158,12 @@
     });
 
     $(function () {
-        $('.index-cate-sec-list>li').on('singleTap',function () {
-            slideout.toggle();
-            $("#menu").show();
-            $("#backdropWrap").show();
-            $("#menuBtnWrap").hide();
-        })
+//        $('.index-cate-sec-list>li').on('singleTap',function () {
+//            slideout.toggle();
+//            $("#menu").show();
+//            $("#backdropWrap").show();
+//            $("#menuBtnWrap").hide();
+//        })
     })
 
 </script>
