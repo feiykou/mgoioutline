@@ -257,4 +257,10 @@ class Procate extends Model
         }
         return $data;
     }
+
+    public static function getCrumb($cateId){
+        $cateTree = new Catetree();
+        $parentArr = $cateTree->parentids($cateId,new self());
+        return $parentArr;
+    }
 }

@@ -26,9 +26,11 @@ class Product extends Common
         $curentCate = [];
         if($cate_id == 0){
             $products = $this->model->getAllProData();
+            $crumbData = [];
         }else{
             $products = model('procate')->getProductByClumn($cate_id);
             $curentCate = model('procate')->getCateById($cate_id);
+            $crumbData = Procate::getCrumb($cate_id);
         }
 
         $sonCateData = Procate::getSonData($cate_id);
@@ -38,7 +40,8 @@ class Product extends Common
             'productsData'=> $products,
             'sonCateData' => $sonCateData,
             'curentCate' => $curentCate,
-            'cateData' => $proCateData
+            'cateData' => $proCateData,
+            'crumbData' => $crumbData
         ]);
         return $this->fetch();
     }

@@ -34,7 +34,24 @@
             {/present}
         </div>
     </div>
-
+    {if condition="count($crumbData) egt 1"}
+    <div class="crumbs-wrap">
+        <a href="/product">全部产品</a>
+        <span class="split"> > </span>
+        {volist name="crumbData" id="data" key="k"}
+        {if condition="count($crumbData) neq $k"}
+        <span class="next-class">
+            <a href="/product/list/{$data.id}" class="next-name">{$data.name}</a>
+            <span class="split"> > </span>
+        </span>
+        {else/}
+        <span class="next-class">
+            <a href="/product/list/{$data.id}" class="next-name">{$data.name}</a>
+        </span>
+        {/if}
+        {/volist}
+    </div>
+    {/if}
     <div class="product-list">
         <div class="product-wrap product-container w1100">
             {if condition="count($productsData) egt 0"}

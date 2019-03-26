@@ -157,12 +157,15 @@
         },
     });
 
-//    var cateListDom = document.getElementsByClassName('index-cate-sec-list')[0].children;
-//    Array.prototype.forEach.call(cateListDom, function(val){
-//        val.addEventListener('tap', function() {
-//            offCanvasWrapper.offCanvas('show');
-//        })
-//    })
+    $(function () {
+        $('.index-cate-sec-list>li').on('tap',function () {
+            slideout.toggle();
+            $("#menu").show();
+            $("#backdropWrap").show();
+            $("#menuBtnWrap").hide();
+        })
+    })
+
 </script>
 
 

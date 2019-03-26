@@ -1,94 +1,42 @@
 <!--侧滑菜单部分-->
 <aside id="menu" style="display: none;" class="asider-container">
     <div class="nav-box">
+        {present name="$cateData"}
+        {volist name="$cateData" id="data" key="k"}
+        {if condition="count($data['sub']) eq 0"}
         <div class="box">
-            <div class="nav-tit"><span>新手</span></div>
+            <div class="nav-tit"><a href="/[type]/list/{$data.id}">{$data.name}</a></div>
+        </div>
+        {else/}
+        <div class="box">
+            <div class="nav-tit"><span>{$data.name}</span></div>
             <ul class="table-view">
-                <li class="nav-item">
-                    <div class="nav-child-tit active">
-                        <a href="#">衣料品</a>
-                        <span><i></i><i></i></span>
-                    </div>
-                    <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-child-tit" id="cate">
-                        <a href="#">衣料品</a>
-                        <span><i></i><i></i></span>
-                    </div>
-                    <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                    </div>
-                </li>
+                {volist name="$data['sub']" id="sonData" key="sonk"}
+                {if condition="count($sonData['sub']) eq 0"}
                 <li class="nav-item">
                     <div class="nav-child-tit">
-                        <a href="#">衣料品</a>
+                        <a href="/[type]/list/{$sonData.id}">{$sonData.name}</a>
+                    </div>
+                </li>
+                {else /}
+                <li class="nav-item">
+                    <div class="nav-child-tit">
+                        <a href="/[type]/list/{$sonData.id}">{$sonData.name}</a>
                         <span><i></i><i></i></span>
                     </div>
                     <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
+                        {volist name="$sonData['sub']" id="grandData" key="grandk"}
+                        <div class="child-item"><a href="/[type]/list/{$grandData.id}" name="a"><span>-</span> {$grandData.name}</a></div>
+                        {/volist}
                     </div>
                 </li>
-
+                {/if}
+                {/volist}
             </ul>
         </div>
-        <div class="box">
-            <div class="nav-tit"><span>新手</span></div>
-            <ul class="table-view">
-                <li class="nav-item">
-                    <div class="nav-child-tit">
-                        <a href="#">衣料品</a>
-                        <span><i></i><i></i></span>
-                    </div>
-                    <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-child-tit">
-                        <a href="#">衣料品</a>
-                        <span><i></i><i></i></span>
-                    </div>
-                    <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-child-tit">
-                        <a href="#">衣料品</a>
-                        <span><i></i><i></i></span>
-                    </div>
-                    <div class="ul-child">
-                        <div class="child-item"><a href="#" name="a"><span>-</span> 麻棉</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 牛皮</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 羊毛</a></div>
-                        <div class="child-item"><a href="#"><span>-</span> 醋酸纤维</a></div>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
+        {/if}
+        {/volist}
+        {/present}
 
     </div>
 </aside>

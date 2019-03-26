@@ -10,6 +10,25 @@ body {
   margin: 0;
   padding: 0;
 }
+.crumbs-wrap {
+  height: 1.33333333rem;
+  line-height: 1.33333333rem;
+  padding: 0 0.8rem;
+}
+.crumbs-wrap a {
+  display: inline-block;
+  color: #55595c;
+}
+.crumbs-wrap a:active {
+  opacity: 0.5;
+}
+.crumbs-wrap span.split {
+  text-align: center;
+  margin-left: 0.06666667rem;
+}
+.crumbs-wrap .next-class {
+  margin-left: 0.06666667rem;
+}
 .line-wrap .line {
   position: fixed;
   z-index: 99;
@@ -191,6 +210,7 @@ body {
 }
 #panel-container {
   width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   padding-top: 1.93333333rem;
 }
@@ -454,7 +474,7 @@ body {
 }
 .swiper-container-vertical > .swiper-pagination-progressbar,
 .swiper-container-horizontal > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
-  width: 0.05333333rem;
+  width: 0.02666667rem;
   height: 7.73333333rem;
   top: 0;
   left: 0.32rem;
@@ -861,6 +881,9 @@ body {
   font-size: 0.26666667rem;
 }
 /************  产品列表页  *************/
+.product-container {
+  min-height: 4rem;
+}
 .head-cate-list {
   position: relative;
   background-size: cover;
@@ -897,6 +920,11 @@ body {
 .head-cate-list .index-cate-sec .list li:active {
   background-color: #eee;
   opacity: 0.5;
+}
+.head-cate-list .index-cate-sec .list li:nth-last-child(1):active,
+.head-cate-list .index-cate-sec .list li:nth-last-child(2):active,
+.head-cate-list .index-cate-sec .list li:nth-last-child(3):active {
+  opacity: 0;
 }
 .product-list {
   padding: 0.88rem 0.8rem;
