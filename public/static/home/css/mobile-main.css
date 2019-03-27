@@ -213,7 +213,6 @@ body {
 }
 #panel-container {
   width: 100%;
-  min-height: 100vh;
   box-sizing: border-box;
   padding-top: 1.93333333rem;
 }
