@@ -343,8 +343,7 @@ body {
 .head-swiper-container .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;
   background-repeat: no-repeat;
 }
 .head-swiper-container .head-swiper-pagination {
@@ -689,10 +688,14 @@ body {
   line-height: 1.4;
   margin-top: 0.13333333rem;
   color: #555;
+  font-size: 0.32rem;
 }
 .footer-sec .info .logo {
   display: flex;
-  align-items: center;
+  flex: 0 0 3.33333333rem;
+  padding-bottom: 0.4rem;
+  align-items: flex-end;
+  justify-content: flex-end;
   font-size: 0.53333333rem;
   color: #e84466;
   font-weight: bold;
@@ -837,7 +840,7 @@ body {
 }
 .cate-line i {
   flex: 1;
-  height: 0.01866667rem;
+  height: 1px;
   background-color: #000;
 }
 .cate-line span {
