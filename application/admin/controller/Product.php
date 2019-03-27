@@ -81,10 +81,7 @@ class Product extends Base
         if(!request()->post()){
             $this->error("请求失败");
         }
-//        $validate = (new ProductValidate())->goCheck('add');
-//        if(!$validate['type']){
-//            $this->result("",'0',$validate['msg']);
-//        }
+
         // 获取请求数据
         $data = input('post.');
         $proData = [
