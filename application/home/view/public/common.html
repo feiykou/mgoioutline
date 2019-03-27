@@ -65,6 +65,9 @@
     $('.btn-close').on('tap', function(){
         slideout.toggle();
     })
+    $('#backdropWrap').on('tap', function(){
+        slideout.toggle();
+    })
 
     slideout.on('beforeopen', function () {
         $("#backdropWrap").show();
@@ -81,6 +84,7 @@
         $(".btn-close").show();
 
     });
+
 
 
 

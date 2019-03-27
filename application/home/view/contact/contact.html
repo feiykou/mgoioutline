@@ -38,7 +38,22 @@
             </div>
 
         </div>
+        <div class="column-list-wrap news-list-wrap">
+            <h2 class="tit">企业新闻</h2>
+            <div class="item-wrap">
+                {volist name="newsData" id="data"}
+                <div class="item hover-class">
+                    <a href="/news/detail/{$data.id}"><img class="column-img" src="{$data.mobile_imgs_url[0]}" data-src="{$data.mobile_imgs_url[0]}" lazyload="true" alt=""></a>
+                    <div class="info">
+                        <h3 class="tit clearfix"><a href="/news/detail/{$data.id}">{$data.name}</a></h3>
+                        <p class="author-cate"><span>{$data.author}编辑</span></p>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
         <div class="contact-address">
+            <h2 class="tit">联系方式</h2>
             <div class="w1100">
                 <div class="map-wrap">
                     <div id="allmap"></div>

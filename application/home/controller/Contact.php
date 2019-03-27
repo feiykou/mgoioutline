@@ -17,8 +17,10 @@ class Contact extends Common
     public function contact(){
         $proCate = new Procate();
         $proCateData = $proCate->getCateJson();
+        $newsData = model('news')->getAllNewsData();
         return $this->fetch('',[
-            'cateData' => $proCateData
+            'cateData' => $proCateData,
+            'newsData' => $newsData
         ]);
     }
 }

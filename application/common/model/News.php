@@ -36,7 +36,7 @@ class News extends Model
     }
 
 
-    public function getAllNewsData($data){
+    public function getAllNewsData($data=[]){
         $data['status'] = ['neq',-1];
         $order = [
             'listorder' => 'desc',
@@ -106,11 +106,6 @@ class News extends Model
         ];
         $result = self::where($data)->order($order)->select();
         return $result;
-//        $data = [
-//            'status' => 1
-//        ];
-//        $newsData = self::where($data)->order('update_time desc')->select();
-//        return $newsData;
     }
 
 
