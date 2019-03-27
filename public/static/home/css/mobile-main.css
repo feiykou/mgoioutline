@@ -384,7 +384,6 @@ body {
   box-sizing: border-box;
   background-color: #eee;
   overflow: hidden;
-  border: 0.02666667rem solid #000;
 }
 .index-container .theme-sec .list li a {
   display: block;
