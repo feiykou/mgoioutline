@@ -4,7 +4,7 @@ body {
   height: 100%;
 }
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: '新細明體', '微軟正黑體', Microsoft JhengHei, Helvetica, sans-serif;
   font-size: 0.37333333rem !important;
   color: #000;
   margin: 0;
@@ -696,42 +696,6 @@ body {
   font-size: 0.53333333rem;
   color: #e84466;
   font-weight: bold;
-}
-/************  新闻列表页  *************/
-.news-list-container .news-con {
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-}
-.news-list-container .item {
-  background-color: #fff;
-  margin-top: 0.56rem;
-}
-.news-list-container .item:active {
-  opacity: 0.5;
-}
-.news-list-container .item img {
-  width: 100%;
-}
-.news-list-container .item .info {
-  padding: 0.26666667rem 0.26666667rem 0.56rem;
-}
-.news-list-container .item h2.tit {
-  font-size: 0.42666667rem;
-  line-height: 1.5;
-  padding-bottom: 0.06666667rem;
-  font-weight: bold;
-}
-.news-list-container .item .author-date {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 0.8rem;
-  background-color: #f3f3f3;
-  padding: 0 0.26666667rem;
-  display: none;
-}
-.news-list-container .item .desc {
-  line-height: 1.3;
 }
 /************  联系页和关于我们  *************/
 .contact-container .video-about {
