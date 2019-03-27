@@ -344,7 +344,7 @@ body {
   text-align: center;
   font-size: 18px;
   background-size: 100% auto;
-  background-position: 0 -0.66666667rem;
+  background-position: center;
   background-repeat: no-repeat;
 }
 .head-swiper-container .head-swiper-pagination {
