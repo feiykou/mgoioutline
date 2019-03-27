@@ -892,7 +892,7 @@ body {
   margin-right: auto;
 }
 .product-detail-container .swiper-slide {
-  background-size: 100% center;
+  background-size: 100%;
   background-position: center;
 }
 .product-detail-container .gallery-top {
