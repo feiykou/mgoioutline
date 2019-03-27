@@ -756,45 +756,6 @@ body {
   width: 1.86666667rem;
   height: 1.86666667rem;
 }
-.about-container .share-wrap ul {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 1.33333333rem 0.8rem;
-}
-.about-container .share-wrap li {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.53333333rem;
-  height: 1.86666667rem;
-  margin-bottom: 0.13333333rem;
-  text-align: center;
-  background-color: #dd4a31;
-  transition: all .5s;
-  cursor: pointer;
-}
-.about-container .share-wrap li .img {
-  width: 0.8rem;
-  height: 0.8rem;
-}
-.about-container .share-wrap li .mask-con {
-  display: none;
-}
-.about-container .share-wrap li.item1 .img {
-  width: 1.33333333rem;
-  height: 1.33333333rem;
-}
-.about-container .share-wrap li.item2,
-.about-container .share-wrap li.item5,
-.about-container .share-wrap li.item6 {
-  display: none;
-}
-.about-container .share-wrap li:active {
-  opacity: 0.6;
-  transition: all .5s;
-}
 .contact-address {
   overflow: hidden;
   border-top: 0.05333333rem solid #000;
