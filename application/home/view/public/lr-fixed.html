@@ -4,8 +4,8 @@
         {present name="$cateData"}
         {volist name="$cateData" id="data" key="k"}
         {if condition="count($data['sub']) eq 0"}
-        <div class="box">
-            <div class="nav-tit"><a href="/[type]/list/{$data.id}">{$data.name}</a></div>
+        <div class="box-single">
+            <div class="tit"><a href="/[type]/list/{$data.id}">{$data.name}</a></div>
         </div>
         {else/}
         <div class="box">

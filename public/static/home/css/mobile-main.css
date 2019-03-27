@@ -110,6 +110,10 @@ body {
 .asider-container .nav-box {
   margin-bottom: 0.4rem;
 }
+.asider-container .box-single {
+  margin-bottom: 0.33333333rem;
+  font-weight: bold;
+}
 .asider-container .nav-tit {
   height: 0.18666667rem;
   margin: 0.21333333rem 0 0.37333333rem;
@@ -1051,15 +1055,15 @@ body {
   display: flex;
   margin: 0.8rem 0.8rem;
 }
-.detail-wrap.column-wrap {
+.detail-wrap.detail-con-wrap {
   margin: 0.8rem 0;
 }
-.detail-wrap.column-wrap .detail-tit-info {
+.detail-wrap.detail-con-wrap .detail-tit-info {
   flex: 0 0 2.5rem;
   width: 2.5rem;
   padding-left: 0.26666667rem;
 }
-.detail-wrap.column-wrap .detail-con {
+.detail-wrap.detail-con-wrap .detail-con {
   padding-right: 0.8rem;
 }
 .detail-wrap .detail-tit-info {
