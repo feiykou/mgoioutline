@@ -114,6 +114,9 @@ body {
   margin-bottom: 0.33333333rem;
   font-weight: bold;
 }
+.asider-container .box {
+  margin-top: 0.13333333rem;
+}
 .asider-container .nav-tit {
   height: 0.18666667rem;
   margin: 0.21333333rem 0 0.37333333rem;
@@ -702,13 +705,16 @@ body {
 }
 .footer-sec .info .logo {
   display: flex;
-  flex: 0 0 3.33333333rem;
+  flex: 0 0 2.66666667rem;
   padding-bottom: 0.4rem;
   align-items: flex-end;
   justify-content: flex-end;
   font-size: 0.53333333rem;
   color: #e84466;
   font-weight: bold;
+}
+.footer-sec .info .logo img {
+  width: 100%;
 }
 /************  联系页和关于我们  *************/
 .news-list-wrap {
