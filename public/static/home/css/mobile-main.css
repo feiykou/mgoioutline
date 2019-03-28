@@ -334,7 +334,7 @@ body {
   display: block;
   width: 0.53333333rem;
   height: 0.6rem;
-  margin: 0 auto 0.13333333rem;
+  margin: 0 auto 0.06666667rem;
   background-size: 0.53333333rem 0.6rem;
 }
 .nav-banner-sec {
@@ -705,7 +705,6 @@ body {
 .footer-sec .info .logo {
   display: flex;
   flex: 0 0 2.66666667rem;
-  padding-bottom: 0.4rem;
   align-items: flex-end;
   justify-content: flex-end;
   font-size: 0.53333333rem;
