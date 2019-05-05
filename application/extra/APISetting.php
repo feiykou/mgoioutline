@@ -1,6 +1,5 @@
 <?php
 
 return [
-    'img_prefix' => 'http://bigwu.cn'
-//    'img_prefix' => ''
+    'img_prefix' => 'http://www.mgoi.net'
 ];
