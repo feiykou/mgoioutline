@@ -17,6 +17,11 @@ class BannerItem extends Model
     protected function getImgUrlAttr($val,$data){
         return $this->handleImgUrl($val);
     }
+    protected function getThumbUrlAttr($val,$data){
+        $val = str_replace('\\','/',$val);
+        return config('APISetting.img_prefix').$val;
+    }
+
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
         return explode(';',$val);

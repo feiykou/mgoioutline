@@ -32,7 +32,11 @@ class Column extends Model
 
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
-        return explode(';',$val);
+        $arr = explode(';',$val);
+        foreach ($arr as &$item){
+            $item = config('APISetting.img_prefix').$item;
+        }
+        return $arr;
     }
 
 
@@ -90,6 +94,7 @@ class Column extends Model
     /**
      * 前台数据调用
      */
+
     // 获取推荐产品
     public static function getIndexResc($rescId=1){
         $data = [
@@ -99,11 +104,15 @@ class Column extends Model
             'listorder' => 'desc',
             'id' => 'desc'
         ];
-        $result = self::where($data)->where('','exp',"find_in_set($rescId,attributes)")->order($order)->select();
+        $result = self::where($data)
+            ->where('','exp',"find_in_set($rescId,attributes)")
+            ->order($order)
+            ->field('id,name,mobile_imgs_url,introduce')
+            ->select();
         return $result;
     }
 
-    public function getNewsIndexData($cateId){
+    public static function getNewsIndexData($cateId){
         // 获取产品子栏目产品
         $cateTree = new Catetree();
         $idArr = $cateTree->childrenids($cateId,model('column_cate'));

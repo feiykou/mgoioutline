@@ -24,7 +24,11 @@ class Procate extends Model
 
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
-        return explode(';',$val);
+        $arr = explode(';',$val);
+        foreach ($arr as &$item){
+            $item = config('APISetting.img_prefix').$item;
+        }
+        return $arr;
     }
 
     protected function productCate(){
@@ -187,6 +191,22 @@ class Procate extends Model
 
         }
         return $cateData;
+    }
+
+    /**
+     *  获取顶级分类
+     */
+    public function getTopCate(){
+        $data = [
+            'status'    =>  1,
+            'pid' =>  0,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id'        => 'desc'
+        ];
+        $column =self::where($data)->order($order)->field('id,name')->select();
+        return $column;
     }
 
     public static function getCateJson(){

@@ -56,7 +56,11 @@ class Product extends Model
 
     private function handleImgUrl($val){
         $val = str_replace('\\','/',$val);
-        return explode(';',$val);
+        $arr = explode(';',$val);
+        foreach ($arr as &$item){
+            $item = config('APISetting.img_prefix').$item;
+        }
+        return $arr;
     }
 
     protected function getCateIdAttr($val,$data){

@@ -172,6 +172,19 @@ class ColumnCate extends Model
         return $cateData;
     }
 
+    public static function getTopCate(){
+        $data = [
+            'status'    =>  1,
+            'pid' =>  0,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id'        => 'desc'
+        ];
+        $column =self::where($data)->order($order)->field('id,name')->select();
+        return $column;
+    }
+
     public static function getCateJson(){
         $cateTree = new Catetree();
         $data = $cateTree->cateData(new self());
