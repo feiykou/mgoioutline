@@ -256,6 +256,22 @@ class Procate extends Model
         return $data;
     }
 
+    // 获取当前分类的下级分类
+    public static function getSonCate($cateId){
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc'
+        ];
+        $result = self::where([
+            'pid' => $cateId,
+            'status' => 1
+        ])->order($order)
+            ->field('id,name,img_url')
+            ->select();
+        return $result;
+
+    }
+
     /*
      * 获取顶级分类下子类信息
      */

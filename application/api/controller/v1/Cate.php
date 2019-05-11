@@ -32,4 +32,11 @@ class Cate extends BaseController
         $cateData = $this->model->getTopCate();
         return $cateData;
     }
+
+    public function getSonById($id){
+        if(intval($id) <= 0) return;
+        $cateData = $this->model->getSonCate($id);
+        return $cateData;
+    }
+
 }
