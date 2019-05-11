@@ -205,7 +205,7 @@ class Procate extends Model
             'listorder' => 'desc',
             'id'        => 'desc'
         ];
-        $column =self::where($data)->order($order)->field('id,name')->select();
+        $column =self::where($data)->order($order)->field('id,name,img_url')->select();
         return $column;
     }
 
