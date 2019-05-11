@@ -21,4 +21,5 @@ Route::get('api/:version/product/:cate_id','api/:version.Product/lst');
 // 公共
 Route::get('api/:version/cate/second','api/BaseController/cate');
 Route::get('api/:version/cate/all','api/:version.Cate/getAllCate');
+Route::get('api/:version/cate/topCate','api/:version.Cate/getTopCate');
 

@@ -14,9 +14,22 @@ use app\common\model\Procate;
 
 class Cate extends BaseController
 {
+
+    private $model;
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->model = model('procate');
+    }
+
+
     public function getAllCate(){
-        $proCate = new Procate();
-        $proCateData = $proCate->getCateJson();
+        $proCateData = $this->model->getCateJson();
         return $proCateData;
+    }
+
+    public function getTopCate(){
+        $cateData = $this->model->getTopCate();
+        return $cateData;
     }
 }
