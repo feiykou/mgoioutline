@@ -14,14 +14,12 @@ use app\common\model\Procate;
 
 class Cate extends BaseController
 {
-
     private $model;
     public function _initialize()
     {
         parent::_initialize();
         $this->model = model('procate');
     }
-
 
     public function getAllCate(){
         $proCateData = $this->model->getCateJson();

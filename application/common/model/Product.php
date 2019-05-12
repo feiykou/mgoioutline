@@ -183,6 +183,16 @@ class Product extends Model
     }
 
 
+    public function getProByIds($ids=[], $mark=false){
+        $data = [
+            'id'     => ['in',$ids],
+            'status' => 1
+        ];
+        $proData = self::where($data)->select();
+        return $proData;
+    }
+
+
 
 
 
@@ -193,7 +203,6 @@ class Product extends Model
     protected function getNameAttr($val,$data){
         return explode(',', $val);
     }
-
 
     public function getProAndPropData($id=0){
         $data = [
@@ -206,7 +215,7 @@ class Product extends Model
 
     public static function getProductByCate($cateid){
         $data = [
-            'cate_id' => $cateid,
+            'cate_id' => ['in',$cateid],
             'status' => 1
         ];
         $order = [
@@ -253,7 +262,6 @@ class Product extends Model
         return $result;
     }
 
-
     // 提供栏目id获取某个产品
     public function getProByColumn($column_id){
         $data = [
@@ -263,7 +271,6 @@ class Product extends Model
         $result =  db('product')->where($data)->find();
         return $result;
     }
-
 
     // 获取分类下的产品
     public function getCateProducts(){
@@ -308,5 +315,20 @@ class Product extends Model
         $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
         return $result;
     }
-
+//
+//    // 获取产品子栏目产品
+//    public function getProductByCate($cateId){
+////        $cateTree = new Catetree();
+////        $idArr = $cateTree->childrenids($cateId,model('procate'));
+////        $idArr[] = $cateId;
+//        $data = [
+//            'status' => 1
+//        ];
+//        $order = [
+//            'listorder' => "desc",
+//            'id'        => "desc"
+//        ];
+//        $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
+//        return $result;
+//    }
 }

@@ -294,6 +294,15 @@ class Procate extends Model
         return $data;
     }
 
+    // 获取当前分类的所有子类id，包括当前id
+    public static function getAllCateById($cateId){
+        $cateTree = new Catetree();
+        $arr = $cateTree->sonids($cateId, new self());
+        $cateId = [$cateId];
+        $ids = array_merge($cateId,$arr);
+        return $ids;
+    }
+
     public static function getCrumb($cateId){
         $cateTree = new Catetree();
         $parentArr = $cateTree->parentids($cateId,new self());
