@@ -16,7 +16,7 @@ Route::get('api/:version/columnCate/:id','api/:version.ColumnCate/getColumnCateB
 
 
 
-Route::get('api/:version/product/:cate_id','api/:version.Product/lst');
+Route::get('api/:version/product/:cate_id','api/:version.Product/lst',[],['cate_id'=>'\d+']);
 
 // 公共
 Route::get('api/:version/cate/second','api/BaseController/cate');
@@ -24,3 +24,5 @@ Route::get('api/:version/cate/all','api/:version.Cate/getAllCate');
 Route::get('api/:version/cate/topCate','api/:version.Cate/getTopCate');
 Route::get('api/:version/cate/sonCate/:id','api/:version.Cate/getSonById',[],['cate_id'=>'\d+']);
 
+// 搜索
+Route::get('api/:version/product/search', 'api/:version.Product/search');

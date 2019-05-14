@@ -331,4 +331,30 @@ class Product extends Model
 //        $result = Procate::get($cateId)->productCate()->where($data)->order($order)->select();
 //        return $result;
 //    }
+
+    protected $resultSetType = 'collection';
+
+    /**
+     * 获取搜索结果
+     */
+    public function getSearchResult($params,$size=10,$page=1){
+        $data = [
+            'status' => 1,
+            'name' => ['like','%'.$params['q'].'%']
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'create_time' => 'desc'
+        ];
+
+        $self = new self();
+        $data = $self->where($data)
+            ->order($order)
+            ->paginate($size,false,['page'=>$page])
+            ->visible([
+                'main_img_url', 'name', 'name_desc', 'introduce','id'
+            ]);
+
+        return $data;
+    }
 }

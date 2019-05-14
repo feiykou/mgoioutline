@@ -10,6 +10,7 @@ namespace app\api\controller\v1;
 
 
 use app\api\controller\BaseController;
+use app\api\validate\Search;
 use app\common\model\Procate;
 
 class Product extends BaseController
@@ -45,5 +46,33 @@ class Product extends BaseController
             $products = $this->model->getProByIds($ids);
         }
         return $products;
+    }
+
+    /**
+     *
+     * @url
+     * @http
+     * @param $data
+     * @param int $page
+     * @param int $size
+     * @return array
+     */
+    public function search($page=1, $size=4){
+        (new Search())->goCheck('');
+        $data = input('get.');
+        if(empty($data['q'])){
+            return [
+                'data' => [],
+                'total' => 0
+            ];
+        }
+        $searchData = $this->model->getSearchResult($data,$size,$page);
+        if($searchData->isEmpty()){
+            $searchData = [
+                'data' => [],
+                'total' => 0
+            ];
+        }
+        return $searchData;
     }
 }
