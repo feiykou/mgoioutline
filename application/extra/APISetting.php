@@ -1,5 +1,5 @@
 <?php
 
 return [
-//    'img_prefix' => 'http://www.mgoi.net'
+    'img_prefix' => 'http://www.mgoi.net'
 ];
